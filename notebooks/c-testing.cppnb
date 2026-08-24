@@ -1,0 +1,67 @@
+{
+  "version": 2,
+  "id": "c-testing",
+  "metadata": {
+    "name": "C Testing",
+    "description": "Official C Testing test workspace with interactive I/O examples.",
+    "language": "c",
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "updatedAt": "2026-08-25T00:00:00.000Z"
+  },
+  "cells": [
+    {
+      "id": "c-testing-cell-1",
+      "type": "markdown",
+      "source": "# C Testing Notebook\nInteractive I/O, structs, functions, and state persistence.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "c-testing-cell-2",
+      "type": "code",
+      "source": "#include <stdio.h>\n\nprintf(\"Hello from CodeBook C!\\n\");",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "c-testing-cell-3",
+      "type": "code",
+      "source": "int x = 42;\nint y = 58;\nprintf(\"x + y = %d\\n\", x + y);",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "c-testing-cell-4",
+      "type": "code",
+      "source": "int add(int a, int b) {\n    return a + b;\n}",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "c-testing-cell-5",
+      "type": "code",
+      "source": "printf(\"Result of add(15, 25): %d\\n\", add(15, 25));",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "c-testing-cell-6",
+      "type": "code",
+      "source": "char name[64];\nint age;\n\nprintf(\"Enter your name: \");\nscanf(\"%63s\", name);\n\nprintf(\"Enter your age: \");\nscanf(\"%d\", &age);\n\nprintf(\"Hello %s, you are %d years old!\\n\", name, age);",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

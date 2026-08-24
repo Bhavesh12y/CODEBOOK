@@ -2,11 +2,25 @@ import type { Monaco } from '@monaco-editor/react';
 
 let configured = false;
 
+export function languageToMonaco(language?: string): string {
+  switch (language) {
+    case 'c':
+      return 'c';
+    case 'java':
+      return 'java';
+    case 'python':
+      return 'python';
+    case 'cpp':
+    default:
+      return 'cpp';
+  }
+}
+
 export function configureMonaco(monaco: Monaco): void {
   if (configured) return;
   configured = true;
 
-  monaco.editor.defineTheme('cppbook-midnight', {
+  monaco.editor.defineTheme('codebook-midnight', {
     base: 'vs-dark',
     inherit: true,
     rules: [
@@ -25,7 +39,7 @@ export function configureMonaco(monaco: Monaco): void {
     },
   });
 
-  monaco.editor.defineTheme('cppbook-obsidian', {
+  monaco.editor.defineTheme('codebook-obsidian', {
     base: 'vs-dark',
     inherit: true,
     rules: [
@@ -44,7 +58,7 @@ export function configureMonaco(monaco: Monaco): void {
     },
   });
 
-  monaco.editor.defineTheme('cppbook-graphite', {
+  monaco.editor.defineTheme('codebook-graphite', {
     base: 'vs-dark',
     inherit: true,
     rules: [
@@ -63,7 +77,7 @@ export function configureMonaco(monaco: Monaco): void {
     },
   });
 
-  monaco.editor.defineTheme('cppbook-matrix', {
+  monaco.editor.defineTheme('codebook-matrix', {
     base: 'vs-dark',
     inherit: true,
     rules: [
@@ -82,7 +96,7 @@ export function configureMonaco(monaco: Monaco): void {
     },
   });
 
-  monaco.editor.defineTheme('cppbook-dracula', {
+  monaco.editor.defineTheme('codebook-dracula', {
     base: 'vs-dark',
     inherit: true,
     rules: [
@@ -101,7 +115,7 @@ export function configureMonaco(monaco: Monaco): void {
     },
   });
 
-  monaco.editor.defineTheme('cppbook-onedark', {
+  monaco.editor.defineTheme('codebook-onedark', {
     base: 'vs-dark',
     inherit: true,
     rules: [
@@ -120,7 +134,7 @@ export function configureMonaco(monaco: Monaco): void {
     },
   });
 
-  monaco.editor.defineTheme('cppbook-tokyonight', {
+  monaco.editor.defineTheme('codebook-tokyonight', {
     base: 'vs-dark',
     inherit: true,
     rules: [
@@ -139,7 +153,7 @@ export function configureMonaco(monaco: Monaco): void {
     },
   });
 
-  monaco.editor.defineTheme('cppbook-nord', {
+  monaco.editor.defineTheme('codebook-nord', {
     base: 'vs-dark',
     inherit: true,
     rules: [
@@ -158,7 +172,7 @@ export function configureMonaco(monaco: Monaco): void {
     },
   });
 
-  monaco.editor.defineTheme('cppbook-mac', {
+  monaco.editor.defineTheme('codebook-mac', {
     base: 'vs-dark',
     inherit: true,
     rules: [
@@ -177,7 +191,7 @@ export function configureMonaco(monaco: Monaco): void {
     },
   });
 
-  monaco.editor.defineTheme('cppbook-daylight', {
+  monaco.editor.defineTheme('codebook-daylight', {
     base: 'vs',
     inherit: true,
     rules: [
@@ -205,6 +219,60 @@ export function configureMonaco(monaco: Monaco): void {
         ['fori', 'for (int i = 0; i < $1; ++i) {\n    $0\n}'],
         ['main', 'int main() {\n    $0\n    return 0;\n}'],
         ['class', 'class $1 {\npublic:\n    $1() = default;\n};'],
+      ].map(([label, insertText]) => ({
+        label,
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText,
+        insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+      }));
+      return { suggestions };
+    },
+  });
+
+  monaco.languages.registerCompletionItemProvider('c', {
+    provideCompletionItems() {
+      const suggestions = [
+        ['printf', 'printf("$1\\n"$2);'],
+        ['scanf', 'scanf("%$1", &$2);'],
+        ['main', 'int main() {\n    $0\n    return 0;\n}'],
+        ['struct', 'struct $1 {\n    $0\n};'],
+        ['fori', 'for (int i = 0; i < $1; ++i) {\n    $0\n}'],
+      ].map(([label, insertText]) => ({
+        label,
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText,
+        insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+      }));
+      return { suggestions };
+    },
+  });
+
+  monaco.languages.registerCompletionItemProvider('python', {
+    provideCompletionItems() {
+      const suggestions = [
+        ['print', 'print($1)'],
+        ['def', 'def $1($2):\n    $0'],
+        ['class', 'class $1:\n    def __init__(self):\n        $0'],
+        ['fori', 'for i in range($1):\n    $0'],
+        ['import', 'import $1'],
+      ].map(([label, insertText]) => ({
+        label,
+        kind: monaco.languages.CompletionItemKind.Snippet,
+        insertText,
+        insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+      }));
+      return { suggestions };
+    },
+  });
+
+  monaco.languages.registerCompletionItemProvider('java', {
+    provideCompletionItems() {
+      const suggestions = [
+        ['sout', 'System.out.println($1);'],
+        ['psvm', 'public static void main(String[] args) {\n    $0\n}'],
+        ['class', 'public class $1 {\n    $0\n}'],
+        ['fori', 'for (int i = 0; i < $1; i++) {\n    $0\n}'],
+        ['Scanner', 'Scanner scanner = new Scanner(System.in);'],
       ].map(([label, insertText]) => ({
         label,
         kind: monaco.languages.CompletionItemKind.Snippet,

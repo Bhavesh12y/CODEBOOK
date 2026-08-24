@@ -1,0 +1,100 @@
+{
+  "version": 2,
+  "id": "python-testing",
+  "metadata": {
+    "name": "Python Testing",
+    "description": "Official Python Testing test workspace with interactive I/O examples.",
+    "language": "python",
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "updatedAt": "2026-08-24T19:12:11.783128+00:00"
+  },
+  "cells": [
+    {
+      "id": "python-testing-cell-1",
+      "type": "markdown",
+      "source": "# Python Testing Notebook\nInteractive input, functions, imports, and persistent namespace.",
+      "outputs": [
+        {
+          "type": "markdown",
+          "text": "# Python Testing Notebook\nInteractive input, functions, imports, and persistent namespace.",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.001
+    },
+    {
+      "id": "python-testing-cell-2",
+      "type": "code",
+      "source": "print(\"Hello from CodeBook Python!\")",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Hello from CodeBook Python!\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.07792910002171993
+    },
+    {
+      "id": "python-testing-cell-3",
+      "type": "code",
+      "source": "x = 100\ny = 250\nprint(f\"x + y = {x + y}\")",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "x + y = 350\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.0002607000060379505
+    },
+    {
+      "id": "python-testing-cell-4",
+      "type": "code",
+      "source": "def greet(name, times=3):\n    return f\"Welcome {name}! \" * times",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.000291600008495152
+    },
+    {
+      "id": "python-testing-cell-5",
+      "type": "code",
+      "source": "print(greet(\"Developer\"))",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "python-testing-cell-6",
+      "type": "code",
+      "source": "import math\nprint(f\"pi = {math.pi:.4f}, sqrt(144) = {math.sqrt(144)}\")",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "pi = 3.1416, sqrt(144) = 12.0\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.0004688999615609646
+    },
+    {
+      "id": "python-testing-cell-7",
+      "type": "code",
+      "source": "name = input(\"Enter your name: \")\nage = int(input(\"Enter your age: \"))\n\nprint(f\"Hello {name}, you are {age} years old!\")",
+      "outputs": [],
+      "executionCount": null,
+      "status": "success",
+      "executionTime": 3.4779
+    }
+  ]
+}

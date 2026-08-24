@@ -1,2 +1,2 @@
-"""CppBook backend package."""
+"""CodeBook backend package."""
 

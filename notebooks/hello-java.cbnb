@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "id": "hello-java",
+  "metadata": {
+    "name": "Hello Java",
+    "description": "",
+    "language": "java",
+    "createdAt": "2026-08-24T17:25:28.751184+00:00",
+    "updatedAt": "2026-08-24T17:25:28.752644+00:00"
+  },
+  "cells": [
+    {
+      "id": "hello-java-1",
+      "type": "markdown",
+      "source": "# Hello World (Java)\nA minimal Java notebook.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "hello-java-2",
+      "type": "code",
+      "source": "System.out.println(\"Hello from CodeBook Java!\");",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

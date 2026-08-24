@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "id": "hello-c",
+  "metadata": {
+    "name": "Hello C",
+    "description": "",
+    "language": "c",
+    "createdAt": "2026-08-24T17:25:28.748749+00:00",
+    "updatedAt": "2026-08-24T17:25:28.749750+00:00"
+  },
+  "cells": [
+    {
+      "id": "hello-c-1",
+      "type": "markdown",
+      "source": "# Hello World (C)\nA minimal C notebook.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "hello-c-2",
+      "type": "code",
+      "source": "#include <stdio.h>\n\nprintf(\"Hello from CodeBook C!\\n\");",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

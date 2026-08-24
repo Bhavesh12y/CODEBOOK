@@ -14,7 +14,7 @@ def main() -> None:
 
     from app.main import app
 
-    port = int(os.getenv("BACKEND_PORT", os.getenv("CPPBOOK_BACKEND_PORT", "8765")))
+    port = int(os.environ.get('BACKEND_PORT') or os.environ.get('CODEBOOK_BACKEND_PORT') or os.environ.get('CPPBOOK_BACKEND_PORT') or '8765')
     uvicorn.run(app, host="127.0.0.1", port=port, reload=False, log_level="info")
 
 

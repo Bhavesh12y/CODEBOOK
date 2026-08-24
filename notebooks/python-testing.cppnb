@@ -1,0 +1,76 @@
+{
+  "version": 2,
+  "id": "python-testing",
+  "metadata": {
+    "name": "Python Testing",
+    "description": "Official Python Testing test workspace with interactive I/O examples.",
+    "language": "python",
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "updatedAt": "2026-08-25T00:00:00.000Z"
+  },
+  "cells": [
+    {
+      "id": "python-testing-cell-1",
+      "type": "markdown",
+      "source": "# Python Testing Notebook\nInteractive input, functions, imports, and persistent namespace.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "python-testing-cell-2",
+      "type": "code",
+      "source": "print(\"Hello from CodeBook Python!\")",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "python-testing-cell-3",
+      "type": "code",
+      "source": "x = 100\ny = 250\nprint(f\"x + y = {x + y}\")",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "python-testing-cell-4",
+      "type": "code",
+      "source": "def greet(name, times=3):\n    return f\"Welcome {name}! \" * times",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "python-testing-cell-5",
+      "type": "code",
+      "source": "print(greet(\"Developer\"))",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "python-testing-cell-6",
+      "type": "code",
+      "source": "import math\nprint(f\"pi = {math.pi:.4f}, sqrt(144) = {math.sqrt(144)}\")",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "python-testing-cell-7",
+      "type": "code",
+      "source": "name = input(\"Enter your name: \")\nage = int(input(\"Enter your age: \"))\n\nprint(f\"Hello {name}, you are {age} years old!\")",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

@@ -39,7 +39,8 @@ const defaultSettings: CppBookSettings = {
 
 function loadSettings(): CppBookSettings {
   try {
-    const parsed = JSON.parse(localStorage.getItem('cppbook.settings') ?? '{}') as Partial<CppBookSettings> & {
+    const raw = localStorage.getItem('codebook.settings') ?? localStorage.getItem('cppbook.settings') ?? '{}';
+    const parsed = JSON.parse(raw) as Partial<CppBookSettings> & {
       aiModel?: string;
       geminiApiKeys?: string[];
     };
@@ -60,14 +61,34 @@ function loadSettings(): CppBookSettings {
 }
 
 function monacoTheme(theme: AppTheme): string {
-  return theme === 'daylight' ? 'cppbook-daylight' : `cppbook-${theme}`;
+  return theme === 'daylight' ? 'codebook-daylight' : `codebook-${theme}`;
 }
 
-function sourceReadsStdin(source: string): boolean {
-  return /\b(?:std::)?cin\b|\b(?:std::)?getline\s*\(|\bscanf\s*\(|\bfgets\s*\(|\bgetchar\s*\(/.test(source);
+function sourceReadsStdin(source: string, language?: string): boolean {
+  switch (language) {
+    case 'c':
+      return /\bscanf\s*\(|\bfgets\s*\(|\bgetchar\s*\(|\bgets\s*\(/.test(source);
+    case 'java':
+      return /\bnew\s+Scanner\s*\(|\bSystem\.in\b|\bBufferedReader\b|\bConsole\b/.test(source);
+    case 'python':
+      return /\binput\s*\(/.test(source);
+    case 'cpp':
+    default:
+      return /\b(?:std::)?cin\b|\b(?:std::)?getline\s*\(|\bscanf\s*\(|\bfgets\s*\(|\bgetchar\s*\(/.test(source);
+  }
 }
 
-function promptFromSource(source: string): string {
+function promptFromSource(source: string, language?: string): string {
+  if (language === 'python') {
+    const inputMatch = source.match(/input\s*\(\s*["'`]([^"'`]{1,120})["'`]\s*\)/);
+    if (inputMatch?.[1]?.trim()) return inputMatch[1].trim();
+  } else if (language === 'c') {
+    const printfMatch = source.match(/printf\s*\(\s*["'`]([^"'`]{1,120})["'`]/);
+    if (printfMatch?.[1]?.trim()) return printfMatch[1].trim();
+  } else if (language === 'java') {
+    const soutMatch = source.match(/System\.out\.print(?:ln)?\s*\(\s*["'`]([^"'`]{1,120})["'`]/);
+    if (soutMatch?.[1]?.trim()) return soutMatch[1].trim();
+  }
   const promptMatch = source.match(/(?:std::)?cout\s*<<\s*["'`]([^"'`]{1,120})["'`]/);
   return promptMatch?.[1]?.trim() || 'stdin>';
 }
@@ -133,6 +154,7 @@ export function App() {
 
   const setSettings = (next: CppBookSettings) => {
     setSettingsState(next);
+    localStorage.setItem('codebook.settings', JSON.stringify(next));
     localStorage.setItem('cppbook.settings', JSON.stringify(next));
     dispatch({ type: 'SET_THEME', theme: next.theme });
     dispatch({ type: 'SET_CONTINUE_ON_ERROR', value: next.continueOnError });
@@ -259,7 +281,13 @@ export function App() {
           notebookId: state.notebook.id ?? 'unsaved',
           cellId,
           code: cell.source,
-          cells: state.notebook.cells.map((item) => ({ id: item.id, type: item.type, source: item.source })),
+          language: state.notebook.metadata.language || 'cpp',
+          cells: state.notebook.cells.map((item) => ({
+            id: item.id,
+            type: item.type,
+            source: item.source,
+            committed: item.id !== cellId && item.status === 'success',
+          })),
         }),
       );
     });
@@ -335,7 +363,7 @@ export function App() {
   const runCellFromUi = (cellId: string, selectNext = false, insertBelow = false) => {
     const cell = state.notebook.cells.find((item) => item.id === cellId);
     const input = cellInputs[cellId] ?? '';
-    if (cell?.type === 'code' && sourceReadsStdin(cell.source)) {
+    if (cell?.type === 'code' && sourceReadsStdin(cell.source, state.notebook.metadata.language)) {
       startInteractiveCell(cellId);
       return;
     }
@@ -345,7 +373,7 @@ export function App() {
   const runAllFromUi = () => {
     const input = stdinForAll();
     const waitingCell = state.notebook.cells.find(
-      (cell) => cell.type === 'code' && sourceReadsStdin(cell.source),
+      (cell) => cell.type === 'code' && sourceReadsStdin(cell.source, state.notebook.metadata.language),
     );
     if (waitingCell) {
       startInteractiveCell(waitingCell.id);
@@ -567,6 +595,7 @@ export function App() {
       {state.view === 'notebook' ? (
         <Toolbar
           notebookName={state.notebook.metadata.name}
+          notebookLanguage={state.notebook.metadata.language}
           kernel={state.kernel}
           dirty={state.dirty}
           saving={state.saving}
@@ -662,11 +691,12 @@ export function App() {
                     minimap={state.minimap}
                     theme={monacoTheme(state.theme)}
                     running={running}
+                    notebookLanguage={state.notebook.metadata.language}
                     onSelect={() => dispatch({ type: 'SELECT_CELL', cellId: cell.id })}
                     onChange={(source) => dispatch({ type: 'SET_CELL_SOURCE', cellId: cell.id, source })}
                     stdin={cellInputs[cell.id] ?? ''}
-                    readsStdin={cell.type === 'code' && sourceReadsStdin(cell.source)}
-                    inputPrompt={promptFromSource(cell.source)}
+                    readsStdin={cell.type === 'code' && sourceReadsStdin(cell.source, state.notebook.metadata.language)}
+                    inputPrompt={promptFromSource(cell.source, state.notebook.metadata.language)}
                     terminal={terminals[cell.id]}
                     terminalInput={terminalInputs[cell.id] ?? ''}
                     onStdinChange={(value) => setCellInputs((current) => ({ ...current, [cell.id]: value }))}

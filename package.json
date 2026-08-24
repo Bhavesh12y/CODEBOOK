@@ -1,5 +1,5 @@
 {
-  "name": "cppbook",
+  "name": "codebook",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -10,13 +10,17 @@
     "backend:dev": "python backend/dev.py",
     "backend:serve": "python backend/serve.py",
     "desktop:dev": "npm run build && electron .",
-    "desktop:backend": "node -e \"const fs=require('fs');const v=process.platform==='win32'?'.venv\\\\Scripts\\\\python.exe':'.venv/bin/python';const p=fs.existsSync(v)?v:(process.platform==='win32'?'python':'python3');const n=process.platform==='win32'?'cppbook-backend.exe':'cppbook-backend';require('child_process').execSync(p+' -m PyInstaller backend/serve.py --name '+n.replace(/\\.exe$/,'')+' --onefile --distpath desktop-dist/backend --workpath desktop-dist/pyinstaller-work --specpath desktop-dist',{stdio:'inherit'})\"",
+    "desktop:backend": "node -e \"const fs=require('fs');const v=process.platform==='win32'?'.venv\\\\Scripts\\\\python.exe':'.venv/bin/python';const p=fs.existsSync(v)?v:(process.platform==='win32'?'python':'python3');const n=process.platform==='win32'?'codebook-backend.exe':'codebook-backend';require('child_process').execSync(p+' -m PyInstaller backend/serve.py --name '+n.replace(/\\.exe$/,'')+' --onefile --distpath desktop-dist/backend --workpath desktop-dist/pyinstaller-work --specpath desktop-dist',{stdio:'inherit'})\"",
     "desktop:dist": "npm run build && npm run desktop:backend && electron-builder",
     "desktop:dist:win": "npm run build && npm run desktop:backend && electron-builder --win",
     "desktop:dist:linux": "npm run build && npm run desktop:backend && electron-builder --linux",
     "desktop:dist:mac": "npm run build && npm run desktop:backend && electron-builder --mac",
-    "compiler:check": "powershell -ExecutionPolicy Bypass -File tools\\check-compiler.ps1",
-    "compiler:check:unix": "bash tools/check-compiler.sh",
+    "toolchain:check": "powershell -ExecutionPolicy Bypass -File tools\\check-toolchain.ps1",
+    "toolchain:install": "powershell -ExecutionPolicy Bypass -File tools\\check-toolchain.ps1 -Install",
+    "toolchain:check:unix": "bash tools/check-toolchain.sh",
+    "toolchain:install:unix": "bash tools/check-toolchain.sh --install",
+    "compiler:check": "powershell -ExecutionPolicy Bypass -File tools\\check-toolchain.ps1",
+    "compiler:check:unix": "bash tools/check-toolchain.sh",
     "build": "vite build --config frontend/vite.config.ts",
     "preview": "vite preview --config frontend/vite.config.ts --host 127.0.0.1",
     "backend:test": "python backend/run_tests.py",
@@ -46,14 +50,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Bhavesh12y/CPPBOOK.git"
+    "url": "https://github.com/Bhavesh12y/CODEBOOK.git"
   },
   "build": {
     "publish": {
       "provider": "github"
     },
-    "appId": "dev.cppbook.app",
-    "productName": "CppBook",
+    "appId": "dev.codebook.app",
+    "productName": "CodeBook",
     "directories": {
       "output": "installer-release"
     },
@@ -83,8 +87,8 @@
         "from": "desktop-dist/backend",
         "to": "backend",
         "filter": [
-          "cppbook-backend.exe",
-          "cppbook-backend"
+          "codebook-backend.exe",
+          "codebook-backend"
         ]
       },
       {
@@ -103,6 +107,7 @@
         "from": "tools",
         "to": "tools",
         "filter": [
+          "check-toolchain.*",
           "check-compiler.*"
         ]
       }

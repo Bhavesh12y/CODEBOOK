@@ -4,7 +4,7 @@ import { Bot, Check, Eye, Keyboard, Palette, Save, Settings, Sparkles, X, Zap } 
 import { api } from '../services/api';
 import type { AppTheme } from '../types/notebook';
 
-export interface CppBookSettings {
+export interface CodeBookSettings {
   theme: AppTheme;
   aiEnabled: boolean;
   aiProvider: 'groq';
@@ -25,11 +25,13 @@ export interface CppBookSettings {
   };
 }
 
+export type CppBookSettings = CodeBookSettings;
+
 interface SettingsPanelProps {
   open: boolean;
-  settings: CppBookSettings;
+  settings: CodeBookSettings;
   onClose: () => void;
-  onChange: (settings: CppBookSettings) => void;
+  onChange: (settings: CodeBookSettings) => void;
 }
 
 const themes: Array<{ id: AppTheme; name: string; note: string }> = [
@@ -48,7 +50,7 @@ const themes: Array<{ id: AppTheme; name: string; note: string }> = [
 type ProviderStatus = 'idle' | 'testing' | 'connected' | 'limited' | 'invalid';
 
 export function SettingsPanel({ open, settings, onClose, onChange }: SettingsPanelProps) {
-  const [draft, setDraft] = useState<CppBookSettings>(settings);
+  const [draft, setDraft] = useState<CodeBookSettings>(settings);
   const [savedNotice, setSavedNotice] = useState(false);
   const [providerStatus, setProviderStatus] = useState<Record<'groq' | 'gemini', { status: ProviderStatus; message: string }>>({
     groq: { status: 'idle', message: settings.groqApiKey ? 'Saved locally' : 'Not configured' },
@@ -64,7 +66,7 @@ export function SettingsPanel({ open, settings, onClose, onChange }: SettingsPan
 
   if (!open) return null;
 
-  const update = (patch: Partial<CppBookSettings>) => {
+  const update = (patch: Partial<CodeBookSettings>) => {
     setDraft((current) => ({ ...current, ...patch }));
     // Live apply non-destructive preferences like theme
     if (patch.theme) {
@@ -80,7 +82,7 @@ export function SettingsPanel({ open, settings, onClose, onChange }: SettingsPan
     }, 2500);
   };
 
-  const updateShortcut = (name: keyof CppBookSettings['shortcuts'], value: string) =>
+  const updateShortcut = (name: keyof CodeBookSettings['shortcuts'], value: string) =>
     update({ shortcuts: { ...draft.shortcuts, [name]: value } });
 
   const testProvider = async (provider: 'groq' | 'gemini') => {
@@ -314,7 +316,7 @@ export function SettingsPanel({ open, settings, onClose, onChange }: SettingsPan
 
           <section className="settings-section settings-note">
             <Sparkles className="h-4 w-4" />
-            <p>CppBook never prints API keys in status text or error messages. The desktop build should move these local settings into the OS credential vault before public release.</p>
+            <p>CodeBook never prints API keys in status text or error messages. The desktop build should move these local settings into the OS credential vault before public release.</p>
           </section>
         </div>
 

@@ -1,38 +1,38 @@
-# CppBook
+# CodeBook
 
-CppBook is an interactive, Jupyter-like notebook IDE designed specifically for modern C++. It combines a responsive React/TypeScript frontend with Monaco Editor and a local FastAPI backend, enabling you to write, compile, and execute C++ code interactively in a multi-cell notebook environment—completely locally without any cloud dependencies.
+CodeBook is an interactive, Jupyter-like notebook IDE designed for modern C, C++, Java, and Python. It combines a responsive React/TypeScript frontend with Monaco Editor and a local FastAPI backend, enabling you to write, compile, and execute code interactively in a multi-cell notebook environment—completely locally without any cloud dependencies.
 
-Whether you are learning C++, prototyping algorithms, solving competitive programming problems, or preparing technical course material, CppBook provides an interactive workflow with real-time compiler feedback, persistent multi-cell state management, and an intuitive desktop interface.
+Whether you are learning programming, prototyping algorithms, solving competitive programming problems, or preparing technical course material, CodeBook provides an interactive workflow with real-time execution feedback, persistent multi-cell state management, and an intuitive desktop interface.
 
-For technical deep dives into the execution model, compiler translation unit synthesis, and packaging architecture, refer to `docs/PROJECT_FLOW.md` or the documentation portal in `documentation/`.
+For technical deep dives into the execution model and packaging architecture, refer to `docs/PROJECT_FLOW.md` or the documentation portal in `documentation/`.
 
 ---
 
 ## Key Features
 
 ### Core Notebook Experience
-- Multiple Cell Types: Create C++ code cells and Markdown documentation cells.
+- Multi-Language Support: Create code cells in C, C++, Java, or Python.
+- Multiple Cell Types: Code cells and Markdown documentation cells.
 - Granular Execution: Run individual cells, execute all cells sequentially, or run from the beginning up to the active cell.
-- Persistent Multi-Cell State: A compile-and-replay execution model preserves variables, structs, classes, and function declarations across cells.
-- Comprehensive Cell Output: Every cell displays stdout, stderr, compilation errors, runtime exceptions, exit codes, execution status, and elapsed wall-clock time.
+- Persistent Multi-Cell State: A unified execution model preserves variables and function declarations across cells.
+- Comprehensive Cell Output: Every cell displays stdout, stderr, execution errors, exit codes, and elapsed wall-clock time.
 
 ### Code Editing & IntelliSense
-- Monaco Editor Integration: Industrial C++ editing with syntax highlighting, bracket matching, indentation guides, code folding, and line numbers.
+- Monaco Editor Integration: Industrial editing with syntax highlighting, bracket matching, indentation guides, code folding, and line numbers.
 - Minimap Navigation: Visual code overview for large code cells.
 - Keyboard Shortcuts: Fast execution workflows (Shift+Enter to run and advance, Ctrl+Enter to run in-place, Ctrl+S to save, Ctrl+Shift+P for Command Palette).
 - Command Palette: Fast searchable menu for every notebook operation.
 
 ### Notebook Persistence & File Formats
-- Native Document Model: Save and load `.cppnb` JSON files with full cell hierarchy and metadata.
+- Native Document Model: Save and load `.cbnb` JSON files (backwards-compatible with legacy `.cppnb` format) with full cell hierarchy and metadata.
 - Autosave: Automatic background disk persistence for saved notebook files.
 - Recent Notebooks: Fast switching between recently opened workspaces from the home dashboard.
-- Import and Export: Import `.cpp`, `.cc`, `.cxx`, `.h`, and `.hpp` source files directly into notebook cells; export notebooks into standalone compiled `.cpp` files.
+- Import and Export: Import source files directly into notebook cells; export notebooks into standalone compiled or scripted files.
 
-### Execution Kernel & Compiler Control
-- Local Subprocess Engine: Direct compilation using your native C++ compiler (GCC/MinGW, Clang, or MSVC) on loopback (127.0.0.1).
-- Compiler Detection: Automatic discovery of system compilers on PATH with environment overrides.
-- Interrupt & Reset: Stop long-running or runaway infinite-loop processes safely using process watchdog timers.
-- Smart user main() Rewriting: AST symbol classification allows standard `int main()` competitive programming templates to execute without symbol collision errors.
+### Execution Kernel & Toolchain Control
+- Local Subprocess Engine: Direct execution using your native toolchains (GCC, Clang, Python, Java JDK) on loopback (127.0.0.1).
+- Toolchain Detection: Automatic discovery of system compilers and interpreters on PATH.
+- Interrupt & Reset: Stop long-running or runaway infinite-loop processes safely.
 
 ### Desktop Application
 - Standalone Packages: Self-contained desktop applications for Windows (NSIS .exe), macOS (.dmg), and Linux (AppImage) with embedded Python and Electron runtime.
@@ -43,13 +43,13 @@ For technical deep dives into the execution model, compiler translation unit syn
 ## System Requirements
 
 - Node.js: Version 20.0 or higher (for source development)
-- Python: Version 3.11 or higher (for source development)
-- C++ Compiler: Any standard C++17/20 compiler accessible on your system PATH:
-  - Windows: MinGW-w64 GCC, Clang, or MSVC
-  - macOS: Apple Clang (via Xcode Command Line Tools)
-  - Linux: GCC (`g++`) or Clang (`clang++`)
+- Python: Version 3.11 or higher (for backend source development)
+- Toolchains (install what you need):
+  - C/C++: GCC (g++), Clang (clang++), or MSVC
+  - Python: Python 3.10+
+  - Java: Java JDK 17+
 
-The backend automatically locates and verifies your C++ compiler at runtime. To specify a custom compiler binary, set the `CPP_COMPILER` environment variable.
+The backend automatically locates and verifies your toolchains at runtime.
 
 ---
 
@@ -60,8 +60,8 @@ The backend automatically locates and verifies your C++ compiler at runtime. To 
 Clone the repository and install frontend and root dependencies:
 
 ```bash
-git clone https://github.com/Bhavesh12y/CPPBOOK.git
-cd CPPBOOK
+git clone https://github.com/Bhavesh12y/CODEBOOK.git
+cd CODEBOOK
 npm install
 ```
 
@@ -81,16 +81,16 @@ source .venv/bin/activate
 pip install -r backend/requirements.txt
 ```
 
-### 3. Verify Local C++ Compiler
+### 3. Verify Local Toolchains
 
-Ensure `g++` or `clang++` is accessible:
+Ensure your desired compilers and interpreters are accessible:
 
 ```bash
 # Windows PowerShell
-powershell -ExecutionPolicy Bypass -File tools/check-compiler.ps1
+powershell -ExecutionPolicy Bypass -File tools/check-toolchain.ps1
 
 # Linux / macOS
-bash tools/check-compiler.sh
+bash tools/check-toolchain.sh
 ```
 
 ### 4. Launch Development Servers
@@ -111,7 +111,7 @@ The services will start at:
 
 ## Project Architecture
 
-CppBook is structured into decoupled layers:
+CodeBook is structured into decoupled layers:
 
 ```text
 CPPBOOK/
@@ -166,7 +166,7 @@ CPPBOOK/
 
 ## Desktop Packaging & Distribution
 
-CppBook can be compiled into standalone desktop installers that bundle the Node runtime, Monaco frontend, and Python backend executable together into a single native binary.
+CodeBook can be compiled into standalone desktop installers that bundle the Node runtime, Monaco frontend, and Python backend executable together into a single native binary.
 
 ### Build Steps
 
@@ -199,7 +199,7 @@ Installers are output directly to `dist/` or `installer-release/`.
 
 ## Execution Engine & State Persistence
 
-Because standard C++ is a statically compiled language rather than an interpreted scripting language, CppBook implements a compile-and-replay architecture:
+Because standard C++ is a statically compiled language rather than an interpreted scripting language, CodeBook implements a compile-and-replay architecture:
 
 1. Cell Parsing: When you run a target cell, the backend gathers all preceding code cells up to that point.
 2. Source Synthesis: An AST classifier separates include directives, namespace declarations, global type definitions (structs, classes, enums, templates), function signatures, and body statements.
@@ -259,4 +259,4 @@ Production output will be generated in `documentation/dist/`.
 
 ## Contributing
 
-Contributions to CppBook are welcome. Please open an issue on GitHub to discuss proposed architecture changes, bug reports, or feature requests before submitting a pull request.
+Contributions to CodeBook are welcome. Please open an issue on GitHub to discuss proposed architecture changes, bug reports, or feature requests before submitting a pull request.

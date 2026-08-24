@@ -11,12 +11,25 @@ from app.models.notebook import NotebookCell
 def export_notebook_cpp(cells: list[ExecutionCell]) -> str:
     return build_export_source(cells)
 
+def export_notebook_c(cells: list[ExecutionCell]) -> str:
+    return build_export_source(cells)
+
+def export_notebook_python(cells: list[ExecutionCell]) -> str:
+    # Basic export for python
+    return "\n\n".join(cell.source for cell in cells if cell.type == "code")
+
+def export_notebook_java(cells: list[ExecutionCell]) -> str:
+    # Basic export for java
+    return "\n\n".join(cell.source for cell in cells if cell.type == "code")
 
 def export_notebook_cppnb(payload: dict) -> str:
     return json.dumps(payload, indent=2)
 
+def export_notebook_cbnb(payload: dict) -> str:
+    return json.dumps(payload, indent=2)
 
-def export_notebook_pdf(cells: list[ExecutionCell] | list[NotebookCell], title: str) -> bytes:
+
+def export_notebook_pdf(cells: list[ExecutionCell] | list[NotebookCell], title: str, language: str = "cpp") -> bytes:
     try:
         from datetime import datetime
         from reportlab.lib import colors
@@ -131,16 +144,24 @@ def export_notebook_pdf(cells: list[ExecutionCell] | list[NotebookCell], title: 
     story: list = []
     
     # Document Header Banner
-    doc_title = title.strip() if title else "Untitled CppBook Notebook"
+    doc_title = title.strip() if title else "Untitled Notebook"
     story.append(Paragraph(doc_title, title_style))
     story.append(Spacer(1, 0.1 * cm))
     now_str = datetime.now().strftime("%B %d, %Y - %H:%M")
-    story.append(Paragraph(f"Exported from CppBook &bull; {now_str} &bull; {len(cells)} cells", subtitle_style))
+    story.append(Paragraph(f"Exported from CodeBook &bull; {now_str} &bull; {len(cells)} cells", subtitle_style))
     story.append(Spacer(1, 0.2 * cm))
     story.append(HRFlowable(width="100%", thickness=1, color=colors.HexColor("#cbd5e1"), spaceAfter=12))
 
+    lang_map = {
+        "c": "C Source",
+        "cpp": "C++ Source",
+        "python": "Python Source",
+        "java": "Java Source"
+    }
+    source_label = lang_map.get(language.lower(), "Source")
+
     for idx, cell in enumerate(cells, start=1):
-        kind_label = "C++ Source" if cell.type == "code" else "Markdown"
+        kind_label = source_label if cell.type == "code" else "Markdown"
         cell_header_table = Table(
             [[Paragraph(f"<b>[In {idx}]</b>", badge_in_style), Paragraph(kind_label, badge_type_style)]],
             colWidths=[doc.width * 0.5, doc.width * 0.5],

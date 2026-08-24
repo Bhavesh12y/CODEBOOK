@@ -1,0 +1,49 @@
+{
+  "version": 2,
+  "id": "cpp-testing",
+  "metadata": {
+    "name": "C++ Testing",
+    "description": "Official C++ Testing test workspace with interactive I/O examples.",
+    "language": "cpp",
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "updatedAt": "2026-08-25T00:00:00.000Z"
+  },
+  "cells": [
+    {
+      "id": "cpp-testing-cell-1",
+      "type": "markdown",
+      "source": "# C++ Testing Notebook\nInteractive std::cin input, STL vectors, and state replay.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cpp-testing-cell-2",
+      "type": "code",
+      "source": "#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <string>\nusing namespace std;\n\ncout << \"Hello from CodeBook C++!\" << endl;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cpp-testing-cell-3",
+      "type": "code",
+      "source": "vector<int> nums = {5, 2, 8, 1, 9};\nsort(nums.begin(), nums.end());\ncout << \"Sorted numbers: \";\nfor (int n : nums) cout << n << \" \";\ncout << endl;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cpp-testing-cell-4",
+      "type": "code",
+      "source": "string name;\nint age;\n\ncout << \"Enter your name: \";\ncin >> name;\n\ncout << \"Enter your age: \";\ncin >> age;\n\ncout << \"Hello \" << name << \", you are \" << age << \" years old!\" << endl;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

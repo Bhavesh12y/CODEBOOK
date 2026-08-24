@@ -14,8 +14,8 @@ import {
   XCircle,
 } from 'lucide-react';
 
-import type { CellStatus, ExecutionDiagnostic, InteractiveTerminalState, NotebookCell as NotebookCellType } from '../types/notebook';
-import { configureMonaco } from '../utils/monaco';
+import type { CellStatus, ExecutionDiagnostic, InteractiveTerminalState, NotebookCell as NotebookCellType, NotebookLanguage } from '../types/notebook';
+import { configureMonaco, languageToMonaco } from '../utils/monaco';
 import { CellActionButton } from './CellActionButton';
 import { OutputPanel } from './OutputPanel';
 import { StatusPill } from './StatusPill';
@@ -27,6 +27,7 @@ interface NotebookCellProps {
   minimap: boolean;
   theme: string;
   running: boolean;
+  notebookLanguage?: NotebookLanguage;
   canMoveUp?: boolean;
   canMoveDown?: boolean;
   aiEnabled?: boolean;
@@ -73,7 +74,7 @@ export function NotebookCell(props: NotebookCellProps) {
     520,
     Math.max(props.cell.type === 'markdown' ? 130 : 150, props.cell.source.split('\n').length * 22 + 48),
   );
-  const language = props.cell.type === 'markdown' ? 'markdown' : 'cpp';
+  const monacoLanguage = props.cell.type === 'markdown' ? 'markdown' : languageToMonaco(props.notebookLanguage);
 
   const onRunRef = useRef(props.onRun);
   onRunRef.current = props.onRun;
@@ -119,11 +120,16 @@ export function NotebookCell(props: NotebookCellProps) {
       {/* Seamless header */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-transparent px-4 pt-3 pb-1.5">
         <div className="flex items-center gap-3 text-xs text-[var(--text-secondary)]">
-          <span className="inline-flex h-5 min-w-[22px] items-center justify-center rounded bg-white/[0.05] px-1.5 font-mono text-[11px] text-[var(--text-primary)]">
-            {props.cell.executionCount ? props.cell.executionCount : props.index + 1}
+          <span className="inline-flex h-5 min-w-[22px] items-center justify-center rounded bg-white/[0.05] px-1.5 font-mono text-[11px] text-[var(--text-primary)] font-semibold">
+            {props.index + 1}
           </span>
+          {props.cell.type === 'code' && props.cell.executionCount ? (
+            <span className="font-mono text-[10px] text-[var(--text-secondary)] opacity-70">
+              [{props.cell.executionCount}]
+            </span>
+          ) : null}
           <span className="font-semibold uppercase text-[10px] tracking-wider text-[var(--text-secondary)]">
-            {props.cell.type === 'code' ? 'C++ Cell' : 'Markdown'}
+            {props.cell.type === 'code' ? 'Code Cell' : 'Markdown'}
           </span>
           <StatusPill status={props.cell.status} label={statusLabel(props.cell.status)} />
           <span className="text-[11px] font-mono text-[var(--text-secondary)] opacity-80">
@@ -143,7 +149,7 @@ export function NotebookCell(props: NotebookCellProps) {
           ) : null}
           <CellActionButton
             icon={<ArrowLeftRight className="h-3.5 w-3.5" />}
-            label={props.cell.type === 'code' ? 'Convert to Markdown' : 'Convert to C++ Code'}
+            label={props.cell.type === 'code' ? 'Convert to Markdown' : 'Convert to Code'}
             onClick={props.onToggleType}
           />
           <span className="mx-1 h-3.5 w-px bg-white/10" />
@@ -168,7 +174,7 @@ export function NotebookCell(props: NotebookCellProps) {
           <Editor
             key={props.cell.id}
             height={editorHeight}
-            language={language}
+            language={monacoLanguage}
             theme={props.theme}
             value={props.cell.source}
             beforeMount={configureMonaco}

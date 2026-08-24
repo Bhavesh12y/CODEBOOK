@@ -11,7 +11,7 @@ import {
   Settings,
 } from 'lucide-react';
 
-import type { CompilerInfo, Notebook, NotebookSummary } from '../types/notebook';
+import type { ToolchainInfo, Notebook, NotebookSummary } from '../types/notebook';
 import { IconButton } from './IconButton';
 import { InteractiveBackground } from './InteractiveBackground';
 
@@ -19,7 +19,8 @@ interface HomePageProps {
   notebooks: NotebookSummary[];
   recentNotebookIds: string[];
   currentNotebook: Notebook;
-  compiler?: CompilerInfo | null;
+  toolchain?: ToolchainInfo | null;
+  compiler?: ToolchainInfo | null;
   onNew: () => void;
   onOpenLocal: () => void;
   onOpenNotebook: (id: string) => void;
@@ -101,7 +102,7 @@ export function HomePage(props: HomePageProps) {
           <header className="flex flex-col items-center text-center gap-4 anim-fade-in pt-2">
             <div className="flex flex-col items-center">
               <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-[var(--text-primary)] drop-shadow-sm">
-                CPPBOOK
+                CODEBOOK
               </h1>
             
             </div>
@@ -211,8 +212,13 @@ export function HomePage(props: HomePageProps) {
                         <NotebookTabs className="h-4 w-4 text-[var(--text-secondary)] group-hover:text-indigo-400 transition-colors" />
                       </div>
                       <span className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center justify-between pr-4">
-                        <span className="truncate text-sm font-semibold text-[var(--text-primary)]">
+                        <span className="truncate text-sm font-semibold text-[var(--text-primary)] flex items-center gap-2">
                           {notebook.name}
+                          {notebook.language && (
+                            <span className="px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] text-[var(--text-secondary)]">
+                              {notebook.language === 'cpp' ? 'C++' : notebook.language}
+                            </span>
+                          )}
                         </span>
                         <span className="flex items-center gap-1.5 text-[11px] font-mono text-[var(--text-secondary)] mt-1 sm:mt-0">
                           <Clock3 className="h-3 w-3" />

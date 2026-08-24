@@ -4,276 +4,163 @@
   "metadata": {
     "name": "Untitled",
     "description": "",
+    "language": "cpp",
     "createdAt": "2026-08-23T06:38:25.623016+00:00",
-    "updatedAt": "2026-08-24T06:52:45.390629+00:00"
+    "updatedAt": "2026-08-24T19:07:42.738998+00:00"
   },
   "cells": [
     {
       "id": "3d086b15-0f9c-4480-b2db-33366ea6e1a6",
       "type": "markdown",
       "source": "# CppBook Regression Test Suite 2\nRun cells top-to-bottom. This suite intentionally reuses variable names across cells to test cell scoping.",
-      "outputs": [
-        {
-          "type": "markdown",
-          "text": "# CppBook Regression Test Suite 2\nRun cells top-to-bottom. This suite intentionally reuses variable names across cells to test cell scoping.",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 0.001
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "38f8dc3b-e736-41be-a7a6-48253c67b2a8",
       "type": "code",
       "source": "#include <iostream>\nstd::cout << \"BASIC PASS\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "BASIC PASS\n",
-          "diagnostics": []
-        }
-      ],
-      "executionCount": 3,
-      "status": "success",
-      "executionTime": 0.552
+      "outputs": [],
+      "executionCount": 4,
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "cell-3f34f70f-54a0-44d4-8c4c-ab106528ba10",
       "type": "code",
       "source": "int x = 10;",
       "outputs": [],
-      "executionCount": 2,
-      "status": "success",
-      "executionTime": 0.5224
+      "executionCount": 3,
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "795dcb84-5c2a-47ec-a1dd-26f222abb4b8",
       "type": "code",
       "source": "x = x+ 1;\n\nstd::cout << x << \"\\n\";\n",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "11\n",
-          "diagnostics": []
-        }
-      ],
-      "executionCount": 2,
-      "status": "success",
-      "executionTime": 0.5209
+      "outputs": [],
+      "executionCount": 3,
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "15d17311-ff4a-4aac-80ea-fd0225af7096",
       "type": "code",
       "source": "for (int i = 0; i < 4; ++i) std::cout << i << \" \";\nstd::cout << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "0 1 2 3 \n",
-          "diagnostics": []
-        }
-      ],
-      "executionCount": 2,
-      "status": "success",
-      "executionTime": 0.5589
+      "outputs": [],
+      "executionCount": 3,
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "21ca0e14-8fa5-485a-8e4d-9d34a7dccae9",
       "type": "code",
       "source": "int add(int a, int b) { return a + b; }\nstd::cout << add(20, 22) << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "42\n",
-          "diagnostics": []
-        }
-      ],
-      "executionCount": 2,
-      "status": "success",
-      "executionTime": 0.5612
+      "outputs": [],
+      "executionCount": 3,
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "53554641-1927-446a-8b6c-2a4f644db36f",
       "type": "code",
       "source": "#include <vector>\nstd::vector<int> v{1,2,3};\nstd::cout << v.size() << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "3\n",
-          "diagnostics": []
-        }
-      ],
-      "executionCount": 2,
-      "status": "success",
-      "executionTime": 0.6063
+      "outputs": [],
+      "executionCount": 3,
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "d94ab99d-350d-40f5-be79-3c562ae02a4e",
       "type": "code",
       "source": "#include <set>\nstd::set<int> s{3,1,2};\nstd::cout << s.size() << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "3\n",
-          "diagnostics": []
-        }
-      ],
-      "executionCount": 2,
-      "status": "success",
-      "executionTime": 0.6558
+      "outputs": [],
+      "executionCount": 3,
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "b289ac4b-4723-49ef-8906-78ca47a0a110",
       "type": "code",
       "source": "#include <algorithm>\nstd::vector<int> v{5,1,4,2,3};\nstd::sort(v.begin(),v.end());\nfor(int x:v) std::cout << x << \" \";\nstd::cout << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "1 2 3 4 5 \n",
-          "diagnostics": []
-        }
-      ],
-      "executionCount": 2,
-      "status": "success",
-      "executionTime": 0.7771
+      "outputs": [],
+      "executionCount": 3,
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "8b8c1bab-5dcd-4d1b-8f0e-9355ec939e06",
       "type": "code",
       "source": "struct Student { int age; std::string name; };\nStudent s{20,\"Test\"};\nstd::cout << s.name << \" \" << s.age << \"\\n\";",
-      "outputs": [
-        {
-          "type": "error",
-          "text": "Compilation Error\n\ncppnb_cell_d94ab99d_350d_40f5_be79_3c562ae02a4e.cpp: In function 'int main()':\nCell 8, line 3, column 28: error: 'struct Student' has no member named 'size'\n",
-          "diagnostics": [
-            {
-              "cellId": "d94ab99d-350d-40f5-be79-3c562ae02a4e",
-              "line": 3,
-              "column": 28,
-              "severity": "error",
-              "message": "'struct Student' has no member named 'size'",
-              "raw": "cppnb_cell_d94ab99d_350d_40f5_be79_3c562ae02a4e.cpp:3:28: error: 'struct Student' has no member named 'size'"
-            }
-          ]
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "error",
-      "executionTime": 0.3963
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "29a3713b-84a1-476a-aa47-ee5517a6f4c1",
       "type": "code",
       "source": "class Calculator { int base; public: Calculator(int b):base(b){} int add(int x){return base+x;} };\nCalculator c(10);\nstd::cout << c.add(32) << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "42\n",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.0734
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "d99ddd1e-7c45-4fff-ab46-4e9aac4ec783",
       "type": "code",
       "source": "enum class Color { Red, Green, Blue };\nColor c = Color::Green;\nstd::cout << (c == Color::Green) << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "1\n",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.0938
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "2350016c-3992-48b2-afeb-889f61d86773",
       "type": "code",
       "source": "#include <memory>\nauto p = std::make_unique<int>(42);\nauto q = std::make_shared<int>(99);\nstd::cout << *p << \" \" << *q << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "42 99\n",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.2937
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "c75f3733-f842-4d62-b0a6-942f4a7ae3fc",
       "type": "code",
       "source": "constexpr int value = 64;\nstd::cout << value << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "64\n",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.283
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "a0da9f80-4574-4310-9bfd-b540f63e65aa",
       "type": "code",
       "source": "int x = 100;\nx += 23;\nstd::cout << x << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "123\n",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.3184
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "aed4bc20-041a-41d1-bcd1-e083b83ae7eb",
       "type": "code",
       "source": "int localOnly = 55;\nstd::cout << localOnly << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "55\n",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.2765
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "6a60b993-db86-4a13-8875-0fbc54dff631",
       "type": "code",
       "source": "// Expected error if cell-local variables are isolated.\nstd::cout << localOnly << \"\\n\";",
-      "outputs": [
-        {
-          "type": "error",
-          "text": "Compilation Error\n\ncppnb_cell_6a60b993_db86_4a13_8875_0fbc54dff631.cpp: In function 'int main()':\nCell 16, line 2, column 26: error: 'localOnly' was not declared in this scope\n",
-          "diagnostics": [
-            {
-              "cellId": "6a60b993-db86-4a13-8875-0fbc54dff631",
-              "line": 2,
-              "column": 26,
-              "severity": "error",
-              "message": "'localOnly' was not declared in this scope",
-              "raw": "cppnb_cell_6a60b993_db86_4a13_8875_0fbc54dff631.cpp:2:26: error: 'localOnly' was not declared in this scope"
-            }
-          ]
-        }
-      ],
+      "outputs": [],
       "executionCount": null,
-      "status": "error",
-      "executionTime": 0.6474
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "dffecbf4-08d7-4469-a7fb-0452f798327c",
@@ -281,130 +168,71 @@
       "source": "int shared = 10;",
       "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.2861
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "06ade3d4-ae1b-4258-80cd-a6aa833bd734",
       "type": "code",
       "source": "#include <iostream>\n\nshared += 5;\nstd::cout << shared << '\\n' << std::flush;\n",
-      "outputs": [
-        {
-          "type": "error",
-          "text": "Compilation Error\n\ncppnb_cell_d94ab99d_350d_40f5_be79_3c562ae02a4e.cpp: In function 'int main()':\nCell 8, line 3, column 28: error: 'struct Student' has no member named 'size'\nCell 11, line 3, column 28: error: request for member 'add' in 'c', which is of non-class type 'Color'\n",
-          "diagnostics": [
-            {
-              "cellId": "d94ab99d-350d-40f5-be79-3c562ae02a4e",
-              "line": 3,
-              "column": 28,
-              "severity": "error",
-              "message": "'struct Student' has no member named 'size'",
-              "raw": "cppnb_cell_d94ab99d_350d_40f5_be79_3c562ae02a4e.cpp:3:28: error: 'struct Student' has no member named 'size'"
-            },
-            {
-              "cellId": "29a3713b-84a1-476a-aa47-ee5517a6f4c1",
-              "line": 3,
-              "column": 28,
-              "severity": "error",
-              "message": "request for member 'add' in 'c', which is of non-class type 'Color'",
-              "raw": "cppnb_cell_29a3713b_84a1_476a_aa47_ee5517a6f4c1.cpp:3:28: error: request for member 'add' in 'c', which is of non-class type 'Color'"
-            }
-          ]
-        }
-      ],
+      "outputs": [],
       "executionCount": null,
-      "status": "error",
-      "executionTime": 0.5567
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "0b3ecf4b-b1ef-4eb5-9a44-0f25d251cf01",
       "type": "code",
       "source": "namespace Demo { int value = 7; int twice(int x){return x*2;} }\nstd::cout << Demo::value << \" \" << Demo::twice(5) << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "7 10\n",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.2986
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "34aaea81-54e0-44f3-aa67-0e59111880a1",
       "type": "code",
       "source": "template<typename T> T twiceValue(T x){return x*2;}\nstd::cout << twiceValue(21) << \"\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "42\n",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.2343
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "9ec79f7d-4b40-4c5c-8df4-c15baea616c8",
       "type": "code",
       "source": "struct Printer { Printer(){ std::cout << \"STATIC_INIT\\n\"; } };\nstatic Printer printer;",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "STATIC_INIT\n",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.2148
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "f29f970e-cc33-47be-b20f-9eea61104fc1",
       "type": "code",
       "source": "std::cout << \"TARGET_ONLY\\n\";",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "TARGET_ONLY\n",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.2648
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "0c8eb2d4-237b-4dc1-97fb-d6d2625522a8",
       "type": "code",
       "source": "#include <iostream>\nint main(){ std::cout << \"EXPLICIT_MAIN\\n\"; return 0; }",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "EXPLICIT_MAIN\n",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.2896
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "c199ab63-c295-4ab9-b54e-4ccdcc1ebd9c",
       "type": "code",
       "source": "#include <iostream>\nauto main() -> int { std::cout << \"TRAILING_MAIN\\n\"; return 0; }",
-      "outputs": [
-        {
-          "type": "stdout",
-          "text": "TRAILING_MAIN\n",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 1,
-      "status": "success",
-      "executionTime": 1.2633
+      "status": "idle",
+      "executionTime": null
     },
     {
       "id": "1b7436a4-897a-424e-bca6-215f36363e79",
@@ -437,16 +265,10 @@
       "id": "935b65f0-6590-4c1b-87ec-3a17a2f639d0",
       "type": "markdown",
       "source": "# Expected Results\n01 BASIC PASS\n02 10\n03 0 1 2 3\n04 42\n05 3\n06 3\n07 1 2 3 4 5 \u2014 reuse v must not conflict\n08 Test 20 \u2014 reuse s must not conflict\n09 42 \u2014 reuse c must not conflict\n10 1 \u2014 reuse c must not conflict\n11 42 99 \u2014 reuse p/q must not conflict\n12 64 \u2014 reuse value must not conflict\n13 123 \u2014 reuse x must not conflict\n14 55\n15 EXPECTED ERROR if local isolation is implemented\n16 no output\n17 15 if shared state is supported\n18 7 10\n19 42\n20 STATIC_INIT\n21 ONLY TARGET_ONLY; STATIC_INIT must not repeat\n22 EXPLICIT_MAIN\n23 TRAILING_MAIN\n24 input 21 -> 42\n25 EXPECTED compilation error\n26 EXPECTED runtime error/non-zero exit\n27 EXPECTED timeout/Stop",
-      "outputs": [
-        {
-          "type": "markdown",
-          "text": "# Expected Results\n01 BASIC PASS\n02 10\n03 0 1 2 3\n04 42\n05 3\n06 3\n07 1 2 3 4 5 \u2014 reuse v must not conflict\n08 Test 20 \u2014 reuse s must not conflict\n09 42 \u2014 reuse c must not conflict\n10 1 \u2014 reuse c must not conflict\n11 42 99 \u2014 reuse p/q must not conflict\n12 64 \u2014 reuse value must not conflict\n13 123 \u2014 reuse x must not conflict\n14 55\n15 EXPECTED ERROR if local isolation is implemented\n16 no output\n17 15 if shared state is supported\n18 7 10\n19 42\n20 STATIC_INIT\n21 ONLY TARGET_ONLY; STATIC_INIT must not repeat\n22 EXPLICIT_MAIN\n23 TRAILING_MAIN\n24 input 21 -> 42\n25 EXPECTED compilation error\n26 EXPECTED runtime error/non-zero exit\n27 EXPECTED timeout/Stop",
-          "diagnostics": []
-        }
-      ],
+      "outputs": [],
       "executionCount": 5,
-      "status": "success",
-      "executionTime": 0.001
+      "status": "idle",
+      "executionTime": null
     }
   ]
 }

@@ -37,6 +37,7 @@ class NotebookCell(BaseModel):
 class NotebookMetadata(BaseModel):
     name: str = "Untitled"
     description: str = ""
+    language: str = "cpp"
     createdAt: str = Field(default_factory=utc_now)
     updatedAt: str = Field(default_factory=utc_now)
 

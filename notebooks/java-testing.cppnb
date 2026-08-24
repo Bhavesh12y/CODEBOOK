@@ -1,0 +1,85 @@
+{
+  "version": 2,
+  "id": "java-testing",
+  "metadata": {
+    "name": "Java Testing",
+    "description": "Official Java Testing test workspace with interactive I/O examples.",
+    "language": "java",
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "updatedAt": "2026-08-25T00:00:00.000Z"
+  },
+  "cells": [
+    {
+      "id": "java-testing-cell-1",
+      "type": "markdown",
+      "source": "# Java Testing Notebook\nInteractive Scanner input, static methods, inner classes, and state replay.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "java-testing-cell-2",
+      "type": "code",
+      "source": "System.out.println(\"Hello from CodeBook Java!\");",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "java-testing-cell-3",
+      "type": "code",
+      "source": "int a = 15;\nint b = 35;\nSystem.out.println(\"Sum: \" + (a + b));",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "java-testing-cell-4",
+      "type": "code",
+      "source": "static int multiply(int x, int y) {\n    return x * y;\n}",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "java-testing-cell-5",
+      "type": "code",
+      "source": "System.out.println(\"multiply(6, 7) = \" + multiply(6, 7));",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "java-testing-cell-6",
+      "type": "code",
+      "source": "static class Book {\n    String title;\n    int pages;\n    Book(String t, int p) { title = t; pages = p; }\n}",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "java-testing-cell-7",
+      "type": "code",
+      "source": "Book book = new Book(\"CodeBook Guide\", 250);\nSystem.out.println(\"Created book: \" + book.title + \" with \" + book.pages + \" pages.\");",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "java-testing-cell-8",
+      "type": "code",
+      "source": "Scanner scanner = new Scanner(System.in);\nSystem.out.print(\"Enter your name: \");\nString name = scanner.nextLine();\nSystem.out.print(\"Enter your age: \");\nint age = scanner.nextInt();\n\nSystem.out.println(\"Hello \" + name + \", you are \" + age + \" years old!\");",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

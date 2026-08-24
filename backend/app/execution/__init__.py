@@ -1,2 +1,2 @@
-"""C++ execution infrastructure."""
+"""Multi-language execution infrastructure."""
 
