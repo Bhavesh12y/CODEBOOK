@@ -5,7 +5,7 @@ const net = require('net');
 const path = require('path');
 const fs = require('fs');
 
-let backendPort = Number(process.env.CPPBOOK_BACKEND_PORT || 0);
+let backendPort = Number(process.env.CODEBOOK_BACKEND_PORT || 0);
 let apiBaseUrl = '';
 let backendProcess = null;
 
@@ -34,7 +34,7 @@ function frontendIndexPath() {
 
 function backendCommand() {
   if (app.isPackaged) {
-    const exeName = process.platform === 'win32' ? 'cppbook-backend.exe' : 'cppbook-backend';
+    const exeName = process.platform === 'win32' ? 'codebook-backend.exe' : 'codebook-backend';
     const bundledExe = resourcePath('backend', exeName);
     if (fs.existsSync(bundledExe)) {
       if (process.platform !== 'win32') {
@@ -92,7 +92,7 @@ function waitForBackend(timeoutMs = 20000) {
 
     const retry = () => {
       if (Date.now() - started > timeoutMs) {
-        reject(new Error('CppBook backend did not start in time.'));
+        reject(new Error('CodeBook backend did not start in time.'));
         return;
       }
       setTimeout(attempt, 350);
@@ -108,8 +108,8 @@ function startBackend() {
     env: {
       ...process.env,
       BACKEND_PORT: String(backendPort),
-      CPPBOOK_BACKEND_PORT: String(backendPort),
-      CPPBOOK_API_BASE_URL: apiBaseUrl,
+      CODEBOOK_BACKEND_PORT: String(backendPort),
+      CODEBOOK_API_BASE_URL: apiBaseUrl,
       WORKSPACE_DIR: app.getPath('userData'),
     },
     windowsHide: true,
@@ -120,7 +120,7 @@ function startBackend() {
 async function createWindow() {
   backendPort = await findAvailablePort(backendPort || 8765);
   apiBaseUrl = `http://127.0.0.1:${backendPort}/api`;
-  process.env.CPPBOOK_API_BASE_URL = apiBaseUrl;
+  process.env.CODEBOOK_API_BASE_URL = apiBaseUrl;
   startBackend();
   await waitForBackend();
 
@@ -133,7 +133,7 @@ async function createWindow() {
     height: 860,
     minWidth: 980,
     minHeight: 680,
-    title: 'CppBook',
+    title: 'CodeBook',
     backgroundColor: '#0b0d10',
     autoHideMenuBar: true,
     titleBarStyle: isMac ? 'hiddenInset' : 'hidden',
@@ -157,7 +157,7 @@ async function createWindow() {
   window.removeMenu();
   window.setMenuBarVisibility(false);
 
-  if (process.env.CPPBOOK_ELECTRON_DEV === '1') {
+  if (process.env.CODEBOOK_ELECTRON_DEV === '1') {
     await window.loadURL('http://127.0.0.1:5173/');
   } else {
     await window.loadFile(frontendIndexPath());
@@ -167,7 +167,7 @@ async function createWindow() {
 app.whenReady().then(() => {
   Menu.setApplicationMenu(null);
   createWindow().catch((error) => {
-    dialog.showErrorBox('CppBook failed to start', error.message);
+    dialog.showErrorBox('CodeBook failed to start', error.message);
     app.quit();
   });
 });

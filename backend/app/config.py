@@ -26,6 +26,11 @@ class Settings(BaseModel):
     workspace_dir: Path = _repo_root()
     cpp_standard: str = "c++17"
     enable_variable_inspector: bool = False
+    c_compiler: str | None = None
+    c_standard: str = "c11"
+    java_home: str | None = None
+    python_path: str | None = None
+    default_language: str = "cpp"
 
     @property
     def notebooks_dir(self) -> Path:
@@ -47,5 +52,10 @@ def get_settings() -> Settings:
         workspace_dir=Path(workspace).expanduser().resolve() if workspace else _repo_root(),
         cpp_standard=os.getenv("CPP_STANDARD", "c++17"),
         enable_variable_inspector=_bool_env("ENABLE_VARIABLE_INSPECTOR", False),
+        c_compiler=os.getenv("C_COMPILER") or None,
+        c_standard=os.getenv("C_STANDARD", "c11"),
+        java_home=os.getenv("JAVA_HOME") or None,
+        python_path=os.getenv("PYTHON_PATH") or None,
+        default_language=os.getenv("DEFAULT_LANGUAGE", "cpp"),
     )
 

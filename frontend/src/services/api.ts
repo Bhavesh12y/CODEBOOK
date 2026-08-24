@@ -3,7 +3,7 @@ import type {
   AIChatResponse,
   AIScope,
   AITask,
-  CompilerInfo,
+  ToolchainInfo,
   ExecuteAllResponse,
   ExecutionResult,
   Notebook,
@@ -11,7 +11,7 @@ import type {
   ProjectFile,
 } from '../types/notebook';
 
-const API_BASE = window.cppbook?.apiBaseUrl || import.meta.env.VITE_API_BASE_URL || '/api';
+const API_BASE = window.codebook?.apiBaseUrl || import.meta.env.VITE_API_BASE_URL || '/api';
 
 export function interactiveExecutionUrl(): string {
   const base = API_BASE.startsWith('http')
@@ -52,8 +52,16 @@ export const api = {
     return parseResponse(fetch(`${API_BASE}/health`));
   },
 
-  async compiler(): Promise<CompilerInfo> {
-    return parseResponse(fetch(`${API_BASE}/compiler`));
+  async toolchain(language = 'cpp'): Promise<ToolchainInfo> {
+    return parseResponse(fetch(`${API_BASE}/toolchain?language=${language}`));
+  },
+
+  async compiler(language = 'cpp'): Promise<ToolchainInfo> {
+    return parseResponse(fetch(`${API_BASE}/toolchain?language=${language}`));
+  },
+
+  async toolchains(): Promise<Record<string, ToolchainInfo>> {
+    return parseResponse(fetch(`${API_BASE}/toolchains`));
   },
 
   async startKernel(): Promise<{ status: string; mode?: string }> {
@@ -129,7 +137,10 @@ export const api = {
   },
 
   async exportNotebookFile(id: string): Promise<string> {
-    const response = await fetch(`${API_BASE}/notebooks/${encodeURIComponent(id)}/export/cppnb`);
+    let response = await fetch(`${API_BASE}/notebooks/${encodeURIComponent(id)}/export/cbnb`);
+    if (response.status === 404) {
+      response = await fetch(`${API_BASE}/notebooks/${encodeURIComponent(id)}/export/cppnb`);
+    }
     if (!response.ok) {
       throw new Error(await response.text());
     }
@@ -148,6 +159,7 @@ export const api = {
           cellId,
           code: cell?.source ?? '',
           stdin,
+          language: notebook.metadata?.language || 'cpp',
           executionMode: 'cell',
           cells: notebook.cells.map((item) => ({
             id: item.id,
@@ -171,6 +183,7 @@ export const api = {
           notebookId: notebook.id ?? 'unsaved',
           continueOnError,
           stdin,
+          language: notebook.metadata?.language || 'cpp',
           cells: notebook.cells.map((item) => ({
             id: item.id,
             type: item.type,

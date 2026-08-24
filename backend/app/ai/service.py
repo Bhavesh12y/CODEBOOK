@@ -216,54 +216,75 @@ class OpenAICompatibleService(AIService):
         model: str,
         provider_name: str = "AI provider",
         runtime_context: str = "",
+        language: str = "cpp",
     ) -> None:
         self.api_key = api_key.strip()
         self.endpoint = endpoint.rstrip("/")
         self.model = model
         self.provider_name = provider_name
         self.runtime_context = runtime_context.strip()
+        self.language = language
 
     def _assistant_rules(self) -> str:
+        roles = {
+            "cpp": "expert AI assistant for C++ and DSA in CodeBook",
+            "c": "expert AI assistant for C programming in CodeBook",
+            "java": "expert AI assistant for Java programming in CodeBook",
+            "python": "expert AI assistant for Python programming in CodeBook"
+        }
+        role_text = roles.get(self.language, roles["cpp"])
+        
+        lang_names = {"cpp": "C++", "c": "C", "java": "Java", "python": "Python"}
+        lang_name = lang_names.get(self.language, "C++")
+        
         rules = (
-            "You are ChatGPT, an expert AI assistant for C++ and DSA in CppBook.\n"
+            f"You are ChatGPT, an {role_text}.\n"
             "Style & Guidelines:\n"
             "- Be concise, direct, helpful, and natural like ChatGPT.\n"
             "- Strictly respect the user's intent, coding preferences, and instructions.\n"
-            "- When providing code, always provide clean, runnable C++ in a fenced ```cpp``` block.\n"
-            "- Do not give unsolicited lectures or scold the user for their coding style (e.g., `using namespace std;`). Follow what the user wants."
+            f"- When providing code, always provide clean, runnable {lang_name} in a fenced ```{self.language}``` block.\n"
+            "- Do not give unsolicited lectures or scold the user for their coding style. Follow what the user wants."
         )
         if self.runtime_context:
             return f"Environment:\n{self.runtime_context}\n\n{rules}"
         return rules
 
     async def explain_cell(self, context: CellContext) -> str:
+        lang_names = {"cpp": "C++", "c": "C", "java": "Java", "python": "Python"}
+        lang = lang_names.get(self.language, "C++")
         prompt = (
-            "Explain this C++ notebook cell clearly and concisely. "
-            "Highlight what the code does, key STL/data structures used, and practical tips.\n\n"
+            f"Explain this {lang} notebook cell clearly and concisely. "
+            "Highlight what the code does, key data structures used, and practical tips.\n\n"
             f"Code:\n{context.source}"
         )
         return self._complete(prompt)
 
     async def fix_error(self, context: CellContext, stderr: str) -> str:
+        lang_names = {"cpp": "C++", "c": "C", "java": "Java", "python": "Python"}
+        lang = lang_names.get(self.language, "C++")
         prompt = (
-            "Fix the following C++ code that generated a compilation or runtime error. "
-            "Provide the exact root cause, followed by the complete working fixed code in a ```cpp``` block.\n\n"
+            f"Fix the following {lang} code that generated a compilation or runtime error. "
+            f"Provide the exact root cause, followed by the complete working fixed code in a ```{self.language}``` block.\n\n"
             f"Code:\n{context.source}\n\nCompiler / Error Output:\n{stderr}"
         )
         return self._complete(prompt)
 
     async def optimize_cell(self, context: CellContext) -> str:
+        lang_names = {"cpp": "C++", "c": "C", "java": "Java", "python": "Python"}
+        lang = lang_names.get(self.language, "C++")
         prompt = (
-            "Optimize this C++ code for better time/space complexity and modern C++ readability. "
-            "Return the optimized code in one fenced ```cpp``` block, followed by Time & Space complexity analysis and brief bullet points.\n\n"
+            f"Optimize this {lang} code for better time/space complexity and modern readability. "
+            f"Return the optimized code in one fenced ```{self.language}``` block, followed by Time & Space complexity analysis and brief bullet points.\n\n"
             f"Code:\n{context.source}"
         )
         return self._complete(prompt)
 
     async def enhance_cell(self, context: CellContext) -> str:
+        lang_names = {"cpp": "C++", "c": "C", "java": "Java", "python": "Python"}
+        lang = lang_names.get(self.language, "C++")
         prompt = (
-            "Enhance this C++ code: clean up formatting, ensure proper standard headers, and apply idiomatic C++ best practices. "
-            "Return the complete enhanced code in one fenced ```cpp``` block.\n\n"
+            f"Enhance this {lang} code: clean up formatting, ensure proper standard practices, and apply idiomatic best practices. "
+            f"Return the complete enhanced code in one fenced ```{self.language}``` block.\n\n"
             f"Code:\n{context.source}"
         )
         return self._complete(prompt)
@@ -327,13 +348,14 @@ class OpenAICompatibleService(AIService):
 
 
 class GeminiNativeService(OpenAICompatibleService):
-    def __init__(self, api_key: str, model: str = "", runtime_context: str = "") -> None:
+    def __init__(self, api_key: str, model: str = "", runtime_context: str = "", language: str = "cpp") -> None:
         super().__init__(
             api_key=api_key,
             endpoint="https://generativelanguage.googleapis.com/v1beta",
             model=_normalize_gemini_model(model, api_key),
             provider_name="Gemini",
             runtime_context=runtime_context,
+            language=language,
         )
 
     def _complete_messages(self, messages: list[dict[str, str]]) -> str:
@@ -414,19 +436,26 @@ def _safe_provider_error(detail: str) -> str:
     return detail.replace("\n", " ")[:400]
 
 
-def build_runtime_context(*, compiler_name: str | None, compiler_version: str | None, compiler_path: str | None, cpp_standard: str) -> str:
-    name = (compiler_name or "unknown").strip()
-    version = (compiler_version or "").strip()
-    path = (compiler_path or "n/a").strip()
+def build_runtime_context(*, language: str = "cpp", toolchain_name: str = "", toolchain_version: str = "") -> str:
+    name = (toolchain_name or "unknown").strip()
+    version = (toolchain_version or "").strip()
+    
+    lang_info = {
+        "cpp": ("C++", "C++17", "C++ beginners, students, and LeetCode/DSA problem solvers", "C++20 features when on C++17"),
+        "c": ("C", "C11", "C beginners and embedded or systems programmers", "C23 features when on C11"),
+        "python": ("Python", "Python 3", "Python beginners and data/DSA problem solvers", "unsupported standard library modules"),
+        "java": ("Java", "Java 17", "Java beginners and object-oriented developers", "Java 21 features when on Java 17"),
+    }
+    lang_name, standard, focus, constraint = lang_info.get(language, lang_info["cpp"])
+    
     return "\n".join(
         [
-            f"- C++ Dialect Standard: -std={cpp_standard} (Default C++17)",
+            f"- Language: {lang_name} (Standard: {standard})",
             f"- Toolchain / Compiler: {name} {version}".rstrip(),
-            f"- Compiler Location: {path}",
-            "- Environment: CppBook interactive notebook (cell-by-cell execution with automatic header inclusion and replay)",
+            "- Environment: CodeBook interactive notebook (cell-by-cell execution with automatic inclusion and replay)",
             "- Scoping Model: Ordinary variable declarations are scoped locally to their cell; functions, structs, classes, templates, and static variables persist across cells",
-            "- Focus: C++ beginners, students, and LeetCode/DSA problem solvers",
-            "- Toolchain Constraint: Only use headers and features supported by the reported compiler and dialect flag (do not suggest unsupported APIs or C++20 features when on C++17)",
+            f"- Focus: {focus}",
+            f"- Toolchain Constraint: Only use features supported by the reported toolchain (do not suggest {constraint})",
         ]
     )
 
@@ -451,6 +480,7 @@ def create_ai_service_from_request(
     legacy_model: str = "",
     legacy_api_keys: list[str] | None = None,
     runtime_context: str = "",
+    language: str = "cpp",
 ) -> AIService:
     del provider  # Provider order is always Groq then Gemini fallback.
     groq_key = groq_api_key.strip()
@@ -472,6 +502,7 @@ def create_ai_service_from_request(
                 model=groq_requested_model,
                 provider_name="Groq",
                 runtime_context=runtime_context,
+                language=language,
             )
         )
     if gemini_key:
@@ -480,6 +511,7 @@ def create_ai_service_from_request(
                 api_key=gemini_key,
                 model=gemini_requested_model,
                 runtime_context=runtime_context,
+                language=language,
             )
         )
     return FallbackAIService(services)
@@ -491,6 +523,7 @@ def create_ai_service_for_provider(
     api_key: str,
     model: str = "",
     runtime_context: str = "",
+    language: str = "cpp",
 ) -> AIService:
     key = api_key.strip()
     if not key:
@@ -500,6 +533,7 @@ def create_ai_service_for_provider(
             api_key=key,
             model=_normalize_gemini_model(model, key),
             runtime_context=runtime_context,
+            language=language,
         )
     return OpenAICompatibleService(
         api_key=key,
@@ -507,6 +541,7 @@ def create_ai_service_for_provider(
         model=_normalize_groq_model(model, key),
         provider_name="Groq",
         runtime_context=runtime_context,
+        language=language,
     )
 
 

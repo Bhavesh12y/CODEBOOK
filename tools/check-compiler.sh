@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# check-compiler.sh — Linux/macOS compiler detection for CppBook
+# check-compiler.sh — Linux/macOS compiler detection for CodeBook
 # Usage: bash check-compiler.sh [--install]
 set -euo pipefail
 
-step() { echo "[CppBook] $*"; }
+step() { echo "[CodeBook] $*"; }
 
 OS="$(uname -s)"
 
@@ -46,7 +46,7 @@ if [[ "${1:-}" == "--install" ]]; then
       if command -v xcode-select &>/dev/null; then
         step "Installing Xcode Command Line Tools (provides clang++)..."
         xcode-select --install 2>/dev/null || true
-        step "If a dialog appeared, complete the installation and re-run CppBook."
+        step "If a dialog appeared, complete the installation and re-run CodeBook."
       else
         step "Install Xcode Command Line Tools manually: xcode-select --install"
         exit 2
@@ -62,7 +62,7 @@ if [[ "${1:-}" == "--install" ]]; then
   if detect_compiler; then
     exit 0
   fi
-  step "Compiler still not found after install attempt. Please install manually and restart CppBook."
+  step "Compiler still not found after install attempt. Please install manually and restart CodeBook."
   exit 1
 fi
 

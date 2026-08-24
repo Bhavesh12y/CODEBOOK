@@ -13,7 +13,14 @@ def main() -> None:
     else:
         venv_python = repo_root / ".venv" / "bin" / "python"
     if venv_python.exists() and Path(sys.executable).resolve() != venv_python.resolve():
-        os.execv(str(venv_python), [str(venv_python), str(Path(__file__).resolve())])
+        if sys.platform == "win32":
+            import subprocess
+            try:
+                raise SystemExit(subprocess.call([str(venv_python), str(Path(__file__).resolve())]))
+            except KeyboardInterrupt:
+                raise SystemExit(0)
+        else:
+            os.execv(str(venv_python), [str(venv_python), str(Path(__file__).resolve())])
 
     import uvicorn
 
@@ -21,14 +28,20 @@ def main() -> None:
         sys.path.insert(0, str(backend_dir))
 
     port = int(os.getenv("BACKEND_PORT", "8000"))
-    uvicorn.run(
-        "app.main:app",
-        host="127.0.0.1",
-        port=port,
-        reload=True,
-        reload_dirs=[str(backend_dir / "app")],
-    )
+    try:
+        uvicorn.run(
+            "app.main:app",
+            host="127.0.0.1",
+            port=port,
+            reload=True,
+            reload_dirs=[str(backend_dir / "app")],
+        )
+    except KeyboardInterrupt:
+        pass
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass

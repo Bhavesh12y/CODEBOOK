@@ -53,8 +53,23 @@ def test_rename_notebook_changes_name_and_file_id(tmp_path):
 
     assert renamed.id == "better-name"
     assert renamed.metadata.name == "Better Name"
-    assert not (repository.notebooks_dir / f"{saved.id}.cppnb").exists()
-    assert (repository.notebooks_dir / "better-name.cppnb").exists()
+    assert not (repository.notebooks_dir / f"{saved.id}.cbnb").exists()
+    assert (repository.notebooks_dir / "better-name.cbnb").exists()
+
+
+def test_legacy_cppnb_loading_defaults_to_cpp(tmp_path):
+    repository = repo(tmp_path)
+    legacy_file = repository.notebooks_dir / "legacy.cppnb"
+    legacy_data = {
+        "version": 1,
+        "metadata": {"name": "Legacy Cpp"},
+        "cells": [{"id": "c1", "type": "code", "source": "cout << 1;"}]
+    }
+    legacy_file.write_text(json.dumps(legacy_data), encoding="utf-8")
+    loaded = repository.load("legacy")
+    assert loaded.metadata.language == "cpp"
+    assert loaded.metadata.name == "Legacy Cpp"
+
 
 
 def test_list_project_files_is_restricted_to_workspace(tmp_path):

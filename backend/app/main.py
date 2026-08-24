@@ -10,9 +10,9 @@ from app.config import get_settings
 settings = get_settings()
 
 app = FastAPI(
-    title="CppBook API",
+    title="CodeBook API",
     version="1.0.0",
-    description="Local C++ notebook execution and persistence API.",
+    description="Local multi-language notebook execution and persistence API.",
 )
 
 app.add_middleware(

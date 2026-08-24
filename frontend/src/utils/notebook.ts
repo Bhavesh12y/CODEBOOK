@@ -1,4 +1,4 @@
-import type { CellType, InteractiveTerminalState, Notebook, NotebookCell } from '../types/notebook';
+import type { CellType, InteractiveTerminalState, Notebook, NotebookCell, NotebookLanguage } from '../types/notebook';
 
 export function createCell(type: CellType = 'code', source = ''): NotebookCell {
   return {
@@ -54,17 +54,35 @@ export function cellAiRuntimeSnapshot(
   };
 }
 
-export function createNotebook(name = 'Untitled', description = ''): Notebook {
+export function createNotebook(name = 'Untitled', language: NotebookLanguage = 'cpp', description = ''): Notebook {
+  let defaultCode = '';
+  switch (language) {
+    case 'c':
+      defaultCode = '#include <stdio.h>\n\nprintf("Hello from CodeBook!\\n");';
+      break;
+    case 'python':
+      defaultCode = 'print("Hello from CodeBook!")';
+      break;
+    case 'java':
+      defaultCode = 'System.out.println("Hello from CodeBook!");';
+      break;
+    case 'cpp':
+    default:
+      defaultCode = '#include <iostream>\nusing namespace std;\n\ncout << "Hello from CodeBook!" << endl;';
+      break;
+  }
+
   return {
     version: 1,
     id: null,
     metadata: {
       name,
       description,
+      language,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     },
-    cells: [createCell('code', '#include <iostream>\nusing namespace std;\n\ncout << "Hello CppBook";')],
+    cells: [createCell('code', defaultCode)],
   };
 }
 
@@ -87,7 +105,7 @@ export function downloadText(filename: string, text: string, mime = 'text/plain'
 
 export function notebookFilename(notebook: Notebook): string {
   const base = notebook.metadata.name.replace(/[^A-Za-z0-9_-]+/g, '-').replace(/^-|-$/g, '') || notebook.id || 'notebook';
-  return `${base}.cppnb`;
+  return `${base}.cbnb`;
 }
 
 export async function saveNotebookFile(notebook: Notebook): Promise<void> {
@@ -96,7 +114,7 @@ export async function saveNotebookFile(notebook: Notebook): Promise<void> {
   if (window.showSaveFilePicker) {
     const handle = await window.showSaveFilePicker({
       suggestedName: filename,
-      types: [{ description: 'CppBook Notebook', accept: { 'application/json': ['.cppnb'] } }],
+      types: [{ description: 'CodeBook Notebook', accept: { 'application/json': ['.cbnb'] } }],
     });
     const writable = await handle.createWritable();
     await writable.write(text);

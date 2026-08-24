@@ -14,7 +14,7 @@ from app.notebook.exporter import export_notebook_cpp, export_notebook_cppnb, ex
 
 
 IGNORE_DIRS = {".git", ".venv", "node_modules", "__pycache__", ".pytest_cache", "dist", ".vite"}
-VISIBLE_EXTENSIONS = {".cppnb", ".cpp", ".hpp", ".h", ".md", ".txt", ".json"}
+VISIBLE_EXTENSIONS = {".cppnb", ".cbnb", ".cpp", ".hpp", ".h", ".c", ".py", ".java", ".md", ".txt", ".json"}
 
 
 def _dump_model(model: object) -> dict:
@@ -43,7 +43,8 @@ class NotebookRepository:
 
     def list(self) -> list[NotebookSummary]:
         summaries: list[NotebookSummary] = []
-        for path in sorted(self.notebooks_dir.glob("*.cppnb"), key=lambda item: item.stat().st_mtime, reverse=True):
+        paths = list(self.notebooks_dir.glob("*.cppnb")) + list(self.notebooks_dir.glob("*.cbnb"))
+        for path in sorted(paths, key=lambda item: item.stat().st_mtime, reverse=True):
             try:
                 notebook = self.load(path.stem)
             except NotebookFormatError:
@@ -74,6 +75,10 @@ class NotebookRepository:
             raise FileNotFoundError(notebook_id)
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
+            if path.suffix == ".cppnb" or not payload.get("metadata", {}).get("language"):
+                if "metadata" not in payload:
+                    payload["metadata"] = {}
+                payload["metadata"]["language"] = "cpp"
             notebook = NotebookDocument(**payload)
         except (json.JSONDecodeError, ValidationError, TypeError) as exc:
             raise NotebookFormatError(f"Malformed notebook file: {path.name}") from exc
@@ -84,15 +89,32 @@ class NotebookRepository:
         if not notebook.cells:
             notebook.cells = []
         resolved_id = _slugify(notebook_id or notebook.id or notebook.metadata.name)
-        if (self.notebooks_dir / f"{resolved_id}.cppnb").exists() and notebook_id is None and notebook.id is None:
+        
+        # Check if existing with either extension
+        path = None
+        if notebook_id or notebook.id:
+            try:
+                path = self._notebook_path(resolved_id)
+            except FileNotFoundError:
+                pass
+                
+        if not path:
+            path = (self.notebooks_dir / f"{resolved_id}.cbnb").resolve()
+            if path.exists() and notebook_id is None and notebook.id is None:
+                resolved_id = f"{resolved_id}-{uuid.uuid4().hex[:6]}"
+                path = (self.notebooks_dir / f"{resolved_id}.cbnb").resolve()
+        elif notebook_id is None and notebook.id is None and path.exists():
             resolved_id = f"{resolved_id}-{uuid.uuid4().hex[:6]}"
+            path = (self.notebooks_dir / f"{resolved_id}.cbnb").resolve()
+
+        if not hasattr(notebook, "version") or not notebook.version:
+            notebook.version = 2
 
         now = utc_now()
         if not notebook.metadata.createdAt:
             notebook.metadata.createdAt = now
         notebook.metadata.updatedAt = now
         notebook.id = resolved_id
-        path = self._notebook_path(resolved_id)
         path.write_text(json.dumps(_dump_model(notebook), indent=2), encoding="utf-8")
         return notebook
 
@@ -122,10 +144,23 @@ class NotebookRepository:
             current_path.unlink()
         return notebook
 
-    def import_cpp(self, filename: str, source: str) -> NotebookDocument:
-        base_name = Path(filename).stem or "Imported C++"
+    def import_source(self, filename: str, source: str) -> NotebookDocument:
+        path = Path(filename)
+        base_name = path.stem or "Imported Source"
+        ext = path.suffix.lower()
+        
+        language = "cpp"
+        if ext in (".c", ".h"):
+            language = "c"
+        elif ext in (".cpp", ".cc", ".cxx", ".hpp"):
+            language = "cpp"
+        elif ext == ".py":
+            language = "python"
+        elif ext == ".java":
+            language = "java"
+            
         notebook = NotebookDocument(
-            metadata=NotebookMetadata(name=base_name),
+            metadata=NotebookMetadata(name=base_name, language=language),
             cells=[
                 {
                     "id": f"cell-{uuid.uuid4().hex[:8]}",
@@ -137,6 +172,9 @@ class NotebookRepository:
             ],
         )
         return self.save(notebook)
+        
+    def import_cpp(self, filename: str, source: str) -> NotebookDocument:
+        return self.import_source(filename, source)
 
     def export_cpp(self, notebook_id: str) -> str:
         notebook = self.load(notebook_id)
@@ -149,48 +187,51 @@ class NotebookRepository:
 
     def export_pdf(self, notebook_id: str) -> bytes:
         notebook = self.load(notebook_id)
-        return export_notebook_pdf(notebook.cells, notebook.metadata.name)
+        return export_notebook_pdf(notebook.cells, notebook.metadata.name, notebook.metadata.language or "cpp")
 
     def list_project_files(self, max_depth: int = 3) -> list[ProjectFile]:
         return self._children_for(self.workspace_dir, depth=0, max_depth=max_depth)
 
     def ensure_examples(self) -> None:
         examples = {
-            "hello-world": [
-                ("markdown", "# Hello World\nA minimal C++ notebook."),
-                ("code", '#include <iostream>\nusing namespace std;\n\ncout << "Hello from CppBook!" << endl;'),
-            ],
-            "variables": [
-                ("code", "#include <iostream>\nusing namespace std;\n\nint x = 10;"),
-                ("code", "x += 20;\ncout << x;"),
-                ("code", "cout << x * 2;"),
-            ],
-            "stl-algorithms": [
-                ("markdown", "# STL Algorithms"),
-                ("code", "#include <iostream>\n#include <vector>\n#include <algorithm>\n\nstd::vector<int> nums = {5, 2, 8, 1, 9};"),
-                ("code", "std::sort(nums.begin(), nums.end());"),
-                ("code", 'for (int x : nums) {\n    std::cout << x << " ";\n}'),
-            ],
-            "functions-and-classes": [
-                ("code", "#include <iostream>\n#include <string>\nusing namespace std;"),
-                ("code", "int square(int value) {\n    return value * value;\n}"),
-                ("code", "class Person {\npublic:\n    string name;\n    explicit Person(string n) : name(n) {}\n};"),
-                ("code", 'Person user("Bhavesh");\ncout << user.name << " " << square(7);'),
-            ],
-            "data-structures": [
-                ("code", "#include <iostream>\n#include <queue>\n#include <string>\nusing namespace std;"),
-                ("code", 'queue<string> tasks;\ntasks.push("parse");\ntasks.push("compile");\ntasks.push("run");'),
-                ("code", 'while (!tasks.empty()) {\n    cout << tasks.front() << "\\n";\n    tasks.pop();\n}'),
-            ],
+            "hello-world": {
+                "language": "cpp",
+                "cells": [
+                    ("markdown", "# Hello World (C++)\nA minimal C++ notebook."),
+                    ("code", '#include <iostream>\nusing namespace std;\n\ncout << "Hello from CodeBook!" << endl;'),
+                ]
+            },
+            "hello-c": {
+                "language": "c",
+                "cells": [
+                    ("markdown", "# Hello World (C)\nA minimal C notebook."),
+                    ("code", '#include <stdio.h>\n\nprintf("Hello from CodeBook C!\\n");'),
+                ]
+            },
+            "hello-python": {
+                "language": "python",
+                "cells": [
+                    ("markdown", "# Hello World (Python)\nA minimal Python notebook."),
+                    ("code", 'print("Hello from CodeBook Python!")'),
+                ]
+            },
+            "hello-java": {
+                "language": "java",
+                "cells": [
+                    ("markdown", "# Hello World (Java)\nA minimal Java notebook."),
+                    ("code", 'System.out.println("Hello from CodeBook Java!");'),
+                ]
+            }
         }
 
-        for name, cells in examples.items():
-            path = self.notebooks_dir / f"{name}.cppnb"
-            if path.exists():
+        for name, data in examples.items():
+            path_cbnb = self.notebooks_dir / f"{name}.cbnb"
+            path_cppnb = self.notebooks_dir / f"{name}.cppnb"
+            if path_cbnb.exists() or path_cppnb.exists():
                 continue
             notebook = NotebookDocument(
                 id=name,
-                metadata=NotebookMetadata(name=name.replace("-", " ").title()),
+                metadata=NotebookMetadata(name=name.replace("-", " ").title(), language=data["language"]),
                 cells=[
                     {
                         "id": f"{name}-{index + 1}",
@@ -199,16 +240,23 @@ class NotebookRepository:
                         "outputs": [],
                         "executionCount": None,
                     }
-                    for index, (cell_type, source) in enumerate(cells)
+                    for index, (cell_type, source) in enumerate(data["cells"])
                 ],
             )
             self.save(notebook, notebook_id=name)
 
     def _notebook_path(self, notebook_id: str) -> Path:
         safe_id = _slugify(notebook_id)
-        path = (self.notebooks_dir / f"{safe_id}.cppnb").resolve()
+        path_cbnb = (self.notebooks_dir / f"{safe_id}.cbnb").resolve()
+        path_cppnb = (self.notebooks_dir / f"{safe_id}.cppnb").resolve()
+        
+        path = path_cbnb if path_cbnb.exists() else path_cppnb
+        
         if self.notebooks_dir not in path.parents and path != self.notebooks_dir:
             raise ValueError("Notebook path escapes workspace.")
+        if not path.exists() and not path_cppnb.exists():
+            # If neither exists, default to .cbnb for new files (handled by save), but for reading throw error handled by caller.
+            return path_cbnb
         return path
 
     def _relative(self, path: Path) -> str:

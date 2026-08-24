@@ -24,6 +24,7 @@ import { IconButton } from './IconButton';
 
 interface ToolbarProps {
   notebookName: string;
+  notebookLanguage?: string;
   kernel: KernelState;
   dirty: boolean;
   saving: boolean;
@@ -64,9 +65,9 @@ export function Toolbar(props: ToolbarProps) {
   const [newOpen, setNewOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const [exportOpen, setExportOpen] = useState(false);
-  const compilerLabel = props.kernel.compiler?.available
-    ? `${props.kernel.compiler.compiler ?? 'Compiler'} ${props.kernel.compiler.version ?? ''}`.trim()
-    : props.kernel.compiler?.error ?? 'Compiler unavailable';
+  const toolchainLabel = props.kernel.toolchain?.available
+    ? `${props.kernel.toolchain.name ?? 'Compiler'} ${props.kernel.toolchain.version ?? ''}`.trim()
+    : props.kernel.toolchain?.error ?? 'Compiler unavailable';
 
   useEffect(() => {
     const handler = (event: MouseEvent) => {
@@ -205,16 +206,16 @@ export function Toolbar(props: ToolbarProps) {
         </div>
       </div>
 
-      {/* Center: Clean text-only CPPBOOK brand */}
+      {/* Center: Clean text-only CODEBOOK brand */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
         <button
           type="button"
           className="group transition-opacity hover:opacity-80 focus:outline-none cursor-pointer"
           onClick={props.onOpenPalette}
-          title="Command Palette (Shift+K / CPPBOOK)"
+          title="Command Palette (Shift+K / CODEBOOK)"
         >
           <span className="text-[13px] font-bold tracking-[0.25em] text-[var(--text-primary)] select-none">
-            CPPBOOK
+            CODEBOOK
           </span>
         </button>
       </div>
@@ -224,8 +225,15 @@ export function Toolbar(props: ToolbarProps) {
         <IconButton icon={<Braces className="h-4 w-4 text-signal-blue" />} label="Run all" onClick={props.onRunAll} disabled={props.running} showLabel />
         <IconButton icon={<Square className="h-4 w-4 text-rose-400" />} label="Stop" onClick={props.onStop} disabled={!props.running} showLabel />
         <span className="mx-1 h-4 w-px bg-[var(--border-subtle)]" />
-        <div className="hidden max-w-48 truncate text-xs text-[var(--text-secondary)] select-none xl:block" title={compilerLabel}>
-          {compilerLabel}
+        
+        {props.notebookLanguage && (
+          <span className="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[var(--bg-surface-elevated)] border border-[var(--border-subtle)] text-[var(--text-secondary)]">
+            {props.notebookLanguage === 'cpp' ? 'C++' : props.notebookLanguage}
+          </span>
+        )}
+
+        <div className="hidden max-w-48 truncate text-xs text-[var(--text-secondary)] select-none xl:block" title={toolchainLabel}>
+          {toolchainLabel}
         </div>
       </div>
 

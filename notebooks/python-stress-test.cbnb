@@ -1,0 +1,330 @@
+{
+  "version": 2,
+  "id": "python-stress-test",
+  "metadata": {
+    "name": "Untitled",
+    "description": "",
+    "language": "python",
+    "createdAt": "2026-08-24T18:42:53.874000+00:00",
+    "updatedAt": "2026-08-24T18:44:05.838779+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-01",
+      "type": "code",
+      "source": "x = 10\ny = 20\nprint(\"Cell 1:\", x + y)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Cell 1: 30\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.0002541999565437436
+    },
+    {
+      "id": "cell-02",
+      "type": "code",
+      "source": "z = x * y\nprint(\"Cell 2:\", z)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Cell 2: 200\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.0001498999772593379
+    },
+    {
+      "id": "cell-03",
+      "type": "code",
+      "source": "def square(n):\n    return n * n\n\nprint(\"Cell 3:\", square(7))",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Cell 3: 49\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.0001748999347910285
+    },
+    {
+      "id": "cell-04",
+      "type": "code",
+      "source": "print(\"Cell 4:\", square(x))",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Cell 4: 100\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.00013589998707175255
+    },
+    {
+      "id": "cell-05",
+      "type": "code",
+      "source": "class Student:\n    def __init__(self, name, marks):\n        self.name = name\n        self.marks = marks\n\n    def display(self):\n        print(f\"{self.name} scored {self.marks}\")",
+      "outputs": [],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.00023360003251582384
+    },
+    {
+      "id": "cell-06",
+      "type": "code",
+      "source": "s = Student(\"Bhavesh\", 95)\ns.display()",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Bhavesh scored 95\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.00013559998478740454
+    },
+    {
+      "id": "cell-07",
+      "type": "code",
+      "source": "numbers = [10, 20, 30, 40, 50]\ntotal = 0\n\nfor n in numbers:\n    total += n\n\nprint(\"Sum =\", total)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Sum = 150\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.00014789996203035116
+    },
+    {
+      "id": "cell-08",
+      "type": "code",
+      "source": "import math\n\nprint(\"Square root:\", math.sqrt(144))\nprint(\"Pi:\", math.pi)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Square root: 12.0\nPi: 3.141592653589793\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.00013369997031986713
+    },
+    {
+      "id": "cell-09",
+      "type": "code",
+      "source": "import json\n\ndata = {\n    \"name\": \"CodeBook\",\n    \"languages\": 4\n}\n\nencoded = json.dumps(data)\nprint(encoded)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "{\"name\": \"CodeBook\", \"languages\": 4}\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.0001406000228598714
+    },
+    {
+      "id": "cell-10",
+      "type": "code",
+      "source": "counter = 0\ncounter += 1\ncounter += 1\n\nprint(\"Counter =\", counter)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Counter = 2\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.00011869997251778841
+    },
+    {
+      "id": "cell-11",
+      "type": "code",
+      "source": "counter += 1\nprint(\"Counter =\", counter)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Counter = 3\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.0001097000204026699
+    },
+    {
+      "id": "cell-12",
+      "type": "code",
+      "source": "try:\n    result = 10 / 0\nexcept ZeroDivisionError as e:\n    print(\"Caught:\", type(e).__name__)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Caught: ZeroDivisionError\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.00013810000382363796
+    },
+    {
+      "id": "cell-13",
+      "type": "code",
+      "source": "message = \"CodeBook Python\"\n\nprint(message.upper())\nprint(len(message))\nprint(\"Python\" in message)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "CODEBOOK PYTHON\n15\nTrue\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.00013070006389170885
+    },
+    {
+      "id": "cell-14",
+      "type": "code",
+      "source": "values = [1, 2, 3, 4, 5]\nsquares = [n * n for n in values]\n\nprint(squares)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "[1, 4, 9, 16, 25]\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.00015059998258948326
+    },
+    {
+      "id": "cell-15",
+      "type": "code",
+      "source": "print(\"Before intentional error\")\n\n# Intentional runtime error:\nprint(undefined_variable)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Before intentional error\n",
+          "diagnostics": []
+        },
+        {
+          "type": "error",
+          "text": "Traceback (most recent call last):\n  File \"<cell-cell-15>\", line 4, in <module>\nNameError: name 'undefined_variable' is not defined\n",
+          "diagnostics": [
+            {
+              "cellId": "cell-15",
+              "line": 4,
+              "column": null,
+              "severity": "error",
+              "message": "NameError: name 'undefined_variable' is not defined",
+              "raw": null
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.000340400030836463
+    },
+    {
+      "id": "cell-16",
+      "type": "code",
+      "source": "print(\"Recovered successfully\")\nprint(\"x =\", x)\nprint(\"counter =\", counter)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Recovered successfully\nx = 10\ncounter = 3\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 3,
+      "status": "success",
+      "executionTime": 0.0001268000341951847
+    },
+    {
+      "id": "cell-17",
+      "type": "code",
+      "source": "print(\"Nested loops:\")\n\nfor i in range(1, 4):\n    for j in range(1, 4):\n        print(i * j, end=\" \")\n    print()",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Nested loops:\n1 2 3 \n2 4 6 \n3 6 9 \n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 3,
+      "status": "success",
+      "executionTime": 0.0001564000267535448
+    },
+    {
+      "id": "cell-18",
+      "type": "code",
+      "source": "class Rectangle:\n    def __init__(self, width, height):\n        self.width = width\n        self.height = height\n\n    def area(self):\n        return self.width * self.height\n\nrect = Rectangle(10, 5)\nprint(\"Area =\", rect.area())",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Area = 50\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 3,
+      "status": "success",
+      "executionTime": 0.0002207999350503087
+    },
+    {
+      "id": "cell-69478d9f-6434-47a0-8d7c-a89a67f52309",
+      "type": "code",
+      "source": "name = input(\"Enter your name: \")\r\nage = int(input(\"Enter your age: \"))\r\n\r\nprint(f\"Hello {name}, you are {age} years old.\")",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-19",
+      "type": "code",
+      "source": "print(\"Previous class still exists:\", s.name)\nprint(\"Previous list length:\", len(numbers))\nprint(\"Rectangle area:\", rect.area())",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Previous class still exists: Bhavesh\nPrevious list length: 5\nRectangle area: 50\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 3,
+      "status": "success",
+      "executionTime": 0.00014450005255639553
+    },
+    {
+      "id": "cell-20",
+      "type": "code",
+      "source": "print(\"Final state check\")\nprint(\"x =\", x)\nprint(\"y =\", y)\nprint(\"z =\", z)\nprint(\"counter =\", counter)",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Final state check\nx = 10\ny = 20\nz = 200\ncounter = 3\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 3,
+      "status": "success",
+      "executionTime": 0.00013689999468624592
+    }
+  ]
+}

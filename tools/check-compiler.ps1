@@ -5,7 +5,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 function Write-Step($message) {
-  Write-Host "[CppBook] $message"
+  Write-Host "[CodeBook] $message"
 }
 
 $gpp = Get-Command g++ -ErrorAction SilentlyContinue
@@ -28,7 +28,7 @@ if ($Install) {
   & winget install -e --id MSYS2.MSYS2
   Write-Step "Open the MSYS2 UCRT64 terminal and run:"
   Write-Host "  pacman -S --needed mingw-w64-ucrt-x86_64-gcc"
-  Write-Step "Then add C:\msys64\ucrt64\bin to your Windows PATH and restart CppBook."
+  Write-Step "Then add C:\msys64\ucrt64\bin to your Windows PATH and restart CodeBook."
   exit 1
 }
 

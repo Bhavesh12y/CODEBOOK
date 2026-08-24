@@ -75,7 +75,7 @@ const initialState: NotebookState = {
   view: 'home',
   theme: 'midnight',
   selectedCellId: initialNotebook.cells[0].id,
-  kernel: { status: 'ready', compiler: null },
+  kernel: { status: 'ready', toolchain: null, compiler: null },
   notebooks: [],
   projectFiles: [],
   sidebarOpen: true,
@@ -336,14 +336,16 @@ export function useNotebookController() {
       dispatch({ type: 'SET_THEME', theme: storedTheme });
     }
 
-    Promise.all([api.compiler(), api.startKernel(), refreshProject()])
-      .then(([compiler]) => {
+    const lang = stateRef.current.notebook.metadata.language || 'cpp';
+    Promise.all([api.toolchain(lang), api.startKernel(lang), refreshProject()])
+      .then(([toolchain]) => {
         dispatch({
           type: 'SET_KERNEL',
           kernel: {
-            status: compiler.available ? 'ready' : 'error',
-            compiler,
-            message: compiler.available ? 'Ready' : compiler.error ?? 'Compiler unavailable',
+            status: toolchain.available ? 'ready' : 'error',
+            toolchain,
+            compiler: toolchain,
+            message: toolchain.available ? 'Ready' : toolchain.error ?? 'Toolchain unavailable',
           },
         });
       })
@@ -355,8 +357,26 @@ export function useNotebookController() {
 
   useEffect(() => {
     document.documentElement.dataset.theme = state.theme;
+    localStorage.setItem('codebook.theme', state.theme);
     localStorage.setItem('cppbook.theme', state.theme);
   }, [state.theme]);
+
+  useEffect(() => {
+    const lang = state.notebook.metadata.language || 'cpp';
+    api.toolchain(lang)
+      .then((toolchain) => {
+        dispatch({
+          type: 'SET_KERNEL',
+          kernel: {
+            status: toolchain.available ? 'ready' : 'error',
+            toolchain,
+            compiler: toolchain,
+            message: toolchain.available ? 'Ready' : toolchain.error ?? 'Toolchain unavailable',
+          },
+        });
+      })
+      .catch(() => {});
+  }, [state.notebook.metadata.language]);
 
   const addRecent = useCallback((id: string | null | undefined) => {
     if (!id) return;
@@ -420,10 +440,11 @@ export function useNotebookController() {
     [addRecent],
   );
 
-  const newNotebook = useCallback((options?: { name?: string; description?: string }) => {
+  const newNotebook = useCallback((options?: { name?: string; description?: string; language?: string }) => {
     const name = options?.name?.trim() || 'Untitled';
     const description = options?.description?.trim() ?? '';
-    const notebook = createNotebook(name, description);
+    const language = (options?.language as any) ?? 'cpp';
+    const notebook = createNotebook(name, language, description);
     dispatch({ type: 'SET_NOTEBOOK', notebook, selectedCellId: notebook.cells[0].id, dirty: true });
   }, []);
 

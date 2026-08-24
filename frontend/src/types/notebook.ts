@@ -43,9 +43,12 @@ export interface NotebookCell {
   executionTime?: number | null;
 }
 
+export type NotebookLanguage = 'c' | 'cpp' | 'java' | 'python';
+
 export interface NotebookMetadata {
   name: string;
   description?: string;
+  language?: NotebookLanguage;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -63,11 +66,13 @@ export interface NotebookSummary {
   path: string;
   updatedAt?: string | null;
   cellCount: number;
+  language?: NotebookLanguage;
 }
 
-export interface CompilerInfo {
+export interface ToolchainInfo {
+  language: string;
   available: boolean;
-  compiler?: string | null;
+  name?: string | null;
   path?: string | null;
   version?: string | null;
   error?: string | null;
@@ -118,7 +123,7 @@ export interface AIChatResponse {
 
 export interface KernelState {
   status: 'ready' | 'running' | 'error' | 'stopped';
-  compiler?: CompilerInfo | null;
+  toolchain?: ToolchainInfo | null;
   message?: string;
 }
 
@@ -154,10 +159,12 @@ export interface UserSettings {
 
 declare global {
   interface Window {
-    cppbook?: {
+    codebook?: {
       apiBaseUrl?: string;
       desktop?: boolean;
       platform?: string;
+      languages?: string[];
+      defaultLanguage?: string;
     };
   }
 }

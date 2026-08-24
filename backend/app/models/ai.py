@@ -17,6 +17,7 @@ class AIActionRequest(BaseModel):
     source: str = ""
     notebookSource: str = ""
     stderr: str = ""
+    language: str = "cpp"
     aiEnabled: bool = False
     aiProvider: Literal["groq", "gemini", "openai-compatible"] = "groq"
     groqModel: str = "openai/gpt-oss-20b"
@@ -26,6 +27,7 @@ class AIActionRequest(BaseModel):
     # Legacy fields are accepted only for safe migration from older settings.
     aiModel: str = ""
     apiKeys: list[str] = Field(default_factory=list)
+
 
 
 class AIActionResponse(BaseModel):
@@ -43,6 +45,7 @@ class AIChatRequest(BaseModel):
     messages: list[AIChatMessage]
     notebookSource: str = ""
     cellId: str | None = None
+    language: str = "cpp"
     aiEnabled: bool = False
     aiProvider: Literal["groq", "gemini", "openai-compatible"] = "groq"
     groqModel: str = "openai/gpt-oss-20b"
@@ -52,6 +55,7 @@ class AIChatRequest(BaseModel):
     # Legacy fields are accepted only for safe migration from older settings.
     aiModel: str = ""
     apiKeys: list[str] = Field(default_factory=list)
+
 
 
 class AIChatResponse(BaseModel):

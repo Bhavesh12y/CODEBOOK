@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "id": "hello-python",
+  "metadata": {
+    "name": "Hello Python",
+    "description": "",
+    "language": "python",
+    "createdAt": "2026-08-24T17:25:28.749750+00:00",
+    "updatedAt": "2026-08-24T17:25:28.751184+00:00"
+  },
+  "cells": [
+    {
+      "id": "hello-python-1",
+      "type": "markdown",
+      "source": "# Hello World (Python)\nA minimal Python notebook.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "hello-python-2",
+      "type": "code",
+      "source": "print(\"Hello from CodeBook Python!\")",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}
