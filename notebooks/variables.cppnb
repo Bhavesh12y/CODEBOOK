@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "id": "variables",
+  "metadata": {
+    "name": "Variables",
+    "createdAt": "2026-08-16T09:05:04.814164+00:00",
+    "updatedAt": "2026-08-16T09:05:04.814251+00:00"
+  },
+  "cells": [
+    {
+      "id": "variables-1",
+      "type": "code",
+      "source": "#include <iostream>\nusing namespace std;\n\nint x = 10;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "variables-2",
+      "type": "code",
+      "source": "x += 20;\ncout << x;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "variables-3",
+      "type": "code",
+      "source": "cout << x * 2;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

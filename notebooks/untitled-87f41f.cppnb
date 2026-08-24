@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "id": "untitled-87f41f",
+  "metadata": {
+    "name": "Untitled",
+    "description": "",
+    "createdAt": "2026-08-23T06:07:10.287Z",
+    "updatedAt": "2026-08-23T06:07:39.520316+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-38fad68f-6852-48a8-a52d-9fbc8d65e76a",
+      "type": "code",
+      "source": "#include <iostream>\nusing namespace std;\n\ncout << \"Hello CppBook\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

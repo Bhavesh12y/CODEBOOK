@@ -1,0 +1,403 @@
+{
+  "version": 1,
+  "id": "broken-cell-test",
+  "metadata": {
+    "name": "broken cell test",
+    "description": "",
+    "createdAt": "2026-08-21T17:48:39.194Z",
+    "updatedAt": "2026-08-21T18:36:09.303595+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-39d71bc4-ce01-4780-a6e1-212e57d4e215",
+      "type": "code",
+      "source": "int x = ;",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\ncppnb_cell_cell_39d71bc4_ce01_4780_a6e1_212e57d4e215.cpp: In function 'int main()':\nCell 1, line 1, column 17: error: expected primary-expression before ';' token\n",
+          "diagnostics": [
+            {
+              "cellId": "cell-39d71bc4-ce01-4780-a6e1-212e57d4e215",
+              "line": 1,
+              "column": 17,
+              "severity": "error",
+              "message": "expected primary-expression before ';' token",
+              "raw": "cppnb_cell_cell_39d71bc4_ce01_4780_a6e1_212e57d4e215.cpp:1:17: error: expected primary-expression before ';' token"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.294
+    },
+    {
+      "id": "cell-5b65fb67-6b85-495a-afd8-cb62960b2e93",
+      "type": "code",
+      "source": "#include <iostream>\r\n\r\nstd::cout << \"CELL 2 WORKS\" << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "CELL 2 WORKS\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5725
+    },
+    {
+      "id": "cell-a1c0e5bb-c386-4410-849b-656831bfdf66",
+      "type": "code",
+      "source": "int x = 10;",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5847
+    },
+    {
+      "id": "cell-cd2195a1-dc45-4100-b6e1-9c2d464621a4",
+      "type": "code",
+      "source": "int y = ;",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\ncppnb_cell_cell_cd2195a1_dc45_4100_b6e1_9c2d464621a4.cpp: In function 'int main()':\nCell 4, line 1, column 17: error: expected primary-expression before ';' token\n",
+          "diagnostics": [
+            {
+              "cellId": "cell-cd2195a1-dc45-4100-b6e1-9c2d464621a4",
+              "line": 1,
+              "column": 17,
+              "severity": "error",
+              "message": "expected primary-expression before ';' token",
+              "raw": "cppnb_cell_cell_cd2195a1_dc45_4100_b6e1_9c2d464621a4.cpp:1:17: error: expected primary-expression before ';' token"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.2976
+    },
+    {
+      "id": "cell-b2ef3d43-9e2f-42f1-9522-6b0ffc0cd5a0",
+      "type": "code",
+      "source": "#include <iostream>\r\n\r\nstd::cout << x << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "10\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5597
+    },
+    {
+      "id": "cell-e2ebcdfc-3e0c-476d-ba1b-ed5d61f49e18",
+      "type": "code",
+      "source": "while (true) {\r\n}",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Execution stopped before completion.",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": null,
+      "status": "stopped",
+      "executionTime": 8.8373
+    },
+    {
+      "id": "cell-07f72995-63f1-4797-88a0-8d184f782dfe",
+      "type": "code",
+      "source": "#include <iostream>\r\n\r\nstd::cout << \"I AM ALIVE\" << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "I AM ALIVE\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5716
+    },
+    {
+      "id": "cell-9924aeb4-c462-4dee-b498-b80216bab586",
+      "type": "code",
+      "source": "int* ptr = nullptr;\r\n\r\nstd::cout << *ptr << std::endl;",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Runtime Error (exit code 3221225477)",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.64
+    },
+    {
+      "id": "cell-2acfcb2b-2b9e-419a-8180-0b303a8bb78f",
+      "type": "code",
+      "source": "std::cout << \"RECOVERED\" << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "RECOVERED\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5594
+    },
+    {
+      "id": "cell-bd8a0176-b419-4d06-8fc2-e998b6b916c0",
+      "type": "code",
+      "source": "int value = 100;",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5685
+    },
+    {
+      "id": "cell-3d3bb8fc-107c-48d0-8524-20a4d95ced94",
+      "type": "code",
+      "source": "int value = 200;",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\ncppnb_cell_cell_3d3bb8fc_107c_48d0_8524_20a4d95ced94.cpp: In function 'int main()':\nCell 11, line 1, column 13: error: redeclaration of 'int value'\nCell 10, line 1, column 13: note: 'int value' previously declared here\n",
+          "diagnostics": [
+            {
+              "cellId": "cell-3d3bb8fc-107c-48d0-8524-20a4d95ced94",
+              "line": 1,
+              "column": 13,
+              "severity": "error",
+              "message": "redeclaration of 'int value'",
+              "raw": "cppnb_cell_cell_3d3bb8fc_107c_48d0_8524_20a4d95ced94.cpp:1:13: error: redeclaration of 'int value'"
+            },
+            {
+              "cellId": "cell-bd8a0176-b419-4d06-8fc2-e998b6b916c0",
+              "line": 1,
+              "column": 13,
+              "severity": "note",
+              "message": "'int value' previously declared here",
+              "raw": "cppnb_cell_cell_bd8a0176_b419_4d06_8fc2_e998b6b916c0.cpp:1:13: note: 'int value' previously declared here"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.2978
+    },
+    {
+      "id": "cell-e4a14fa5-4a39-45c7-be48-d24874dda7c3",
+      "type": "code",
+      "source": "std::cout << \"CELL 3 WORKS\" << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "CELL 3 WORKS\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5842
+    },
+    {
+      "id": "cell-53743978-ed6d-4f4f-a816-573e27139bac",
+      "type": "code",
+      "source": "class Student {\r\npublic:\r\n    void hello() {\r\n        std::cout << \"Hello\"\r\n    }\r\n};",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\ncppnb_cell_cell_53743978_ed6d_4f4f_a816_573e27139bac.cpp: In member function 'void Student::hello()':\nCell 13, line 5, column 5: error: expected ';' before '}' token\n",
+          "diagnostics": [
+            {
+              "cellId": "cell-53743978-ed6d-4f4f-a816-573e27139bac",
+              "line": 5,
+              "column": 5,
+              "severity": "error",
+              "message": "expected ';' before '}' token",
+              "raw": "cppnb_cell_cell_53743978_ed6d_4f4f_a816_573e27139bac.cpp:5:5: error: expected ';' before '}' token"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.2891
+    },
+    {
+      "id": "cell-06c2a9a2-a92e-4000-883e-7b34a5156bbf",
+      "type": "code",
+      "source": "std::cout << \"INDEPENDENT CELL\" << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "INDEPENDENT CELL\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5679
+    },
+    {
+      "id": "cell-8e8d4ecc-1ba5-437f-9b54-b8f778da288b",
+      "type": "code",
+      "source": "#include <iostream>\r\n#include <string>\r\n\r\nclass Person {\r\npublic:\r\n    std::string name;\r\n\r\n    Person(const std::string& n) : name(n) {}\r\n};\r\n\r\nPerson p(\"CppBook\");",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5989
+    },
+    {
+      "id": "cell-9dc3c89d-777c-4fa8-b70b-8bb882f28012",
+      "type": "code",
+      "source": "int broken = ;",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\ncppnb_cell_cell_9dc3c89d_777c_4fa8_b70b_8bb882f28012.cpp: In function 'int main()':\nCell 16, line 1, column 22: error: expected primary-expression before ';' token\n",
+          "diagnostics": [
+            {
+              "cellId": "cell-9dc3c89d-777c-4fa8-b70b-8bb882f28012",
+              "line": 1,
+              "column": 22,
+              "severity": "error",
+              "message": "expected primary-expression before ';' token",
+              "raw": "cppnb_cell_cell_9dc3c89d_777c_4fa8_b70b_8bb882f28012.cpp:1:22: error: expected primary-expression before ';' token"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.29
+    },
+    {
+      "id": "cell-1a3d4b65-7975-49cf-b9bf-338c2b3b39bd",
+      "type": "code",
+      "source": "p.name += \" Works\";\r\n\r\nstd::cout << p.name << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "CppBook Works\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5891
+    },
+    {
+      "id": "cell-493b6772-ebbc-46c3-895f-53eca5cd92f6",
+      "type": "code",
+      "source": "int x = 42;",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\ncppnb_cell_cell_493b6772_ebbc_46c3_895f_53eca5cd92f6.cpp: In function 'int main()':\nCell 18, line 1, column 13: error: redeclaration of 'int x'\nCell 3, line 1, column 13: note: 'int x' previously declared here\n",
+          "diagnostics": [
+            {
+              "cellId": "cell-493b6772-ebbc-46c3-895f-53eca5cd92f6",
+              "line": 1,
+              "column": 13,
+              "severity": "error",
+              "message": "redeclaration of 'int x'",
+              "raw": "cppnb_cell_cell_493b6772_ebbc_46c3_895f_53eca5cd92f6.cpp:1:13: error: redeclaration of 'int x'"
+            },
+            {
+              "cellId": "cell-a1c0e5bb-c386-4410-849b-656831bfdf66",
+              "line": 1,
+              "column": 13,
+              "severity": "note",
+              "message": "'int x' previously declared here",
+              "raw": "cppnb_cell_cell_a1c0e5bb_c386_4410_849b_656831bfdf66.cpp:1:13: note: 'int x' previously declared here"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.3034
+    },
+    {
+      "id": "cell-852ed9bb-81ef-480c-a7d7-2076b4f12236",
+      "type": "code",
+      "source": "while (true) {\r\n}",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Execution stopped before completion.",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": null,
+      "status": "stopped",
+      "executionTime": 8.7885
+    },
+    {
+      "id": "cell-ef90d8fc-134e-4852-a32c-715bafb9c60a",
+      "type": "code",
+      "source": "std::cout << x << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "10\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5876
+    },
+    {
+      "id": "cell-3c156294-999c-4af8-aec5-47733fa87b91",
+      "type": "code",
+      "source": "#include <iostream>\r\n#include <string>\r\n\r\nint main() {\r\n    // Use std::string because the compiler does not support std::string_view.\r\n    const std::string message = \"C++17 WORKS\";\r\n\r\n    std::cout << \"Message: \" << message << '\\n';\r\n    std::cout << \"Length: \" << message.size() << '\\n';\r\n\r\n    // Demonstrate taking a substring (creates a new std::string).\r\n    const std::string sub = message.substr(0, 4);\r\n    std::cout << \"Substring: \" << sub << '\\n';\r\n\r\n    return 0;\r\n}\r\n",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Message: C++17 WORKS\nLength: 11\nSubstring: C++1\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": 0.8134
+    },
+    {
+      "id": "cell-47387c0d-aabf-4d48-aef6-06b2a884128f",
+      "type": "code",
+      "source": "#include <iostream>\r\n\r\nint main() {\r\n    std::cout << __cplusplus << std::endl;\r\n    std::cout << __VERSION__ << std::endl;\r\n}",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "201500\n6.3.0\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5982
+    },
+    {
+      "id": "cell-f0847a5d-1cba-482c-890b-744da8e29925",
+      "type": "code",
+      "source": "",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

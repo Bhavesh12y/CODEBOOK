@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "id": "wfsd",
+  "metadata": {
+    "name": "wfsd",
+    "description": "",
+    "createdAt": "2026-08-18T16:28:39.185Z",
+    "updatedAt": "2026-08-21T11:53:45.557310+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-975dd737-b3b8-4d3d-bde7-f0432aa00347",
+      "type": "code",
+      "source": "#include <iostream>\r\n#include <unordered_set>\r\n#include <string>\r\n#include <vector>\r\n#include <fstream>\r\n#include <string_view>\r\n\r\nclass BanSystem {\r\npublic:\r\n    // Ban by string or numeric ID\r\n    void ban(std::string_view id) { bannedUsers_.insert(std::string(id)); }\r\n    void ban(int id)          { ban(std::to_string(id)); }\r\n    void ban(long id)         { ban(std::to_string(id)); }\r\n\r\n    // Unban by string or numeric ID\r\n    void unban(std::string_view id) { bannedUsers_.erase(std::string(id)); }\r\n    void unban(int id)          { unban(std::to_string(id)); }\r\n    void unban(long id)         { unban(std::to_string(id)); }\r\n\r\n    // Check if a user is banned\r\n    bool isBanned(std::string_view id) const {\r\n        return bannedUsers_.find(std::string(id)) != bannedUsers_.end();\r\n    }\r\n\r\n    // List all banned users\r\n    std::vector<std::string> listBanned() const {\r\n        return std::vector<std::string>(bannedUsers_.begin(), bannedUsers_.end());\r\n    }\r\n\r\n    // Persist the ban list to a file (uses std::string path)\r\n    bool save(const std::string& path) const {\r\n        std::ofstream out(path, std::ios::trunc);\r\n        if (!out) return false;\r\n        for (const auto& id : bannedUsers_) out << id << '\\n';\r\n        return true;\r\n    }\r\n\r\n    // Load the ban list from a file (uses std::string path)\r\n    bool load(const std::string& path) {\r\n        std::ifstream in(path);\r\n        if (!in) return false;\r\n        bannedUsers_.clear();\r\n        std::string line;\r\n        while (std::getline(in, line)) {\r\n            if (!line.empty()) bannedUsers_.insert(line);\r\n        }\r\n        return true;\r\n    }\r\n\r\nprivate:\r\n    std::unordered_set<std::string> bannedUsers_;\r\n};\r\n\r\n// The notebook wrapper expects a function named\r\n// __cppbook_user_main_cell_<cell\u2011id>()\r\nint __cppbook_user_main_cell_975dd737_b3b8_4d3d_bde7_f0432aa00347() {\r\n    BanSystem bans;\r\n\r\n    // Example usage\r\n    bans.ban(\"user123\");\r\n    bans.ban(\"alice\");\r\n    bans.ban(42);          // numeric ID\r\n\r\n    std::cout << \"Is user123 banned? \" << (bans.isBanned(\"user123\") ? \"Yes\" : \"No\") << '\\n';\r\n    std::cout << \"Is charlie banned? \" << (bans.isBanned(\"charlie\") ? \"Yes\" : \"No\") << '\\n';\r\n\r\n    std::cout << \"Banned users:\\n\";\r\n    for (const auto& id : bans.listBanned()) {\r\n        std::cout << \" - \" << id << '\\n';\r\n    }\r\n\r\n    bans.unban(\"alice\");\r\n    std::cout << \"After unbanning alice, is alice banned? \"\r\n              << (bans.isBanned(\"alice\") ? \"Yes\" : \"No\") << '\\n';\r\n\r\n    // Persist to disk\r\n    const std::string file = \"banned.txt\";\r\n    if (bans.save(file)) std::cout << \"Ban list saved to \" << file << '\\n';\r\n\r\n    // Load from disk\r\n    BanSystem newBans;\r\n    if (newBans.load(file)) {\r\n        std::cout << \"Loaded ban list from \" << file << \":\\n\";\r\n        for (const auto& id : newBans.listBanned())\r\n            std::cout << \" - \" << id << '\\n';\r\n    }\r\n\r\n    return 0;\r\n}\r\n",
+      "outputs": [],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.1681
+    }
+  ]
+}

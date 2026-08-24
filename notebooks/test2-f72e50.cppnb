@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "id": "test2-f72e50",
+  "metadata": {
+    "name": "test2",
+    "createdAt": "2026-08-16T10:00:04.597Z",
+    "updatedAt": "2026-08-16T10:03:57.643261+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-0b1e3f8d-0e3d-4dc7-abd3-96c861ff906e",
+      "type": "markdown",
+      "source": "# CppBook\nA local C++ notebook with compiled cell execution.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-fa214481-7326-4735-a4ef-11fb1fa056c1",
+      "type": "code",
+      "source": "#include <iostream>\n\nclass BaseEngine {\npublic:\n    virtual void run() {\n        std::cout << \"Base\" << std::endl;\n    }\n\n    virtual ~BaseEngine() = default;\n};",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7568
+    },
+    {
+      "id": "cell-590f51c1-3167-4aff-aad9-3f09084853f1",
+      "type": "code",
+      "source": "class DerivedEngine : public BaseEngine {\npublic:\n    void run() override {\n        std::cout << \"Derived\" << std::endl;\n    }\n};",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.6225
+    },
+    {
+      "id": "cell-3197ac88-b270-4332-a0f2-73063a20f6f6",
+      "type": "code",
+      "source": "BaseEngine* engine = new DerivedEngine();\r\nengine->run();\r\ndelete engine;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Derived\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.6448
+    }
+  ]
+}

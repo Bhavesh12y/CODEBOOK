@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "id": "untitled-668971",
+  "metadata": {
+    "name": "Untitled",
+    "description": "",
+    "createdAt": "2026-08-18T13:59:47.194Z",
+    "updatedAt": "2026-08-18T14:05:37.123790+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-6796584a-1c44-46eb-8291-daf4cace6c5a",
+      "type": "code",
+      "source": "#include <iostream>\n\nint main() {\n    int num1, num2;\n    \n    // Prompt the user for input\n    std::cout << \"Enter two numbers (e.g., 2 3): \";\n    \n    // Read the two inputs from the console\n    if (std::cin >> num1 >> num2) {\n        // Perform basic arithmetic to verify the compiler works\n        int sum = num1 + num2;\n        int diff = num1 - num2;\n        \n        // Output the results\n        std::cout << \"\\n--- Compiler Check Results ---\" << std::endl;\n        std::cout << \"First Number: \" << num1 << std::endl;\n        std::cout << \"Second Number: \" << num2 << std::endl;\n        std::cout << \"Sum (num1 + num2): \" << sum << std::endl;\n        std::cout << \"Difference (num1 - num2): \" << diff << std::endl;\n        std::cout << \"-------------------------------\" << std::endl;\n        std::cout << \"Success: Your C++ compiler is working perfectly!\" << std::endl;\n    } else {\n        std::cout << \"Error: Invalid input provided.\" << std::endl;\n    }\n\n    return 0;\n}\n",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Enter two numbers (e.g., 2 3): \n--- Compiler Check Results ---\nFirst Number: 2\nSecond Number: 3\nSum (num1 + num2): 5\nDifference (num1 - num2): -1\n-------------------------------\nSuccess: Your C++ compiler is working perfectly!\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 2,
+      "status": "success",
+      "executionTime": 0.4985
+    },
+    {
+      "id": "cell-71e5fed4-00f9-42ae-a8f0-2fc4799e046b",
+      "type": "code",
+      "source": "#include <iostream>\r\n#include <vector>\r\n\r\nint main() {\r\n    // Create a vector to store the integers\r\n    std::vector<int> numbers;\r\n    int input_val;\r\n\r\n    std::cout << \"Enter 2 or 3 integers (press Ctrl+D or type a non-number to finish):\\n\";\r\n\r\n    // Loop to read inputs continuously until EOF or invalid input\r\n    while (std::cin >> input_val) {\r\n        numbers.push_back(input_val);\r\n    }\r\n\r\n    // Verify if we actually received any data\r\n    if (numbers.empty()) {\r\n        std::cout << \"No numbers were entered.\\n\";\r\n        return 1;\r\n    }\r\n\r\n    std::cout << \"\\n--- Compiler Vector & Loop Test ---\" << std::endl;\r\n    std::cout << \"Total elements stored: \" << numbers.size() << std::endl;\r\n\r\n    // Use a range-based for loop to print and sum the elements\r\n    int total_sum = 0;\r\n    std::cout << \"Numbers inside the vector: \";\r\n    for (int num : numbers) {\r\n        std::cout << num << \" \";\r\n        total_sum += num;\r\n    }\r\n    std::cout << std::endl;\r\n\r\n    // Output final calculation\r\n    std::cout << \"Sum of all elements: \" << total_sum << std::endl;\r\n    std::cout << \"------------------------------------\" << std::endl;\r\n    std::cout << \"Success: Vector and loops are working!\" << std::endl;\r\n\r\n    return 0;\r\n}\r\n",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Enter 2 or 3 integers (press Ctrl+D or type a non-number to finish):\nNo numbers were entered.\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 3,
+      "status": "success",
+      "executionTime": 0.5606
+    },
+    {
+      "id": "cell-61b469f5-1e83-4e45-adb6-a0db135d8e77",
+      "type": "code",
+      "source": "",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\ncppnb_cell_cell_61b469f5_1e83_4e45_adb6_a0db135d8e77.cpp: In function 'int main()':\nCell 3, line 1, column 28: error: 'numbers' was not declared in this scope\n",
+          "diagnostics": [
+            {
+              "cellId": "cell-61b469f5-1e83-4e45-adb6-a0db135d8e77",
+              "line": 1,
+              "column": 28,
+              "severity": "error",
+              "message": "'numbers' was not declared in this scope",
+              "raw": "cppnb_cell_cell_61b469f5_1e83_4e45_adb6_a0db135d8e77.cpp:1:28: error: 'numbers' was not declared in this scope"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.3017
+    },
+    {
+      "id": "cell-9eaea848-5db7-4fcd-af70-fbbebdadc783",
+      "type": "code",
+      "source": "#include <iostream>\r\n#include <vector>\r\n\r\nusing namespace std;\r\n\r\nint main() {\r\n    // Hardcoded vector with your test numbers (no user input needed)\r\n    vector<int> numbers = {2, 3};\r\n\r\n    cout << \"--- Hardcoded Loop Output Test ---\" << endl;\r\n\r\n    // The single output loop\r\n    int total_sum = 0;\r\n    for (int num : numbers) {\r\n        cout << \"Number: \" << num << endl;\r\n        total_sum += num;\r\n    }\r\n\r\n    cout << \"Total Sum: \" << total_sum << endl;\r\n    cout << \"----------------------------------\" << endl;\r\n    cout << \"Success: Loop executed perfectly without input!\" << endl;\r\n\r\n    return 0;\r\n}\r\n",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "--- Hardcoded Loop Output Test ---\nNumber: 2\nNumber: 3\nTotal Sum: 5\n----------------------------------\nSuccess: Loop executed perfectly without input!\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 4,
+      "status": "success",
+      "executionTime": 0.5809
+    },
+    {
+      "id": "cell-ed7dcd39-4bc4-420d-bf9e-684ef04e9ab6",
+      "type": "code",
+      "source": "#include <iostream>\r\n#include <vector>\r\n\r\nusing namespace std;\r\n\r\n\r\n    vector<int> numbers;\r\n    int quantity;\r\n\r\n    // Ask the user exactly how many items to enter\r\n    cout << \"How many numbers do you want to input? \";\r\n    if (!(cin >> quantity) || quantity <= 0) {\r\n        cout << \"Invalid quantity.\" << endl;\r\n        return 1;\r\n    }\r\n\r\n    // Input loop: Collect exactly the requested amount of numbers\r\n    cout << \"Enter your \" << quantity << \" numbers (e.g., 2 3): \";\r\n    for (int i = 0; i < quantity; ++i) {\r\n        int val;\r\n        cin >> val;\r\n        numbers.push_back(val);\r\n    }\r\n\r\n    cout << \"\\n--- Loop Output Phase ---\" << endl;\r\n\r\n    // Output loop: The single loop displaying the results\r\n    int total_sum = 0;\r\n    for (int num : numbers) {\r\n        cout << \"Processed Value: \" << num << endl;\r\n        total_sum += num;\r\n    }\r\n\r\n    cout << \"Final Sum: \" << total_sum << endl;\r\n    return 0;\r\n\r\n",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "How many numbers do you want to input? Invalid quantity.\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "error",
+      "executionTime": 0.5889
+    }
+  ]
+}

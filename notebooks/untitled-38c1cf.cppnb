@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "id": "untitled-38c1cf",
+  "metadata": {
+    "name": "Untitled",
+    "createdAt": "2026-08-16T09:37:05.682Z",
+    "updatedAt": "2026-08-16T09:37:22.678069+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-cda4dc93-705b-491a-93b7-4d02cfaea6e7",
+      "type": "markdown",
+      "source": "# CppBook\nA local C++ notebook with compiled cell execution.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-b7751bce-c1a4-4cf1-8f66-921cfeb2d6a1",
+      "type": "code",
+      "source": "#include <iostream>\nusing namespace std;\n\nint x = 10;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-6f9fdab8-4f70-4a22-95df-04d4c120de56",
+      "type": "code",
+      "source": "x += 20;\ncout << x;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

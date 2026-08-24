@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "id": "test3-80e513",
+  "metadata": {
+    "name": "TEST3",
+    "createdAt": "2026-08-16T10:06:30.233Z",
+    "updatedAt": "2026-08-16T10:08:19.366652+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-b3cf482b-5006-42cd-9a27-86747f9b4e3a",
+      "type": "markdown",
+      "source": "# CppBook\nA local C++ notebook with compiled cell execution.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-939eb11e-1706-4123-a0e2-cc6ff286aa3d",
+      "type": "code",
+      "source": "int x = 10;",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.3045
+    },
+    {
+      "id": "cell-33ab7c00-cf2a-43e9-ab70-c5adbb504bf0",
+      "type": "code",
+      "source": "std::cout << x << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "10\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5964
+    },
+    {
+      "id": "cell-1c86b81a-76d8-40b9-915a-a700907cbd63",
+      "type": "code",
+      "source": "std::cout << x << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "10\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 3,
+      "status": "success",
+      "executionTime": 0.6047
+    },
+    {
+      "id": "cell-4a4ad6c8-1800-4908-b836-c2f496765db3",
+      "type": "code",
+      "source": "x = 50;\r\nstd::cout << x << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "50\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 2,
+      "status": "success",
+      "executionTime": 0.5997
+    },
+    {
+      "id": "cell-bb020b32-9a17-41bb-a86c-882d796f473b",
+      "type": "code",
+      "source": "std::cout << x << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "50\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.6012
+    }
+  ]
+}

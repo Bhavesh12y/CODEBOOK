@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "id": "data-structures",
+  "metadata": {
+    "name": "Data Structures",
+    "createdAt": "2026-08-16T09:05:04.817491+00:00",
+    "updatedAt": "2026-08-16T09:29:51.199387+00:00"
+  },
+  "cells": [
+    {
+      "id": "data-structures-1",
+      "type": "code",
+      "source": "#include <iostream>\n#include <queue>\n#include <string>\nusing namespace std;",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.4431
+    },
+    {
+      "id": "data-structures-2",
+      "type": "code",
+      "source": "queue<string> tasks;\ntasks.push(\"parse\");\ntasks.push(\"compile\");\ntasks.push(\"run\");",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7745
+    },
+    {
+      "id": "data-structures-3",
+      "type": "code",
+      "source": "int main() {\n    std::cout << \"Success! Local C++ mapping is active!\" << std::endl;\n    return 0;\n}\n",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\nmain.cpp: In function 'int main()':\nmain.cpp:2:5: error: redefinition of 'int main()'\n #include <sstream>\n     ^~~~\nCell 3, line 3, column 5: note: 'int main()' previously defined here\n",
+          "diagnostics": [
+            {
+              "cellId": "data-structures-3",
+              "line": 3,
+              "column": 5,
+              "severity": "note",
+              "message": "'int main()' previously defined here",
+              "raw": "cppnb_cell_data_structures_3.cpp:3:5: note: 'int main()' previously defined here"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.432
+    },
+    {
+      "id": "cell-18231e78-8230-4235-80b9-63d3cdce41b4",
+      "type": "code",
+      "source": "",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

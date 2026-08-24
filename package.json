@@ -1,0 +1,153 @@
+{
+  "name": "cppbook",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:dev\"",
+    "frontend:dev": "vite --config frontend/vite.config.ts --host 127.0.0.1",
+    "backend:dev": "python backend/dev.py",
+    "backend:serve": "python backend/serve.py",
+    "desktop:dev": "npm run build && electron .",
+    "desktop:backend": "node -e \"const fs=require('fs');const v=process.platform==='win32'?'.venv\\\\Scripts\\\\python.exe':'.venv/bin/python';const p=fs.existsSync(v)?v:(process.platform==='win32'?'python':'python3');const n=process.platform==='win32'?'cppbook-backend.exe':'cppbook-backend';require('child_process').execSync(p+' -m PyInstaller backend/serve.py --name '+n.replace(/\\.exe$/,'')+' --onefile --distpath desktop-dist/backend --workpath desktop-dist/pyinstaller-work --specpath desktop-dist',{stdio:'inherit'})\"",
+    "desktop:dist": "npm run build && npm run desktop:backend && electron-builder",
+    "desktop:dist:win": "npm run build && npm run desktop:backend && electron-builder --win",
+    "desktop:dist:linux": "npm run build && npm run desktop:backend && electron-builder --linux",
+    "desktop:dist:mac": "npm run build && npm run desktop:backend && electron-builder --mac",
+    "compiler:check": "powershell -ExecutionPolicy Bypass -File tools\\check-compiler.ps1",
+    "compiler:check:unix": "bash tools/check-compiler.sh",
+    "build": "vite build --config frontend/vite.config.ts",
+    "preview": "vite preview --config frontend/vite.config.ts --host 127.0.0.1",
+    "backend:test": "python backend/run_tests.py",
+    "test": "npm run backend:test && npm run build"
+  },
+  "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "lucide-react": "^0.475.0",
+    "monaco-editor": "^0.52.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^9.0.3",
+    "vite": "^6.1.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.62.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "electron": "^34.3.0",
+    "electron-builder": "^25.1.8",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bhavesh12y/CPPBOOK.git"
+  },
+  "build": {
+    "publish": {
+      "provider": "github"
+    },
+    "appId": "dev.cppbook.app",
+    "productName": "CppBook",
+    "directories": {
+      "output": "installer-release"
+    },
+    "files": [
+      {
+        "from": "dist",
+        "to": "dist",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "electron",
+        "to": "electron",
+        "filter": [
+          "**/*"
+        ]
+      },
+      "package.json",
+      "!**/.pytest_cache/**",
+      "!**/.tmp/**",
+      "!**/desktop-dist/**",
+      "!**/release/**"
+    ],
+    "extraResources": [
+      {
+        "from": "desktop-dist/backend",
+        "to": "backend",
+        "filter": [
+          "cppbook-backend.exe",
+          "cppbook-backend"
+        ]
+      },
+      {
+        "from": "backend",
+        "to": "backend-source",
+        "filter": [
+          "app/**/*",
+          "serve.py"
+        ]
+      },
+      {
+        "from": "notebooks",
+        "to": "notebooks"
+      },
+      {
+        "from": "tools",
+        "to": "tools",
+        "filter": [
+          "check-compiler.*"
+        ]
+      }
+    ],
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "category": "Development"
+    },
+    "mac": {
+      "identity": null,
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "category": "public.app-category.developer-tools"
+    }
+  }
+}

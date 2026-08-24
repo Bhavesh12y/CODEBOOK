@@ -1,0 +1,572 @@
+{
+  "version": 1,
+  "id": "untitled-5e83c4",
+  "metadata": {
+    "name": "Untitled",
+    "description": "",
+    "createdAt": "2026-08-23T08:56:01.525951+00:00",
+    "updatedAt": "2026-08-23T09:01:25.521572+00:00"
+  },
+  "cells": [
+    {
+      "id": "18781327-7dae-405f-a809-487446e71483",
+      "type": "markdown",
+      "source": "# CppBook Regression Test Suite 3\nRun safe cells top-to-bottom. Run explicit-main cells separately.",
+      "outputs": [
+        {
+          "type": "markdown",
+          "text": "# CppBook Regression Test Suite 3\nRun safe cells top-to-bottom. Run explicit-main cells separately.",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.001
+    },
+    {
+      "id": "6ff77db3-e273-4f3f-b9ce-7344408ff96a",
+      "type": "code",
+      "source": "#include <iostream>\nstd::cout << \"SUITE3_START\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "SUITE3_START\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.9363
+    },
+    {
+      "id": "7047127f-f4cf-47db-a8ac-dfe6d820c1c9",
+      "type": "code",
+      "source": "static int counter = 10;\nstd::cout << counter << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "10\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7634
+    },
+    {
+      "id": "e3e4d5cb-89ce-48df-a89b-7d012c817309",
+      "type": "code",
+      "source": "counter += 5;\nstd::cout << counter << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "15\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7192
+    },
+    {
+      "id": "e223546f-45e9-4672-84dc-55657afe22b4",
+      "type": "code",
+      "source": "namespace Data { static int value = 7; }\nstd::cout << Data::value << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "7\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7401
+    },
+    {
+      "id": "704a2e22-7f5d-44dd-885f-b1875d5ba209",
+      "type": "code",
+      "source": "Data::value += 8;\nstd::cout << Data::value << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "15\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7351
+    },
+    {
+      "id": "327d798c-c39b-430e-927f-f23a343ccff1",
+      "type": "code",
+      "source": "class CounterBox { public: static int value; };\nint CounterBox::value = 100;\nstd::cout << CounterBox::value << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "100\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7333
+    },
+    {
+      "id": "2f8ba52f-1a5e-47c1-b7ce-6a95e40ef2d7",
+      "type": "code",
+      "source": "CounterBox::value += 25;\nstd::cout << CounterBox::value << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "125\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7302
+    },
+    {
+      "id": "17694268-bc72-4946-8fd8-5be860f59ad7",
+      "type": "code",
+      "source": "int readCounter() { return counter; }",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7264
+    },
+    {
+      "id": "a6b8b6e6-c3b8-4653-908d-251c12b44b55",
+      "type": "code",
+      "source": "std::cout << readCounter() << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "15\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7317
+    },
+    {
+      "id": "bcd720f5-a754-4a17-813b-d7604e9008f4",
+      "type": "code",
+      "source": "class Calc { public: int multiply(int a,int b); };\nint Calc::multiply(int a,int b){ return a*b; }\nCalc calc;\nstd::cout << calc.multiply(6,7) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "42\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7385
+    },
+    {
+      "id": "8cea3c1d-31f4-4fb3-a17e-cab280f93627",
+      "type": "code",
+      "source": "struct Point { int x,y; };\nPoint operator+(const Point&a,const Point&b){ return {a.x+b.x,a.y+b.y}; }\nPoint p1{2,3}, p2{4,5};\nPoint p3=p1+p2;\nstd::cout << p3.x << \" \" << p3.y << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "6 8\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7221
+    },
+    {
+      "id": "64b3b4b1-8149-4c2b-8d2e-09bf65d23b24",
+      "type": "code",
+      "source": "int choose(int x){return x+1;}\ndouble choose(double x){return x+0.5;}\nstd::cout << choose(10) << \" \" << choose(2.0) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "11 2.5\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7523
+    },
+    {
+      "id": "51eafe7b-3f56-4e35-ac48-a812598576b8",
+      "type": "code",
+      "source": "template<typename T> struct Box { T value; T get() const { return value; } };\nBox<int> bi{42};\nstd::cout << bi.get() << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "42\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.77
+    },
+    {
+      "id": "2ed76098-247b-45ed-acc3-8173243a5961",
+      "type": "code",
+      "source": "class Outer { public: struct Inner { int value; }; };\nOuter::Inner inner{77};\nstd::cout << inner.value << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "77\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7463
+    },
+    {
+      "id": "66e23587-25f3-460f-9fd7-b645989ae86c",
+      "type": "code",
+      "source": "int base=10;\nauto addBase=[base](int x){return base+x;};\nstd::cout << addBase(5) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "15\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7512
+    },
+    {
+      "id": "9e7820a6-463c-49e9-9e2e-ca31a83a6e17",
+      "type": "code",
+      "source": "#include <optional>\nstd::optional<int> maybe=42;\nstd::cout << maybe.value() << \"\\n\";",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\nC:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-h9s29k4p\\main.cpp:5:20: fatal error: optional: No such file or directory\n #include <optional>\n                    ^\ncompilation terminated.\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.2056
+    },
+    {
+      "id": "b9043704-3dae-4fe1-b502-b39d795d2556",
+      "type": "code",
+      "source": "#include <tuple>\nstd::tuple<int,std::string> t{7,\"tuple\"};\nstd::cout << std::get<0>(t) << \" \" << std::get<1>(t) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "7 tuple\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.8573
+    },
+    {
+      "id": "8e9f20eb-fa4b-49cc-bc86-1204cbae627f",
+      "type": "code",
+      "source": "#include <unordered_map>\nstd::unordered_map<std::string,int> counts;\ncounts[\"a\"]=3; counts[\"b\"]=4;\nstd::cout << counts[\"a\"]+counts[\"b\"] << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "7\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.1289
+    },
+    {
+      "id": "ec746c3b-6b14-44bd-a18c-8890ad539317",
+      "type": "code",
+      "source": "#include <vector>\nstatic std::vector<int> dataset{1,2,3};\nstd::cout << dataset.size() << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "3\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.1708
+    },
+    {
+      "id": "68748cd0-febb-428e-be73-044302fc6da1",
+      "type": "code",
+      "source": "dataset.push_back(4); dataset.push_back(5);\nstd::cout << dataset.size() << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "5\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.1509
+    },
+    {
+      "id": "03328d02-840d-45c1-94ce-0b089a33ddd2",
+      "type": "code",
+      "source": "struct Guard { ~Guard(){ std::cout << \"DESTRUCTOR\\n\"; } };\n{ Guard g; std::cout << \"INSIDE\\n\"; }",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "INSIDE\nDESTRUCTOR\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.1875
+    },
+    {
+      "id": "765a329f-f0f5-4527-933d-d2a98b521117",
+      "type": "code",
+      "source": "struct OncePrinter { OncePrinter(){ std::cout << \"INIT_ONCE\\n\"; } };\nstatic OncePrinter oncePrinter;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "INIT_ONCE\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.1391
+    },
+    {
+      "id": "08e65f43-6ecd-49ba-a6a0-807e182dabf0",
+      "type": "code",
+      "source": "std::cout << \"AFTER_INIT\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "AFTER_INIT\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.1785
+    },
+    {
+      "id": "83d2a00d-ddae-49aa-99dc-02014f502713",
+      "type": "code",
+      "source": "int nextValue(){ static int n=0; return ++n; }\nstd::cout << nextValue() << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "1\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.1532
+    },
+    {
+      "id": "a121af15-afa8-4528-b30c-cddfce0321e8",
+      "type": "code",
+      "source": "std::cout << nextValue() << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "2\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.1189
+    },
+    {
+      "id": "b2ea5de2-1784-43c9-ad11-d6f6961d0a56",
+      "type": "code",
+      "source": "int n; std::cin >> n; std::cout << n*n << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "success",
+      "executionTime": 7.3541
+    },
+    {
+      "id": "95620065-6360-47bd-9779-380a853b0e5b",
+      "type": "code",
+      "source": "std::cout << missing_identifier_suite3 << \"\\n\";",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\ncppnb_cell_95620065_6360_47bd_9779_380a853b0e5b.cpp: In function 'int main()':\nCell 28, line 1, column 26: error: 'missing_identifier_suite3' was not declared in this scope\n",
+          "diagnostics": [
+            {
+              "cellId": "95620065-6360-47bd-9779-380a853b0e5b",
+              "line": 1,
+              "column": 26,
+              "severity": "error",
+              "message": "'missing_identifier_suite3' was not declared in this scope",
+              "raw": "cppnb_cell_95620065_6360_47bd_9779_380a853b0e5b.cpp:1:26: error: 'missing_identifier_suite3' was not declared in this scope"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.5487
+    },
+    {
+      "id": "39f71611-6964-49c1-ba5f-0f8a2a16b55d",
+      "type": "code",
+      "source": "int* badPtr=nullptr; std::cout << *badPtr << \"\\n\";",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Runtime Error (exit code 3221225477)",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 1.1223
+    },
+    {
+      "id": "a908db0d-eb90-4392-9156-1f06406bfde3",
+      "type": "code",
+      "source": "#include <iostream>\nint main(){ std::cout << \"SUITE3_MAIN\\n\"; return 0; }",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "SUITE3_MAIN\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.1733
+    },
+    {
+      "id": "3752c422-30f5-4ad5-8776-f9c9d244d35b",
+      "type": "code",
+      "source": "#include <iostream>\nauto main()->int{ std::cout << \"SUITE3_TRAILING_MAIN\\n\"; return 0; }",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "SUITE3_TRAILING_MAIN\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.1183
+    },
+    {
+      "id": "ce2d940a-f9f1-4e8f-8423-27898cb4b8da",
+      "type": "markdown",
+      "source": "# Expected Results\n02 10\n03 15\n04 7\n05 15\n06 100\n07 125\n09 15\n10 42\n11 6 8\n12 11 2.5\n13 42\n14 77\n15 15\n16 42\n17 7 tuple\n18 7\n19 3\n20 5\n21 INSIDE then DESTRUCTOR\n22 INIT_ONCE?\n23 ONLY AFTER_INIT (no repeated INIT_ONCE)\n24 1\n25 2\n26 with input 7 -> 49\n27 expected compile error\n28 expected runtime error/non-zero exit\n29 run separately -> SUITE3_MAIN\n30 run separately -> SUITE3_TRAILING_MAIN\nCritical: explicit static state should persist; ordinary cell variables should remain isolated; static init output must not repeat; diagnostics must point to the correct cell.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-fa507ed9-2d82-455c-b663-dd10dad59063",
+      "type": "code",
+      "source": "#include <iostream>\r\n#include <string>\r\n#include <vector>\r\n\r\nnamespace Math {\r\n\r\n    int add(int a, int b) {\r\n        return a + b;\r\n    }\r\n\r\n    int square(int x) {\r\n        return x * x;\r\n    }\r\n\r\n    namespace Advanced {\r\n\r\n        int cube(int x) {\r\n            return x * x * x;\r\n        }\r\n\r\n    }\r\n}\r\n\r\nnamespace App {\r\n\r\n    std::string name = \"CppBook\";\r\n\r\n    int version = 17;\r\n\r\n    namespace Config {\r\n\r\n        bool enabled = true;\r\n\r\n    }\r\n\r\n    void printInfo() {\r\n        std::cout << name << \" \" << version << \"\\n\";\r\n    }\r\n}\r\n\r\nnamespace Data {\r\n\r\n    struct Student {\r\n        std::string name;\r\n        int age;\r\n\r\n        void print() const {\r\n            std::cout << name << \" \" << age << \"\\n\";\r\n        }\r\n    };\r\n\r\n    std::vector<int> values = {10, 20, 30};\r\n\r\n    int sum() {\r\n        int total = 0;\r\n\r\n        for (int x : values) {\r\n            total += x;\r\n        }\r\n\r\n        return total;\r\n    }\r\n}\r\n\r\n// Namespace alias\r\nnamespace M = Math;\r\n\r\n// using-declarations\r\nusing Math::add;\r\nusing Math::square;\r\nusing Data::Student;\r\n\r\n// using namespace\r\nusing namespace App::Config;\r\n\r\nint main() {\r\n\r\n    std::cout << \"=== BASIC NAMESPACE ===\\n\";\r\n\r\n    std::cout << Math::add(10, 20) << \"\\n\";\r\n    std::cout << Math::square(5) << \"\\n\";\r\n\r\n    std::cout << \"=== NESTED NAMESPACE ===\\n\";\r\n\r\n    std::cout << Math::Advanced::cube(3) << \"\\n\";\r\n\r\n    std::cout << \"=== NAMESPACE ALIAS ===\\n\";\r\n\r\n    std::cout << M::add(7, 8) << \"\\n\";\r\n    std::cout << M::square(6) << \"\\n\";\r\n\r\n    std::cout << \"=== APP NAMESPACE ===\\n\";\r\n\r\n    App::printInfo();\r\n\r\n    std::cout << App::name << \"\\n\";\r\n    std::cout << App::version << \"\\n\";\r\n\r\n    std::cout << \"=== USING DECLARATION ===\\n\";\r\n\r\n    std::cout << add(2, 3) << \"\\n\";\r\n    std::cout << square(4) << \"\\n\";\r\n\r\n    std::cout << \"=== USING NAMESPACE ===\\n\";\r\n\r\n    std::cout << std::boolalpha << enabled << \"\\n\";\r\n\r\n    std::cout << \"=== STRUCT INSIDE NAMESPACE ===\\n\";\r\n\r\n    Student s{\"Bhavesh\", 20};\r\n    s.print();\r\n\r\n    std::cout << \"=== NAMESPACE DATA ===\\n\";\r\n\r\n    std::cout << Data::values.size() << \"\\n\";\r\n    std::cout << Data::sum() << \"\\n\";\r\n\r\n    std::cout << \"=== MODIFY NAMESPACE STATE ===\\n\";\r\n\r\n    Data::values.push_back(40);\r\n\r\n    std::cout << Data::sum() << \"\\n\";\r\n\r\n    std::cout << \"=== FINAL ===\\n\";\r\n\r\n    std::cout << \"NAMESPACE_TEST_PASS\\n\";\r\n\r\n    return 0;\r\n}",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\nC:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-wlx95fh_\\main.cpp:11:17: error: 'App' has not been declared\n using namespace App::Config;\n                 ^~~\nC:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-wlx95fh_\\main.cpp:11:22: error: 'Config' is not a namespace-name\n using namespace App::Config;\n                      ^~~~~~\nC:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-wlx95fh_\\main.cpp:11:28: error: expected namespace-name before ';' token\n using namespace App::Config;\n                            ^\ncppnb_cell_cell_fa507ed9_2d82_455c_b663_dd10dad59063.cpp: In function 'int __cppbook_user_main_cell_fa507ed9_2d82_455c_b663_dd10dad59063()':\nCell 33, line 88, column 18: error: 'M' has not been declared\nCell 33, line 89, column 18: error: 'M' has not been declared\nCell 33, line 100, column 26: error: 'add' was not declared in this scope\nCell 33, line 100, column 26: note: suggested alternative:\nCell 33, line 7, column 9: note: 'Math::add'\nCell 33, line 105, column 36: error: 'enabled' was not declared in this scope\nCell 33, line 105, column 36: note: suggested alternative:\nCell 33, line 32, column 14: note: 'App::Config::enabled'\n",
+          "diagnostics": [
+            {
+              "cellId": "cell-fa507ed9-2d82-455c-b663-dd10dad59063",
+              "line": 88,
+              "column": 18,
+              "severity": "error",
+              "message": "'M' has not been declared",
+              "raw": "cppnb_cell_cell_fa507ed9_2d82_455c_b663_dd10dad59063.cpp:88:18: error: 'M' has not been declared"
+            },
+            {
+              "cellId": "cell-fa507ed9-2d82-455c-b663-dd10dad59063",
+              "line": 89,
+              "column": 18,
+              "severity": "error",
+              "message": "'M' has not been declared",
+              "raw": "cppnb_cell_cell_fa507ed9_2d82_455c_b663_dd10dad59063.cpp:89:18: error: 'M' has not been declared"
+            },
+            {
+              "cellId": "cell-fa507ed9-2d82-455c-b663-dd10dad59063",
+              "line": 100,
+              "column": 26,
+              "severity": "error",
+              "message": "'add' was not declared in this scope",
+              "raw": "cppnb_cell_cell_fa507ed9_2d82_455c_b663_dd10dad59063.cpp:100:26: error: 'add' was not declared in this scope"
+            },
+            {
+              "cellId": "cell-fa507ed9-2d82-455c-b663-dd10dad59063",
+              "line": 100,
+              "column": 26,
+              "severity": "note",
+              "message": "suggested alternative:",
+              "raw": "cppnb_cell_cell_fa507ed9_2d82_455c_b663_dd10dad59063.cpp:100:26: note: suggested alternative:"
+            },
+            {
+              "cellId": "cell-fa507ed9-2d82-455c-b663-dd10dad59063",
+              "line": 7,
+              "column": 9,
+              "severity": "note",
+              "message": "'Math::add'",
+              "raw": "cppnb_cell_cell_fa507ed9_2d82_455c_b663_dd10dad59063.cpp:7:9: note:   'Math::add'"
+            },
+            {
+              "cellId": "cell-fa507ed9-2d82-455c-b663-dd10dad59063",
+              "line": 105,
+              "column": 36,
+              "severity": "error",
+              "message": "'enabled' was not declared in this scope",
+              "raw": "cppnb_cell_cell_fa507ed9_2d82_455c_b663_dd10dad59063.cpp:105:36: error: 'enabled' was not declared in this scope"
+            },
+            {
+              "cellId": "cell-fa507ed9-2d82-455c-b663-dd10dad59063",
+              "line": 105,
+              "column": 36,
+              "severity": "note",
+              "message": "suggested alternative:",
+              "raw": "cppnb_cell_cell_fa507ed9_2d82_455c_b663_dd10dad59063.cpp:105:36: note: suggested alternative:"
+            },
+            {
+              "cellId": "cell-fa507ed9-2d82-455c-b663-dd10dad59063",
+              "line": 32,
+              "column": 14,
+              "severity": "note",
+              "message": "'App::Config::enabled'",
+              "raw": "cppnb_cell_cell_fa507ed9_2d82_455c_b663_dd10dad59063.cpp:32:14: note:   'App::Config::enabled'"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.6078
+    },
+    {
+      "id": "cell-d4d82090-75b6-41d0-b2ab-77ec675c820a",
+      "type": "code",
+      "source": "#include <iostream>\r\n\r\nnamespace TestNS {\r\n    int value = 42;\r\n\r\n    int add(int a, int b) {\r\n        return a + b;\r\n    }\r\n}\r\n\r\nusing namespace TestNS;\r\n\r\nstd::cout << value << \"\\n\";\r\nstd::cout << add(10, 20) << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

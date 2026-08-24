@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "id": "hello-world",
+  "metadata": {
+    "name": "Hello World",
+    "createdAt": "2026-08-16T09:05:04.812833+00:00",
+    "updatedAt": "2026-08-16T09:05:04.813087+00:00"
+  },
+  "cells": [
+    {
+      "id": "hello-world-1",
+      "type": "markdown",
+      "source": "# Hello World\nA minimal C++ notebook.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "hello-world-2",
+      "type": "code",
+      "source": "#include <iostream>\nusing namespace std;\n\ncout << \"Hello from CppBook!\" << endl;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "id": "stl-algorithms",
+  "metadata": {
+    "name": "Stl Algorithms",
+    "createdAt": "2026-08-16T09:05:04.815051+00:00",
+    "updatedAt": "2026-08-16T09:05:04.815135+00:00"
+  },
+  "cells": [
+    {
+      "id": "stl-algorithms-1",
+      "type": "markdown",
+      "source": "# STL Algorithms",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "stl-algorithms-2",
+      "type": "code",
+      "source": "#include <iostream>\n#include <vector>\n#include <algorithm>\n\nstd::vector<int> nums = {5, 2, 8, 1, 9};",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "stl-algorithms-3",
+      "type": "code",
+      "source": "std::sort(nums.begin(), nums.end());",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "stl-algorithms-4",
+      "type": "code",
+      "source": "for (int x : nums) {\n    std::cout << x << \" \";\n}",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "id": "rename-check",
+  "metadata": {
+    "name": "Rename Check",
+    "createdAt": "2026-08-16T09:45:55.217829+00:00",
+    "updatedAt": "2026-08-16T09:45:55.222791+00:00"
+  },
+  "cells": []
+}

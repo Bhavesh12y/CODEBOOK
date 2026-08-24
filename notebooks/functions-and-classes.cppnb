@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "id": "functions-and-classes",
+  "metadata": {
+    "name": "Functions And Classes",
+    "createdAt": "2026-08-16T09:05:04.816225+00:00",
+    "updatedAt": "2026-08-16T09:05:04.816354+00:00"
+  },
+  "cells": [
+    {
+      "id": "functions-and-classes-1",
+      "type": "code",
+      "source": "#include <iostream>\n#include <string>\nusing namespace std;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "functions-and-classes-2",
+      "type": "code",
+      "source": "int square(int value) {\n    return value * value;\n}",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "functions-and-classes-3",
+      "type": "code",
+      "source": "class Person {\npublic:\n    string name;\n    explicit Person(string n) : name(n) {}\n};",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "functions-and-classes-4",
+      "type": "code",
+      "source": "Person user(\"Bhavesh\");\ncout << user.name << \" \" << square(7);",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

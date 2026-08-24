@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "id": "test3",
+  "metadata": {
+    "name": "test3",
+    "createdAt": "2026-08-16T09:59:21.954Z",
+    "updatedAt": "2026-08-16T10:06:21.127564+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-b5296b51-bd5e-4427-9b3c-db2037bdfce1",
+      "type": "markdown",
+      "source": "# CppBook\nA local C++ notebook with compiled cell execution.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-a92b34ee-14e0-4514-b45e-4b9817587edb",
+      "type": "code",
+      "source": "#include <iostream>\n\nstd::cout << \"Hello CppBook!\" << std::endl;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-9f4373bb-f180-4ac4-a724-de9297c0af08",
+      "type": "code",
+      "source": "x += 20;\ncout << x;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

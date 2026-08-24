@@ -1,0 +1,1036 @@
+{
+  "version": 1,
+  "id": "untitled-0e3a3c",
+  "metadata": {
+    "name": "Untitled",
+    "description": "Manual black-box test suite for CppBook C++ notebook execution.",
+    "createdAt": "2026-08-23T05:34:38.676894+00:00",
+    "updatedAt": "2026-08-23T06:09:20.590129+00:00"
+  },
+  "cells": [
+    {
+      "id": "d96fee46-b52e-4e26-8ca1-e8d973d9b5f9",
+      "type": "markdown",
+      "source": "# CppBook Manual Test Suite\nRun cells top-to-bottom. Check actual output against the expected result in each Markdown heading.\n",
+      "outputs": [
+        {
+          "type": "markdown",
+          "text": "# CppBook Manual Test Suite\nRun cells top-to-bottom. Check actual output against the expected result in each Markdown heading.\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.001
+    },
+    {
+      "id": "ad065ddc-ea0a-43dc-ac8a-324b01d5c8df",
+      "type": "code",
+      "source": "#include <iostream>\nstd::cout << \"TEST 01 PASS\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "TEST 01 PASS\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.8156
+    },
+    {
+      "id": "2e74f18b-1102-43fd-adcf-5e2ff04b8954",
+      "type": "code",
+      "source": "int a = 10;\nint b = 20;\nstd::cout << (a + b) * 2 << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "60\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7435
+    },
+    {
+      "id": "7079e99c-ccf6-443b-b5cb-25075c52a13d",
+      "type": "code",
+      "source": "int x = 7;\nif (x > 5) std::cout << \"IF PASS\\n\";\nelse std::cout << \"IF FAIL\\n\";\n\nfor (int i = 1; i <= 5; ++i) std::cout << i << \" \";\nstd::cout << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "IF PASS\n1 2 3 4 5 \n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.6879
+    },
+    {
+      "id": "4c0eaaf1-63d8-4343-9d40-4d54b8ade475",
+      "type": "code",
+      "source": "int i = 0;\nwhile (i < 3) {\n    std::cout << i << \" \";\n    ++i;\n}\nstd::cout << \"\\n\";\n\nint j = 0;\ndo {\n    std::cout << j << \" \";\n    ++j;\n} while (j < 3);\nstd::cout << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "0 1 2 \n0 1 2 \n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.712
+    },
+    {
+      "id": "8eb89e28-2b16-44ec-97ff-94fabcf1cb4a",
+      "type": "code",
+      "source": "int sum = 0;\nfor (int i = 1; i <= 10; ++i) {\n    if (i == 5) continue;\n    if (i == 8) break;\n    sum += i;\n}\nstd::cout << sum << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "23\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7446
+    },
+    {
+      "id": "de9842d4-27c5-478c-8b47-bfccba64fcf9",
+      "type": "code",
+      "source": "int add(int a, int b) {\n    return a + b;\n}\nstd::cout << add(12, 30) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "42\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7445
+    },
+    {
+      "id": "30399f5c-04aa-4abe-b318-804530e3ff90",
+      "type": "code",
+      "source": "int factorial(int n) {\n    if (n <= 1) return 1;\n    return n * factorial(n - 1);\n}\nstd::cout << factorial(5) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "120\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.718
+    },
+    {
+      "id": "615ae757-2638-481d-a1dc-8a3818a0f0b0",
+      "type": "code",
+      "source": "int arr[] = {10, 20, 30, 40, 50};\nfor (int value : arr) std::cout << value << \" \";\nstd::cout << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "10 20 30 40 50 \n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.7755
+    },
+    {
+      "id": "0c7db107-13be-45a3-b4bb-7112462ee773",
+      "type": "code",
+      "source": "#include <string>\nstd::string name = \"CppBook\";\nstd::cout << name + \" TEST\" << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "CppBook TEST\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.752
+    },
+    {
+      "id": "c5a6b524-3f92-4846-a4dc-b485c2c9a45c",
+      "type": "code",
+      "source": "#include <vector>\nstd::vector<int> v = {1, 2, 3};\nv.push_back(4);\nv.push_back(5);\nfor (int x : v) std::cout << x << \" \";\nstd::cout << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "1 2 3 4 5 \n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.016
+    },
+    {
+      "id": "069026ef-1467-4895-ae4f-286d41629a14",
+      "type": "code",
+      "source": "#include <map>\n#include <set>\nstd::map<std::string, int> m{{\"A\", 10}, {\"B\", 20}};\nstd::set<int> s{3, 1, 2};\nstd::cout << m[\"A\"] + m[\"B\"] << \"\\n\";\nfor (int x : s) std::cout << x << \" \";\nstd::cout << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "30\n1 2 3 \n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.4086
+    },
+    {
+      "id": "6e6ccfd4-4728-43f3-831d-d5a1cb56825a",
+      "type": "code",
+      "source": "#include <stack>\n#include <queue>\nstd::stack<int> st;\nst.push(10); st.push(20);\nstd::queue<int> q;\nq.push(30); q.push(40);\nstd::cout << st.top() << \" \" << q.front() << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "20 30\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.5356
+    },
+    {
+      "id": "4adb0e27-b517-4dd6-926e-42c6f681baf2",
+      "type": "code",
+      "source": "int value = 42;\nint* ptr = &value;\nint& ref = value;\n*ptr = 50;\nref += 2;\nstd::cout << value << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "52\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.3245
+    },
+    {
+      "id": "2d96cacd-4074-4da4-9c10-affeb4d27c7b",
+      "type": "code",
+      "source": "struct Student {\n    int age;\n    std::string name;\n};\nStudent s{20, \"Test\"};\nstd::cout << s.name << \" \" << s.age << \"\\n\";",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\nCell 14, line 5, column 9: error: conflicting declaration 'Student s'\nCell 11, line 4, column 15: note: previous declaration as 'std::set<int> s'\ncppnb_cell_2d96cacd_4074_4da4_9c10_affeb4d27c7b.cpp: In function 'int main()':\nCell 14, line 6, column 24: error: 'class std::set<int>' has no member named 'name'\nCell 14, line 6, column 41: error: 'class std::set<int>' has no member named 'age'\n",
+          "diagnostics": [
+            {
+              "cellId": "2d96cacd-4074-4da4-9c10-affeb4d27c7b",
+              "line": 5,
+              "column": 9,
+              "severity": "error",
+              "message": "conflicting declaration 'Student s'",
+              "raw": "cppnb_cell_2d96cacd_4074_4da4_9c10_affeb4d27c7b.cpp:5:9: error: conflicting declaration 'Student s'"
+            },
+            {
+              "cellId": "069026ef-1467-4895-ae4f-286d41629a14",
+              "line": 4,
+              "column": 15,
+              "severity": "note",
+              "message": "previous declaration as 'std::set<int> s'",
+              "raw": "cppnb_cell_069026ef_1467_4895_ae4f_286d41629a14.cpp:4:15: note: previous declaration as 'std::set<int> s'"
+            },
+            {
+              "cellId": "2d96cacd-4074-4da4-9c10-affeb4d27c7b",
+              "line": 6,
+              "column": 24,
+              "severity": "error",
+              "message": "'class std::set<int>' has no member named 'name'",
+              "raw": "cppnb_cell_2d96cacd_4074_4da4_9c10_affeb4d27c7b.cpp:6:24: error: 'class std::set<int>' has no member named 'name'"
+            },
+            {
+              "cellId": "2d96cacd-4074-4da4-9c10-affeb4d27c7b",
+              "line": 6,
+              "column": 41,
+              "severity": "error",
+              "message": "'class std::set<int>' has no member named 'age'",
+              "raw": "cppnb_cell_2d96cacd_4074_4da4_9c10_affeb4d27c7b.cpp:6:41: error: 'class std::set<int>' has no member named 'age'"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.5815
+    },
+    {
+      "id": "da42b468-1e97-4c6a-969a-3aa5050f51ca",
+      "type": "code",
+      "source": "class Calculator {\n    int base;\npublic:\n    Calculator(int b) : base(b) {}\n    int add(int x) { return base + x; }\n};\nCalculator c(10);\nstd::cout << c.add(32) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "42\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.4031
+    },
+    {
+      "id": "be4f6fac-a6c6-42c4-8398-1675c721801a",
+      "type": "code",
+      "source": "class Base {\npublic:\n    virtual const char* name() { return \"BASE\"; }\n    virtual ~Base() = default;\n};\nclass Derived : public Base {\npublic:\n    const char* name() override { return \"DERIVED\"; }\n};\nDerived d;\nBase* p = &d;\nstd::cout << p->name() << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "DERIVED\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.3267
+    },
+    {
+      "id": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+      "type": "code",
+      "source": "enum class Color { Red, Green, Blue };\nColor c = Color::Green;\nstd::cout << (c == Color::Green) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\nCell 18, line 2, column 7: error: conflicting declaration 'Color c'\nCell 16, line 7, column 12: note: previous declaration as 'Calculator c'\ncppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp: In function 'int main()':\nCell 18, line 3, column 25: error: no match for 'operator==' (operand types are 'Calculator' and 'Color')\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iosfwd:40:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\postypes.h:216:5: note: candidate: template<class _StateT> bool std::operator==(const std::fpos<_StateT>&, const std::fpos<_StateT>&)\n     operator==(const fpos<_StateT>& __lhs, const fpos<_StateT>& __rhs)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\postypes.h:216:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::fpos<_StateT>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_algobase.h:64:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\char_traits.h:39,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:40,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_pair.h:431:5: note: candidate: template<class _T1, class _T2> constexpr bool std::operator==(const std::pair<_T1, _T2>&, const std::pair<_T1, _T2>&)\n     operator==(const pair<_T1, _T2>& __x, const pair<_T1, _T2>& __y)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_pair.h:431:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::pair<_T1, _T2>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_algobase.h:67:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\char_traits.h:39,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:40,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_iterator.h:292:5: note: candidate: template<class _Iterator> bool std::operator==(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)\n     operator==(const reverse_iterator<_Iterator>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_iterator.h:292:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::reverse_iterator<_Iterator>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_algobase.h:67:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\char_traits.h:39,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:40,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_iterator.h:349:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator==(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)\n     operator==(const reverse_iterator<_IteratorL>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_iterator.h:349:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::reverse_iterator<_Iterator>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_algobase.h:67:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\char_traits.h:39,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:40,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_iterator.h:1113:5: note: candidate: template<class _IteratorL, class _IteratorR> bool std::operator==(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)\n     operator==(const move_iterator<_IteratorL>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_iterator.h:1113:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::move_iterator<_IteratorL>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_algobase.h:67:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\char_traits.h:39,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:40,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_iterator.h:1119:5: note: candidate: template<class _Iterator> bool std::operator==(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)\n     operator==(const move_iterator<_Iterator>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_iterator.h:1119:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::move_iterator<_IteratorL>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\string:41:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\locale_classes.h:40,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ios_base.h:41,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:42,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\allocator.h:146:5: note: candidate: template<class _T1, class _T2> bool std::operator==(const std::allocator<_CharT>&, const std::allocator<_T2>&)\n     operator==(const allocator<_T1>&, const allocator<_T2>&)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\allocator.h:146:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::allocator<_CharT>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\string:41:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\locale_classes.h:40,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ios_base.h:41,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:42,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\allocator.h:152:5: note: candidate: template<class _Tp> bool std::operator==(const std::allocator<_CharT>&, const std::allocator<_CharT>&)\n     operator==(const allocator<_Tp>&, const allocator<_Tp>&)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\allocator.h:152:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::allocator<_CharT>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\string:52:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\locale_classes.h:40,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ios_base.h:41,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:42,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\basic_string.h:5050:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)\n     operator==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\basic_string.h:5050:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\string:52:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\locale_classes.h:40,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ios_base.h:41,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:42,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\basic_string.h:5058:5: note: candidate: template<class _CharT> typename __gnu_cxx::__enable_if<std::__is_char<_Tp>::__value, bool>::__type std::operator==(const std::__cxx11::basic_string<_CharT>&, const std::__cxx11::basic_string<_CharT>&)\n     operator==(const basic_string<_CharT>& __lhs,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\basic_string.h:5058:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::__cxx11::basic_string<_CharT>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\string:52:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\locale_classes.h:40,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ios_base.h:41,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:42,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\basic_string.h:5072:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)\n     operator==(const _CharT* __lhs,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\basic_string.h:5072:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: mismatched types 'const _CharT*' and 'Calculator'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\string:52:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\locale_classes.h:40,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ios_base.h:41,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:42,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\basic_string.h:5084:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> bool std::operator==(const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&, const _CharT*)\n     operator==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\basic_string.h:5084:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ios_base.h:46:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:42,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\system_error:284:3: note: candidate: bool std::operator==(const std::error_code&, const std::error_code&)\n   operator==(const error_code& __lhs, const error_code& __rhs) noexcept\n   ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\system_error:284:3: note:   no known conversion for argument 1 from 'Calculator' to 'const std::error_code&'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\system_error:289:3: note: candidate: bool std::operator==(const std::error_code&, const std::error_condition&)\n   operator==(const error_code& __lhs, const error_condition& __rhs) noexcept\n   ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\system_error:289:3: note:   no known conversion for argument 1 from 'Calculator' to 'const std::error_code&'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\system_error:296:3: note: candidate: bool std::operator==(const std::error_condition&, const std::error_code&)\n   operator==(const error_condition& __lhs, const error_code& __rhs) noexcept\n   ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\system_error:296:3: note:   no known conversion for argument 1 from 'Calculator' to 'const std::error_condition&'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\system_error:303:3: note: candidate: bool std::operator==(const std::error_condition&, const std::error_condition&)\n   operator==(const error_condition& __lhs,\n   ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\system_error:303:3: note:   no known conversion for argument 1 from 'Calculator' to 'const std::error_condition&'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\locale_facets.h:48:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\basic_ios.h:37,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:44,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\streambuf_iterator.h:204:5: note: candidate: template<class _CharT, class _Traits> bool std::operator==(const std::istreambuf_iterator<_CharT, _Traits>&, const std::istreambuf_iterator<_CharT, _Traits>&)\n     operator==(const istreambuf_iterator<_CharT, _Traits>& __a,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\streambuf_iterator.h:204:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::istreambuf_iterator<_CharT, _Traits>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\vector:64:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:6:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_vector.h:1509:5: note: candidate: template<class _Tp, class _Alloc> bool std::operator==(const std::vector<_Tp, _Alloc>&, const std::vector<_Tp, _Alloc>&)\n     operator==(const vector<_Tp, _Alloc>& __x, const vector<_Tp, _Alloc>& __y)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_vector.h:1509:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::vector<_Tp, _Alloc>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\map:60:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:7:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_tree.h:328:5: note: candidate: template<class _Val> bool std::operator==(const std::_Rb_tree_iterator<_Tp>&, const std::_Rb_tree_const_iterator<_Val>&)\n     operator==(const _Rb_tree_iterator<_Val>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_tree.h:328:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::_Rb_tree_iterator<_Tp>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\map:60:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:7:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_tree.h:1282:5: note: candidate: template<class _Key, class _Val, class _KeyOfValue, class _Compare, class _Alloc> bool std::operator==(const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&, const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>&)\n     operator==(const _Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_tree.h:1282:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\tuple:39:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_map.h:63,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\map:61,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:7:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\array:241:5: note: candidate: template<class _Tp, unsigned int _Nm> bool std::operator==(const std::array<_Tp, _Nm>&, const std::array<_Tp, _Nm>&)\n     operator==(const array<_Tp, _Nm>& __one, const array<_Tp, _Nm>& __two)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\array:241:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::array<_Tp, _Nm>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_map.h:63:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\map:61,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:7:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\tuple:1337:5: note: candidate: template<class ... _TElements, class ... _UElements> constexpr bool std::operator==(const std::tuple<_Args1 ...>&, const std::tuple<_Args2 ...>&)\n     operator==(const tuple<_TElements...>& __t,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\tuple:1337:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::tuple<_Args1 ...>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\map:61:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:7:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_map.h:1307:5: note: candidate: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator==(const std::map<_Key, _Tp, _Compare, _Alloc>&, const std::map<_Key, _Tp, _Compare, _Alloc>&)\n     operator==(const map<_Key, _Tp, _Compare, _Alloc>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_map.h:1307:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::map<_Key, _Tp, _Compare, _Alloc>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\map:62:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:7:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_multimap.h:972:5: note: candidate: template<class _Key, class _Tp, class _Compare, class _Alloc> bool std::operator==(const std::multimap<_Key, _Tp, _Compare, _Alloc>&, const std::multimap<_Key, _Tp, _Compare, _Alloc>&)\n     operator==(const multimap<_Key, _Tp, _Compare, _Alloc>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_multimap.h:972:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::multimap<_Key, _Tp, _Compare, _Alloc>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\set:61:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:8:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_set.h:840:5: note: candidate: template<class _Key, class _Compare, class _Alloc> bool std::operator==(const std::set<_Key, _Compare, _Alloc>&, const std::set<_Key, _Compare, _Alloc>&)\n     operator==(const set<_Key, _Compare, _Alloc>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_set.h:840:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::set<_Key, _Compare, _Alloc>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\set:62:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:8:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_multiset.h:823:5: note: candidate: template<class _Key, class _Compare, class _Alloc> bool std::operator==(const std::multiset<_Key, _Compare, _Alloc>&, const std::multiset<_Key, _Compare, _Alloc>&)\n     operator==(const multiset<_Key, _Compare, _Alloc>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_multiset.h:823:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::multiset<_Key, _Compare, _Alloc>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\deque:64:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\stack:60,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:9:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_deque.h:265:5: note: candidate: template<class _Tp, class _Ref, class _Ptr> bool std::operator==(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _Ref, _Ptr>&)\n     operator==(const _Deque_iterator<_Tp, _Ref, _Ptr>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_deque.h:265:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::_Deque_iterator<_Tp, _Ref, _Ptr>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\deque:64:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\stack:60,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:9:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_deque.h:272:5: note: candidate: template<class _Tp, class _RefL, class _PtrL, class _RefR, class _PtrR> bool std::operator==(const std::_Deque_iterator<_Tp, _Ref, _Ptr>&, const std::_Deque_iterator<_Tp, _RefR, _PtrR>&)\n     operator==(const _Deque_iterator<_Tp, _RefL, _PtrL>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_deque.h:272:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::_Deque_iterator<_Tp, _Ref, _Ptr>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\deque:64:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\stack:60,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:9:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_deque.h:2220:5: note: candidate: template<class _Tp, class _Alloc> bool std::operator==(const std::deque<_Tp, _Alloc>&, const std::deque<_Tp, _Alloc>&)\n     operator==(const deque<_Tp, _Alloc>& __x,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_deque.h:2220:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::deque<_Tp, _Alloc>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\stack:61:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:9:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_stack.h:275:5: note: candidate: template<class _Tp, class _Seq> bool std::operator==(const std::stack<_Tp, _Seq>&, const std::stack<_Tp, _Seq>&)\n     operator==(const stack<_Tp, _Seq>& __x, const stack<_Tp, _Seq>& __y)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_stack.h:275:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::stack<_Tp, _Seq>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\queue:64:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-_jcvgur4\\main.cpp:10:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_queue.h:298:5: note: candidate: template<class _Tp, class _Seq> bool std::operator==(const std::queue<_Tp, _Seq>&, const std::queue<_Tp, _Seq>&)\n     operator==(const queue<_Tp, _Seq>& __x, const queue<_Tp, _Seq>& __y)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\stl_queue.h:298:5: note:   template argument deduction/substitution failed:\nCell 18, line 3, column 35: note: 'Calculator' is not derived from 'const std::queue<_Tp, _Seq>'\n",
+          "diagnostics": [
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 2,
+              "column": 7,
+              "severity": "error",
+              "message": "conflicting declaration 'Color c'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:2:7: error: conflicting declaration 'Color c'"
+            },
+            {
+              "cellId": "da42b468-1e97-4c6a-969a-3aa5050f51ca",
+              "line": 7,
+              "column": 12,
+              "severity": "note",
+              "message": "previous declaration as 'Calculator c'",
+              "raw": "cppnb_cell_da42b468_1e97_4c6a_969a_3aa5050f51ca.cpp:7:12: note: previous declaration as 'Calculator c'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 25,
+              "severity": "error",
+              "message": "no match for 'operator==' (operand types are 'Calculator' and 'Color')",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:25: error: no match for 'operator==' (operand types are 'Calculator' and 'Color')"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::fpos<_StateT>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::fpos<_StateT>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::pair<_T1, _T2>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::pair<_T1, _T2>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::reverse_iterator<_Iterator>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::reverse_iterator<_Iterator>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::reverse_iterator<_Iterator>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::reverse_iterator<_Iterator>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::move_iterator<_IteratorL>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::move_iterator<_IteratorL>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::move_iterator<_IteratorL>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::move_iterator<_IteratorL>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::allocator<_CharT>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::allocator<_CharT>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::allocator<_CharT>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::allocator<_CharT>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::__cxx11::basic_string<_CharT>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::__cxx11::basic_string<_CharT>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "mismatched types 'const _CharT*' and 'Calculator'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   mismatched types 'const _CharT*' and 'Calculator'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::istreambuf_iterator<_CharT, _Traits>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::istreambuf_iterator<_CharT, _Traits>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::vector<_Tp, _Alloc>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::vector<_Tp, _Alloc>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::_Rb_tree_iterator<_Tp>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::_Rb_tree_iterator<_Tp>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::_Rb_tree<_Key, _Val, _KeyOfValue, _Compare, _Alloc>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::array<_Tp, _Nm>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::array<_Tp, _Nm>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::tuple<_Args1 ...>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::tuple<_Args1 ...>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::map<_Key, _Tp, _Compare, _Alloc>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::map<_Key, _Tp, _Compare, _Alloc>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::multimap<_Key, _Tp, _Compare, _Alloc>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::multimap<_Key, _Tp, _Compare, _Alloc>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::set<_Key, _Compare, _Alloc>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::set<_Key, _Compare, _Alloc>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::multiset<_Key, _Compare, _Alloc>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::multiset<_Key, _Compare, _Alloc>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::_Deque_iterator<_Tp, _Ref, _Ptr>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::_Deque_iterator<_Tp, _Ref, _Ptr>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::_Deque_iterator<_Tp, _Ref, _Ptr>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::_Deque_iterator<_Tp, _Ref, _Ptr>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::deque<_Tp, _Alloc>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::deque<_Tp, _Alloc>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::stack<_Tp, _Seq>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::stack<_Tp, _Seq>'"
+            },
+            {
+              "cellId": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+              "line": 3,
+              "column": 35,
+              "severity": "note",
+              "message": "'Calculator' is not derived from 'const std::queue<_Tp, _Seq>'",
+              "raw": "cppnb_cell_65dcc47e_4f38_413e_87eb_11bea5865cd3.cpp:3:35: note:   'Calculator' is not derived from 'const std::queue<_Tp, _Seq>'"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.6017
+    },
+    {
+      "id": "6217fa1b-104a-4579-b126-d28762677189",
+      "type": "code",
+      "source": "namespace Demo {\n    int value = 99;\n    int twice(int x) { return x * 2; }\n}\nstd::cout << Demo::value << \" \" << Demo::twice(21) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "99 42\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.3307
+    },
+    {
+      "id": "a8cc3744-1f2d-4b84-8892-ce8facaaa6c7",
+      "type": "code",
+      "source": "template <typename T>\nT multiply(T a, T b) {\n    return a * b;\n}\nstd::cout << multiply(6, 7) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "42\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.2999
+    },
+    {
+      "id": "fb74314f-9b65-484d-97c3-1efb667bf616",
+      "type": "code",
+      "source": "auto square = [](int x) { return x * x; };\nstd::cout << square(9) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "81\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.3254
+    },
+    {
+      "id": "3bcbcaf5-f961-4927-9224-f10bee76eb62",
+      "type": "code",
+      "source": "#include <algorithm>\n#include <numeric>\n#include <vector>\nstd::vector<int> v{5, 1, 4, 2, 3};\nstd::sort(v.begin(), v.end());\nstd::cout << std::accumulate(v.begin(), v.end(), 0) << \"\\n\";\nstd::cout << *std::find(v.begin(), v.end(), 4) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\nCell 21, line 4, column 18: error: redefinition of 'std::vector<int> v'\nCell 10, line 2, column 18: note: 'std::vector<int> v' previously declared here\nCell 21, line 5, column 10: error: expected constructor, destructor, or type conversion before '(' token\n",
+          "diagnostics": [
+            {
+              "cellId": "3bcbcaf5-f961-4927-9224-f10bee76eb62",
+              "line": 4,
+              "column": 18,
+              "severity": "error",
+              "message": "redefinition of 'std::vector<int> v'",
+              "raw": "cppnb_cell_3bcbcaf5_f961_4927_9224_f10bee76eb62.cpp:4:18: error: redefinition of 'std::vector<int> v'"
+            },
+            {
+              "cellId": "c5a6b524-3f92-4846-a4dc-b485c2c9a45c",
+              "line": 2,
+              "column": 18,
+              "severity": "note",
+              "message": "'std::vector<int> v' previously declared here",
+              "raw": "cppnb_cell_c5a6b524_3f92_4846_a4dc_b485c2c9a45c.cpp:2:18: note: 'std::vector<int> v' previously declared here"
+            },
+            {
+              "cellId": "3bcbcaf5-f961-4927-9224-f10bee76eb62",
+              "line": 5,
+              "column": 10,
+              "severity": "error",
+              "message": "expected constructor, destructor, or type conversion before '(' token",
+              "raw": "cppnb_cell_3bcbcaf5_f961_4927_9224_f10bee76eb62.cpp:5:10: error: expected constructor, destructor, or type conversion before '(' token"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.7136
+    },
+    {
+      "id": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+      "type": "code",
+      "source": "#include <memory>\nauto p = std::make_unique<int>(42);\nauto q = std::make_shared<int>(99);\nstd::cout << *p << \" \" << *q << \"\\n\";",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\nCell 22, line 2, column 6: error: conflicting declaration 'auto p'\nCell 16, line 11, column 7: note: previous declaration as 'Base* p'\nCell 22, line 3, column 6: error: conflicting declaration 'auto q'\nCell 12, line 5, column 17: note: previous declaration as 'std::queue<int> q'\ncppnb_cell_4adb0e27_b517_4dd6_926e_42c6f681baf2.cpp: In function 'int main()':\nCell 13, line 5, column 9: error: reference to 'ref' is ambiguous\nCell 13, line 3, column 6: note: candidates are: int& ref\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\memory:79:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:11:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\functional:491:5: note:                 template<class _Tp> std::reference_wrapper<_Tp> std::ref(std::reference_wrapper<_Tp>)\n     ref(reference_wrapper<_Tp> __t) noexcept\n     ^~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\functional:483:10: note:                 template<class _Tp> void std::ref(const _Tp&&)\n     void ref(const _Tp&&) = delete;\n          ^~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\functional:473:5: note:                 template<class _Tp> std::reference_wrapper<_Tp> std::ref(_Tp&)\n     ref(_Tp& __t) noexcept\n     ^~~\nCell 22, line 4, column 19: error: no match for 'operator<<' (operand types are 'std::ostream {aka std::basic_ostream<char>}' and 'Base')\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:108:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ostream_type& (*)(std::basic_ostream<_CharT, _Traits>::__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(__ostream_type& (*__pf)(__ostream_type&))\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:108:7: note:   no known conversion for argument 1 from 'Base' to 'std::basic_ostream<char>::__ostream_type& (*)(std::basic_ostream<char>::__ostream_type&) {aka std::basic_ostream<char>& (*)(std::basic_ostream<char>&)}'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:117:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ios_type& (*)(std::basic_ostream<_CharT, _Traits>::__ios_type&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>; std::basic_ostream<_CharT, _Traits>::__ios_type = std::basic_ios<char>]\n       operator<<(__ios_type& (*__pf)(__ios_type&))\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:117:7: note:   no known conversion for argument 1 from 'Base' to 'std::basic_ostream<char>::__ios_type& (*)(std::basic_ostream<char>::__ios_type&) {aka std::basic_ios<char>& (*)(std::basic_ios<char>&)}'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:127:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::ios_base& (*)(std::ios_base&)) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(ios_base& (*__pf) (ios_base&))\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:127:7: note:   no known conversion for argument 1 from 'Base' to 'std::ios_base& (*)(std::ios_base&)'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:166:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(long __n)\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:166:7: note:   no known conversion for argument 1 from 'Base' to 'long int'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:170:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(unsigned long __n)\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:170:7: note:   no known conversion for argument 1 from 'Base' to 'long unsigned int'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:174:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(bool) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(bool __n)\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:174:7: note:   no known conversion for argument 1 from 'Base' to 'bool'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:638:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ostream.tcc:91:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(short int) [with _CharT = char; _Traits = std::char_traits<char>]\n     basic_ostream<_CharT, _Traits>::\n     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ostream.tcc:91:5: note:   no known conversion for argument 1 from 'Base' to 'short int'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:181:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(short unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(unsigned short __n)\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:181:7: note:   no known conversion for argument 1 from 'Base' to 'short unsigned int'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:638:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ostream.tcc:105:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(int) [with _CharT = char; _Traits = std::char_traits<char>]\n     basic_ostream<_CharT, _Traits>::\n     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ostream.tcc:105:5: note:   no known conversion for argument 1 from 'Base' to 'int'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:192:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(unsigned int __n)\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:192:7: note:   no known conversion for argument 1 from 'Base' to 'unsigned int'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:201:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(long long __n)\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:201:7: note:   no known conversion for argument 1 from 'Base' to 'long long int'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:205:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(unsigned long long __n)\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:205:7: note:   no known conversion for argument 1 from 'Base' to 'long long unsigned int'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:220:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(double) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(double __f)\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:220:7: note:   no known conversion for argument 1 from 'Base' to 'double'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:224:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(float) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(float __f)\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:224:7: note:   no known conversion for argument 1 from 'Base' to 'float'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:232:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long double) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(long double __f)\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:232:7: note:   no known conversion for argument 1 from 'Base' to 'long double'\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:245:7: note: candidate: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(const void*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]\n       operator<<(const void* __p)\n       ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:245:7: note:   no known conversion for argument 1 from 'Base' to 'const void*'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:638:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ostream.tcc:119:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__streambuf_type*) [with _CharT = char; _Traits = std::char_traits<char>; std::basic_ostream<_CharT, _Traits>::__streambuf_type = std::basic_streambuf<char>]\n     basic_ostream<_CharT, _Traits>::\n     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ostream.tcc:119:5: note:   no known conversion for argument 1 from 'Base' to 'std::basic_ostream<char>::__streambuf_type* {aka std::basic_streambuf<char>*}'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\string:52:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\locale_classes.h:40,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ios_base.h:41,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:42,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\basic_string.h:5325:5: note: candidate: template<class _CharT, class _Traits, class _Alloc> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>&)\n     operator<<(basic_ostream<_CharT, _Traits>& __os,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\basic_string.h:5325:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 23: note: 'Base' is not derived from 'const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ios_base.h:46:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ios:42,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:38,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\system_error:209:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::error_code&)\n     operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __e)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\system_error:209:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 22: note: cannot convert '* p' (type 'Base') to type 'const std::error_code&'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:497:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, _CharT)\n     operator<<(basic_ostream<_CharT, _Traits>& __out, _CharT __c)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:497:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 23: note: deduced conflicting types for parameter '_CharT' ('char' and 'Base')\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:502:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, char)\n     operator<<(basic_ostream<_CharT, _Traits>& __out, char __c)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:502:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 22: note: cannot convert '* p' (type 'Base') to type 'char'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:508:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, char)\n     operator<<(basic_ostream<char, _Traits>& __out, char __c)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:508:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 22: note: cannot convert '* p' (type 'Base') to type 'char'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:514:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, signed char)\n     operator<<(basic_ostream<char, _Traits>& __out, signed char __c)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:514:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 22: note: cannot convert '* p' (type 'Base') to type 'signed char'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:519:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, unsigned char)\n     operator<<(basic_ostream<char, _Traits>& __out, unsigned char __c)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:519:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 22: note: cannot convert '* p' (type 'Base') to type 'unsigned char'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:539:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const _CharT*)\n     operator<<(basic_ostream<_CharT, _Traits>& __out, const _CharT* __s)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:539:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 23: note: mismatched types 'const _CharT*' and 'Base'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:638:0,\n                 from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ostream.tcc:321:5: note: candidate: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const char*)\n     operator<<(basic_ostream<_CharT, _Traits>& __out, const char* __s)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\ostream.tcc:321:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 22: note: cannot convert '* p' (type 'Base') to type 'const char*'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:556:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const char*)\n     operator<<(basic_ostream<char, _Traits>& __out, const char* __s)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:556:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 22: note: cannot convert '* p' (type 'Base') to type 'const char*'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:569:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const signed char*)\n     operator<<(basic_ostream<char, _Traits>& __out, const signed char* __s)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:569:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 22: note: cannot convert '* p' (type 'Base') to type 'const signed char*'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:574:5: note: candidate: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const unsigned char*)\n     operator<<(basic_ostream<char, _Traits>& __out, const unsigned char* __s)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:574:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 22: note: cannot convert '* p' (type 'Base') to type 'const unsigned char*'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\iostream:39:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:1:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:628:5: note: candidate: std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&&, const _Tp&) [with _CharT = char; _Traits = std::char_traits<char>; _Tp = Base] <near match>\n     operator<<(basic_ostream<_CharT, _Traits>&& __os, const _Tp& __x)\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\ostream:628:5: note:   conversion of argument 1 would be ill-formed:\nCell 22, line 4, column 23: error: cannot bind 'std::ostream {aka std::basic_ostream<char>}' lvalue to 'std::basic_ostream<char>&&'\nIn file included from c:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\memory:82:0,\n                 from C:\\Users\\gupta\\AppData\\Local\\Temp\\cppbook-szcec7xn\\main.cpp:11:\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\shared_ptr.h:66:5: note: candidate: template<class _Ch, class _Tr, class _Tp, __gnu_cxx::_Lock_policy _Lp> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::__shared_ptr<_Tp, _Lp>&)\n     operator<<(std::basic_ostream<_Ch, _Tr>& __os,\n     ^~~~~~~~\nc:\\mingw\\lib\\gcc\\mingw32\\6.3.0\\include\\c++\\bits\\shared_ptr.h:66:5: note:   template argument deduction/substitution failed:\nCell 22, line 4, column 23: note: 'Base' is not derived from 'const std::__shared_ptr<_Tp, _Lp>'\nCell 22, line 4, column 35: error: no match for 'operator*' (operand type is 'std::queue<int>')\n",
+          "diagnostics": [
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 2,
+              "column": 6,
+              "severity": "error",
+              "message": "conflicting declaration 'auto p'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:2:6: error: conflicting declaration 'auto p'"
+            },
+            {
+              "cellId": "be4f6fac-a6c6-42c4-8398-1675c721801a",
+              "line": 11,
+              "column": 7,
+              "severity": "note",
+              "message": "previous declaration as 'Base* p'",
+              "raw": "cppnb_cell_be4f6fac_a6c6_42c4_8398_1675c721801a.cpp:11:7: note: previous declaration as 'Base* p'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 3,
+              "column": 6,
+              "severity": "error",
+              "message": "conflicting declaration 'auto q'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:3:6: error: conflicting declaration 'auto q'"
+            },
+            {
+              "cellId": "6e6ccfd4-4728-43f3-831d-d5a1cb56825a",
+              "line": 5,
+              "column": 17,
+              "severity": "note",
+              "message": "previous declaration as 'std::queue<int> q'",
+              "raw": "cppnb_cell_6e6ccfd4_4728_43f3_831d_d5a1cb56825a.cpp:5:17: note: previous declaration as 'std::queue<int> q'"
+            },
+            {
+              "cellId": "4adb0e27-b517-4dd6-926e-42c6f681baf2",
+              "line": 5,
+              "column": 9,
+              "severity": "error",
+              "message": "reference to 'ref' is ambiguous",
+              "raw": "cppnb_cell_4adb0e27_b517_4dd6_926e_42c6f681baf2.cpp:5:9: error: reference to 'ref' is ambiguous"
+            },
+            {
+              "cellId": "4adb0e27-b517-4dd6-926e-42c6f681baf2",
+              "line": 3,
+              "column": 6,
+              "severity": "note",
+              "message": "candidates are: int& ref",
+              "raw": "cppnb_cell_4adb0e27_b517_4dd6_926e_42c6f681baf2.cpp:3:6: note: candidates are: int& ref"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 19,
+              "severity": "error",
+              "message": "no match for 'operator<<' (operand types are 'std::ostream {aka std::basic_ostream<char>}' and 'Base')",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:19: error: no match for 'operator<<' (operand types are 'std::ostream {aka std::basic_ostream<char>}' and 'Base')"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 23,
+              "severity": "note",
+              "message": "'Base' is not derived from 'const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:23: note:   'Base' is not derived from 'const std::__cxx11::basic_string<_CharT, _Traits, _Alloc>'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 22,
+              "severity": "note",
+              "message": "cannot convert '* p' (type 'Base') to type 'const std::error_code&'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:22: note:   cannot convert '* p' (type 'Base') to type 'const std::error_code&'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 23,
+              "severity": "note",
+              "message": "deduced conflicting types for parameter '_CharT' ('char' and 'Base')",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:23: note:   deduced conflicting types for parameter '_CharT' ('char' and 'Base')"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 22,
+              "severity": "note",
+              "message": "cannot convert '* p' (type 'Base') to type 'char'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:22: note:   cannot convert '* p' (type 'Base') to type 'char'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 22,
+              "severity": "note",
+              "message": "cannot convert '* p' (type 'Base') to type 'char'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:22: note:   cannot convert '* p' (type 'Base') to type 'char'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 22,
+              "severity": "note",
+              "message": "cannot convert '* p' (type 'Base') to type 'signed char'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:22: note:   cannot convert '* p' (type 'Base') to type 'signed char'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 22,
+              "severity": "note",
+              "message": "cannot convert '* p' (type 'Base') to type 'unsigned char'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:22: note:   cannot convert '* p' (type 'Base') to type 'unsigned char'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 23,
+              "severity": "note",
+              "message": "mismatched types 'const _CharT*' and 'Base'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:23: note:   mismatched types 'const _CharT*' and 'Base'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 22,
+              "severity": "note",
+              "message": "cannot convert '* p' (type 'Base') to type 'const char*'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:22: note:   cannot convert '* p' (type 'Base') to type 'const char*'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 22,
+              "severity": "note",
+              "message": "cannot convert '* p' (type 'Base') to type 'const char*'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:22: note:   cannot convert '* p' (type 'Base') to type 'const char*'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 22,
+              "severity": "note",
+              "message": "cannot convert '* p' (type 'Base') to type 'const signed char*'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:22: note:   cannot convert '* p' (type 'Base') to type 'const signed char*'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 22,
+              "severity": "note",
+              "message": "cannot convert '* p' (type 'Base') to type 'const unsigned char*'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:22: note:   cannot convert '* p' (type 'Base') to type 'const unsigned char*'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 23,
+              "severity": "error",
+              "message": "cannot bind 'std::ostream {aka std::basic_ostream<char>}' lvalue to 'std::basic_ostream<char>&&'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:23: error: cannot bind 'std::ostream {aka std::basic_ostream<char>}' lvalue to 'std::basic_ostream<char>&&'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 23,
+              "severity": "note",
+              "message": "'Base' is not derived from 'const std::__shared_ptr<_Tp, _Lp>'",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:23: note:   'Base' is not derived from 'const std::__shared_ptr<_Tp, _Lp>'"
+            },
+            {
+              "cellId": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+              "line": 4,
+              "column": 35,
+              "severity": "error",
+              "message": "no match for 'operator*' (operand type is 'std::queue<int>')",
+              "raw": "cppnb_cell_e862b817_2a76_4532_9bab_d89b9fbff0a6.cpp:4:35: error: no match for 'operator*' (operand type is 'std::queue<int>')"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.906
+    },
+    {
+      "id": "6b21a18a-b976-4c6d-b9cd-52f97fe975b5",
+      "type": "code",
+      "source": "#include <stdexcept>\ntry {\n    throw std::runtime_error(\"TEST_EXCEPTION\");\n} catch (const std::exception& e) {\n    std::cout << e.what() << \"\\n\";\n}",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "TEST_EXCEPTION\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.3935
+    },
+    {
+      "id": "b2e8c249-ebe8-4389-a2ce-9f37ae7d2817",
+      "type": "code",
+      "source": "constexpr int squareConst(int x) { return x * x; }\nconstexpr int value = squareConst(8);\nconst int other = 7;\nstd::cout << value + other << \"\\n\";",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\nCell 24, line 2, column 15: error: conflicting declaration 'constexpr const int value'\nCell 13, line 1, column 5: note: previous declaration as 'int value'\n",
+          "diagnostics": [
+            {
+              "cellId": "b2e8c249-ebe8-4389-a2ce-9f37ae7d2817",
+              "line": 2,
+              "column": 15,
+              "severity": "error",
+              "message": "conflicting declaration 'constexpr const int value'",
+              "raw": "cppnb_cell_b2e8c249_ebe8_4389_a2ce_9f37ae7d2817.cpp:2:15: error: conflicting declaration 'constexpr const int value'"
+            },
+            {
+              "cellId": "4adb0e27-b517-4dd6-926e-42c6f681baf2",
+              "line": 1,
+              "column": 5,
+              "severity": "note",
+              "message": "previous declaration as 'int value'",
+              "raw": "cppnb_cell_4adb0e27_b517_4dd6_926e_42c6f681baf2.cpp:1:5: note: previous declaration as 'int value'"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.6444
+    },
+    {
+      "id": "0c6b0d10-ef86-404e-84e9-41659c32f04c",
+      "type": "code",
+      "source": "int sharedValue = 100;",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.3941
+    },
+    {
+      "id": "c6ec9372-e0e7-458f-86e4-397ff7adc836",
+      "type": "code",
+      "source": "sharedValue += 23;\nstd::cout << sharedValue << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "123\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.4638
+    },
+    {
+      "id": "272fcfef-f32d-4b10-874e-e15a97959d7d",
+      "type": "code",
+      "source": "struct SharedUser {\n    int age;\n};",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.438
+    },
+    {
+      "id": "b25cf65b-647e-4593-a172-2d78b30ab4c2",
+      "type": "code",
+      "source": "SharedUser u{21};\nstd::cout << u.age << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "21\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.3106
+    },
+    {
+      "id": "dad68f8d-2600-4081-9ae4-c6c17c626750",
+      "type": "code",
+      "source": "#include <iostream>\nint main() {\n    std::cout << \"EXPLICIT MAIN\\n\";\n    return 0;\n}",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "EXPLICIT MAIN\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.3803
+    },
+    {
+      "id": "2f9205f8-4075-4e40-b5b8-ba9e5cf9f710",
+      "type": "code",
+      "source": "#include <iostream>\nauto main() -> int {\n    std::cout << \"TRAILING MAIN\\n\";\n    return 0;\n}",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "TRAILING MAIN\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.362
+    },
+    {
+      "id": "e18a5295-0efd-4605-8c8a-df4d4d201ddb",
+      "type": "code",
+      "source": "int n;\nstd::cin >> n;\nstd::cout << n * 2 << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "success",
+      "executionTime": 3.5049
+    },
+    {
+      "id": "db8047f4-6a0f-430d-8f6f-1baeb4844534",
+      "type": "code",
+      "source": "// Intentional compilation error test.\n// Expected: Compilation Error with useful source mapping.\nstd::cout << definitely_undefined_variable << \"\\n\";",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\ncppnb_cell_db8047f4_6a0f_430d_8f6f_1baeb4844534.cpp: In function 'int main()':\nCell 32, line 3, column 22: error: 'definitely_undefined_variable' was not declared in this scope\n",
+          "diagnostics": [
+            {
+              "cellId": "db8047f4-6a0f-430d-8f6f-1baeb4844534",
+              "line": 3,
+              "column": 22,
+              "severity": "error",
+              "message": "'definitely_undefined_variable' was not declared in this scope",
+              "raw": "cppnb_cell_db8047f4_6a0f_430d_8f6f_1baeb4844534.cpp:3:22: error: 'definitely_undefined_variable' was not declared in this scope"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.5598
+    },
+    {
+      "id": "a7ccf9f2-7cae-4765-b42d-c3e3de3ae5b0",
+      "type": "code",
+      "source": "// Intentional runtime failure test.\n// Expected: runtime failure / non-zero exit, not a silent success.\nint* p = nullptr;\nstd::cout << *p << \"\\n\";",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Runtime Error (exit code 3221225477)",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 1.216
+    },
+    {
+      "id": "d13182a4-3e2f-4480-8c57-9cde4337e44c",
+      "type": "code",
+      "source": "// Intentional timeout test.\n// Run only if you want to test Stop/timeout behavior.\nwhile (true) { }",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Execution stopped before completion.",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": null,
+      "status": "stopped",
+      "executionTime": 9.5052
+    },
+    {
+      "id": "c71acf8b-15be-42dd-bd0b-d9e0d90c17ed",
+      "type": "markdown",
+      "source": "# Manual Checklist\n\nAfter opening this notebook:\n\n- [ ] Run individual normal cells.\n- [ ] Run All on safe cells 01\u201326.\n- [ ] Verify cross-cell state in 25\u201326.\n- [ ] Test explicit/trailing-return `main()` separately; do not expect both in one run.\n- [ ] Enter `21` for the input test; expected output is `42`.\n- [ ] Run the compile-error test and verify diagnostics.\n- [ ] Run the runtime-failure test and verify non-zero failure handling.\n- [ ] Run the timeout test last and use Stop if needed.\n\nExpected key outputs:\n- 01: `TEST 01 PASS`\n- 02: `60`\n- 06: `42`\n- 07: `120`\n- 10: `1 2 3 4 5`\n- 15: `42`\n- 19: `42`\n- 20: `81`\n- 22: `42 99`\n- 25B: `123`\n- 26B: `21`\n- 27: `EXPLICIT MAIN`\n- 28: `TRAILING MAIN`\n- 29 with input 21: `42`\n\nNOTE: Cells 30\u201332 are intentionally failing tests and should NOT be counted as engine failures if the UI reports the expected failure mode.",
+      "outputs": [
+        {
+          "type": "markdown",
+          "text": "# Manual Checklist\n\nAfter opening this notebook:\n\n- [ ] Run individual normal cells.\n- [ ] Run All on safe cells 01\u201326.\n- [ ] Verify cross-cell state in 25\u201326.\n- [ ] Test explicit/trailing-return `main()` separately; do not expect both in one run.\n- [ ] Enter `21` for the input test; expected output is `42`.\n- [ ] Run the compile-error test and verify diagnostics.\n- [ ] Run the runtime-failure test and verify non-zero failure handling.\n- [ ] Run the timeout test last and use Stop if needed.\n\nExpected key outputs:\n- 01: `TEST 01 PASS`\n- 02: `60`\n- 06: `42`\n- 07: `120`\n- 10: `1 2 3 4 5`\n- 15: `42`\n- 19: `42`\n- 20: `81`\n- 22: `42 99`\n- 25B: `123`\n- 26B: `21`\n- 27: `EXPLICIT MAIN`\n- 28: `TRAILING MAIN`\n- 29 with input 21: `42`\n\nNOTE: Cells 30\u201332 are intentionally failing tests and should NOT be counted as engine failures if the UI reports the expected failure mode.",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 9,
+      "status": "success",
+      "executionTime": 0.001
+    }
+  ]
+}

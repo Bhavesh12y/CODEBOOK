@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "id": "untitled",
+  "metadata": {
+    "name": "Untitled",
+    "createdAt": "2026-08-16T09:31:03.452Z",
+    "updatedAt": "2026-08-16T09:34:39.819258+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-64f8a8af-61d2-46c7-b0f4-9aedd64959fc",
+      "type": "markdown",
+      "source": "# CppBook\nA local C++ notebook with compiled cell execution.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-523a7816-d62b-4e03-bc0c-36c77f1d6b2d",
+      "type": "markdown",
+      "source": "",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-2ff56809-dad1-4e24-b8fd-6edf9147e86c",
+      "type": "code",
+      "source": "std::cout << \"Success! Interactive mode is active!\" << std::endl;\r\n\r\n",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Success! Interactive mode is active!\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 1.2707
+    },
+    {
+      "id": "cell-052bace8-1a4b-4f23-b07a-76f2c9f96695",
+      "type": "code",
+      "source": "",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-e120139a-4c77-4584-a594-210e2cff3a6e",
+      "type": "code",
+      "source": "#include <iostream>\nusing namespace std;\n\nint x = 10;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-237f8760-0904-4889-aa39-101aeb2d4168",
+      "type": "code",
+      "source": "x += 20;\ncout << x;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "id": "ctcs",
+  "metadata": {
+    "name": "CTCS",
+    "description": "",
+    "createdAt": "2026-08-16T16:07:23.384Z",
+    "updatedAt": "2026-08-24T06:55:46.020627+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-118e4d87-3933-48c5-a972-3cf687725875",
+      "type": "code",
+      "source": "#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"Hello CppBook\" << '\\n' << std::flush;\n    return 0;\n}\n",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Hello CppBook\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.5916
+    },
+    {
+      "id": "cell-441152c4-4ecd-42c4-945f-c709b3a4e398",
+      "type": "markdown",
+      "source": "edmscwer",
+      "outputs": [
+        {
+          "type": "markdown",
+          "text": "edmscwer",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 5,
+      "status": "success",
+      "executionTime": 0.001
+    },
+    {
+      "id": "cell-60885d0e-3851-4a94-950a-4643e67fb60c",
+      "type": "markdown",
+      "source": "",
+      "outputs": [
+        {
+          "type": "markdown",
+          "text": "",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 3,
+      "status": "success",
+      "executionTime": 0.001
+    }
+  ]
+}

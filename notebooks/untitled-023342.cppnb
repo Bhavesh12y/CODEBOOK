@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "id": "untitled-023342",
+  "metadata": {
+    "name": "Untitled",
+    "createdAt": "2026-08-16T10:28:48.995008+00:00",
+    "updatedAt": "2026-08-16T10:29:01.337732+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-13f9658b",
+      "type": "code",
+      "source": "#include <iostream>\n\nusing namespace std;\n\n    int x = 10;\n\n    // ===== Cell 2 =====\n    x += 20;\n    cout << x;\n\n    return 0;\n\n",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\nmain.cpp: In function 'int main()':\nmain.cpp:2:5: error: redefinition of 'int main()'\n #include <sstream>\n     ^~~~\nCell 1, line 5, column 5: note: 'int main()' previously defined here\n",
+          "diagnostics": [
+            {
+              "cellId": "cell-13f9658b",
+              "line": 5,
+              "column": 5,
+              "severity": "note",
+              "message": "'int main()' previously defined here",
+              "raw": "cppnb_cell_cell_13f9658b.cpp:5:5: note: 'int main()' previously defined here"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.9369
+    }
+  ]
+}

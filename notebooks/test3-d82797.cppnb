@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "id": "test3-d82797",
+  "metadata": {
+    "name": "TEST3",
+    "description": "",
+    "createdAt": "2026-08-16T10:08:22.181Z",
+    "updatedAt": "2026-08-18T11:22:05.995819+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-fcf2a4aa-36a7-4857-b2b9-41e0964503c9",
+      "type": "markdown",
+      "source": "# CppBook\nA local C++ notebook with compiled cell execution.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-966783e9-fbad-4a93-a161-65541e9dc79d",
+      "type": "code",
+      "source": "#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}\n",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.6944
+    },
+    {
+      "id": "cell-dcdb9cd6-7bca-470b-8490-e313a03804d0",
+      "type": "code",
+      "source": "",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-c36691d5-a1b0-4569-b83b-f63a043cc154",
+      "type": "code",
+      "source": "",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-d139fcc0-9c28-4f3c-b471-acf4c75bdf89",
+      "type": "code",
+      "source": "",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-0ed60fd0-b3d0-468f-ac47-90a54f62d6af",
+      "type": "code",
+      "source": "",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-13f9efe7-35cb-4f6a-919c-dcbae6ea2c9d",
+      "type": "code",
+      "source": "",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-9c353313-4351-4c38-957d-61233031ad55",
+      "type": "code",
+      "source": "",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-052ed6c2-f18f-4ba0-a22c-18e71deb7ce9",
+      "type": "code",
+      "source": "\\",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Execution stopped before completion.",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": null,
+      "status": "stopped",
+      "executionTime": 8.6985
+    },
+    {
+      "id": "cell-47bd43a3-be06-4ad1-b98f-1e95f09b2a1c",
+      "type": "code",
+      "source": "#include <iostream>\r\n#include <vector>\r\n#include <numeric>\r\n\r\nclass Calculator {\r\npublic:\r\n    int add(int a, int b) {\r\n        return a + b;\r\n    }\r\n\r\n    int multiply(int a, int b) {\r\n        return a * b;\r\n    }\r\n};\r\n\r\nint main() {\r\n    Calculator calc;\r\n\r\n    std::cout << \"Addition: \" << calc.add(10, 20) << std::endl;\r\n    std::cout << \"Multiplication: \" << calc.multiply(5, 6) << std::endl;\r\n\r\n    std::vector<int> numbers = {1, 2, 3, 4, 5};\r\n    int sum = std::accumulate(numbers.begin(), numbers.end(), 0);\r\n\r\n    std::cout << \"Sum: \" << sum << std::endl;\r\n\r\n    return 0;\r\n}",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\nmain.cpp: In function 'int main()':\nmain.cpp:2:5: error: redefinition of 'int main()'\n #include <sstream>\n     ^~~~\nCell 3, line 16, column 5: note: 'int main()' previously defined here\n",
+          "diagnostics": [
+            {
+              "cellId": "cell-47bd43a3-be06-4ad1-b98f-1e95f09b2a1c",
+              "line": 16,
+              "column": 5,
+              "severity": "note",
+              "message": "'int main()' previously defined here",
+              "raw": "cppnb_cell_cell_47bd43a3_be06_4ad1_b98f_1e95f09b2a1c.cpp:16:5: note: 'int main()' previously defined here"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.3481
+    },
+    {
+      "id": "cell-cfe6a637-df61-47d9-9f68-e63a085cbfce",
+      "type": "code",
+      "source": "std::cout << square(5) << std::endl;",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "25\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.6777
+    }
+  ]
+}

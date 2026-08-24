@@ -1,0 +1,336 @@
+{
+  "version": 1,
+  "id": "untitled-3d86e5",
+  "metadata": {
+    "name": "Untitled",
+    "description": "Manual black-box test suite for CppBook C++ notebook execution.",
+    "createdAt": "2026-08-23T06:03:35.232414+00:00",
+    "updatedAt": "2026-08-23T06:03:35.232945+00:00"
+  },
+  "cells": [
+    {
+      "id": "d96fee46-b52e-4e26-8ca1-e8d973d9b5f9",
+      "type": "markdown",
+      "source": "# CppBook Manual Test Suite\nRun cells top-to-bottom. Check actual output against the expected result in each Markdown heading.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "ad065ddc-ea0a-43dc-ac8a-324b01d5c8df",
+      "type": "code",
+      "source": "#include <iostream>\nstd::cout << \"TEST 01 PASS\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "2e74f18b-1102-43fd-adcf-5e2ff04b8954",
+      "type": "code",
+      "source": "int a = 10;\nint b = 20;\nstd::cout << (a + b) * 2 << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "7079e99c-ccf6-443b-b5cb-25075c52a13d",
+      "type": "code",
+      "source": "int x = 7;\nif (x > 5) std::cout << \"IF PASS\\n\";\nelse std::cout << \"IF FAIL\\n\";\n\nfor (int i = 1; i <= 5; ++i) std::cout << i << \" \";\nstd::cout << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "4c0eaaf1-63d8-4343-9d40-4d54b8ade475",
+      "type": "code",
+      "source": "int i = 0;\nwhile (i < 3) {\n    std::cout << i << \" \";\n    ++i;\n}\nstd::cout << \"\\n\";\n\nint j = 0;\ndo {\n    std::cout << j << \" \";\n    ++j;\n} while (j < 3);\nstd::cout << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "8eb89e28-2b16-44ec-97ff-94fabcf1cb4a",
+      "type": "code",
+      "source": "int sum = 0;\nfor (int i = 1; i <= 10; ++i) {\n    if (i == 5) continue;\n    if (i == 8) break;\n    sum += i;\n}\nstd::cout << sum << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "de9842d4-27c5-478c-8b47-bfccba64fcf9",
+      "type": "code",
+      "source": "int add(int a, int b) {\n    return a + b;\n}\nstd::cout << add(12, 30) << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "30399f5c-04aa-4abe-b318-804530e3ff90",
+      "type": "code",
+      "source": "int factorial(int n) {\n    if (n <= 1) return 1;\n    return n * factorial(n - 1);\n}\nstd::cout << factorial(5) << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "615ae757-2638-481d-a1dc-8a3818a0f0b0",
+      "type": "code",
+      "source": "int arr[] = {10, 20, 30, 40, 50};\nfor (int value : arr) std::cout << value << \" \";\nstd::cout << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "0c7db107-13be-45a3-b4bb-7112462ee773",
+      "type": "code",
+      "source": "#include <string>\nstd::string name = \"CppBook\";\nstd::cout << name + \" TEST\" << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "c5a6b524-3f92-4846-a4dc-b485c2c9a45c",
+      "type": "code",
+      "source": "#include <vector>\nstd::vector<int> v = {1, 2, 3};\nv.push_back(4);\nv.push_back(5);\nfor (int x : v) std::cout << x << \" \";\nstd::cout << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "069026ef-1467-4895-ae4f-286d41629a14",
+      "type": "code",
+      "source": "#include <map>\n#include <set>\nstd::map<std::string, int> m{{\"A\", 10}, {\"B\", 20}};\nstd::set<int> s{3, 1, 2};\nstd::cout << m[\"A\"] + m[\"B\"] << \"\\n\";\nfor (int x : s) std::cout << x << \" \";\nstd::cout << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "6e6ccfd4-4728-43f3-831d-d5a1cb56825a",
+      "type": "code",
+      "source": "#include <stack>\n#include <queue>\nstd::stack<int> st;\nst.push(10); st.push(20);\nstd::queue<int> q;\nq.push(30); q.push(40);\nstd::cout << st.top() << \" \" << q.front() << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "4adb0e27-b517-4dd6-926e-42c6f681baf2",
+      "type": "code",
+      "source": "int value = 42;\nint* ptr = &value;\nint& ref = value;\n*ptr = 50;\nref += 2;\nstd::cout << value << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "2d96cacd-4074-4da4-9c10-affeb4d27c7b",
+      "type": "code",
+      "source": "struct Student {\n    int age;\n    std::string name;\n};\nStudent s{20, \"Test\"};\nstd::cout << s.name << \" \" << s.age << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "da42b468-1e97-4c6a-969a-3aa5050f51ca",
+      "type": "code",
+      "source": "class Calculator {\n    int base;\npublic:\n    Calculator(int b) : base(b) {}\n    int add(int x) { return base + x; }\n};\nCalculator c(10);\nstd::cout << c.add(32) << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "be4f6fac-a6c6-42c4-8398-1675c721801a",
+      "type": "code",
+      "source": "class Base {\npublic:\n    virtual const char* name() { return \"BASE\"; }\n    virtual ~Base() = default;\n};\nclass Derived : public Base {\npublic:\n    const char* name() override { return \"DERIVED\"; }\n};\nDerived d;\nBase* p = &d;\nstd::cout << p->name() << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "65dcc47e-4f38-413e-87eb-11bea5865cd3",
+      "type": "code",
+      "source": "enum class Color { Red, Green, Blue };\nColor c = Color::Green;\nstd::cout << (c == Color::Green) << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "6217fa1b-104a-4579-b126-d28762677189",
+      "type": "code",
+      "source": "namespace Demo {\n    int value = 99;\n    int twice(int x) { return x * 2; }\n}\nstd::cout << Demo::value << \" \" << Demo::twice(21) << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "a8cc3744-1f2d-4b84-8892-ce8facaaa6c7",
+      "type": "code",
+      "source": "template <typename T>\nT multiply(T a, T b) {\n    return a * b;\n}\nstd::cout << multiply(6, 7) << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "fb74314f-9b65-484d-97c3-1efb667bf616",
+      "type": "code",
+      "source": "auto square = [](int x) { return x * x; };\nstd::cout << square(9) << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "3bcbcaf5-f961-4927-9224-f10bee76eb62",
+      "type": "code",
+      "source": "#include <algorithm>\n#include <numeric>\n#include <vector>\nstd::vector<int> v{5, 1, 4, 2, 3};\nstd::sort(v.begin(), v.end());\nstd::cout << std::accumulate(v.begin(), v.end(), 0) << \"\\n\";\nstd::cout << *std::find(v.begin(), v.end(), 4) << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "e862b817-2a76-4532-9bab-d89b9fbff0a6",
+      "type": "code",
+      "source": "#include <memory>\nauto p = std::make_unique<int>(42);\nauto q = std::make_shared<int>(99);\nstd::cout << *p << \" \" << *q << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "6b21a18a-b976-4c6d-b9cd-52f97fe975b5",
+      "type": "code",
+      "source": "#include <stdexcept>\ntry {\n    throw std::runtime_error(\"TEST_EXCEPTION\");\n} catch (const std::exception& e) {\n    std::cout << e.what() << \"\\n\";\n}",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "b2e8c249-ebe8-4389-a2ce-9f37ae7d2817",
+      "type": "code",
+      "source": "constexpr int squareConst(int x) { return x * x; }\nconstexpr int value = squareConst(8);\nconst int other = 7;\nstd::cout << value + other << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "0c6b0d10-ef86-404e-84e9-41659c32f04c",
+      "type": "code",
+      "source": "int sharedValue = 100;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "c6ec9372-e0e7-458f-86e4-397ff7adc836",
+      "type": "code",
+      "source": "sharedValue += 23;\nstd::cout << sharedValue << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "272fcfef-f32d-4b10-874e-e15a97959d7d",
+      "type": "code",
+      "source": "struct SharedUser {\n    int age;\n};",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "b25cf65b-647e-4593-a172-2d78b30ab4c2",
+      "type": "code",
+      "source": "SharedUser u{21};\nstd::cout << u.age << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "dad68f8d-2600-4081-9ae4-c6c17c626750",
+      "type": "code",
+      "source": "#include <iostream>\nint main() {\n    std::cout << \"EXPLICIT MAIN\\n\";\n    return 0;\n}",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "2f9205f8-4075-4e40-b5b8-ba9e5cf9f710",
+      "type": "code",
+      "source": "#include <iostream>\nauto main() -> int {\n    std::cout << \"TRAILING MAIN\\n\";\n    return 0;\n}",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "e18a5295-0efd-4605-8c8a-df4d4d201ddb",
+      "type": "code",
+      "source": "int n;\nstd::cin >> n;\nstd::cout << n * 2 << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "db8047f4-6a0f-430d-8f6f-1baeb4844534",
+      "type": "code",
+      "source": "// Intentional compilation error test.\n// Expected: Compilation Error with useful source mapping.\nstd::cout << definitely_undefined_variable << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "a7ccf9f2-7cae-4765-b42d-c3e3de3ae5b0",
+      "type": "code",
+      "source": "// Intentional runtime failure test.\n// Expected: runtime failure / non-zero exit, not a silent success.\nint* p = nullptr;\nstd::cout << *p << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "d13182a4-3e2f-4480-8c57-9cde4337e44c",
+      "type": "code",
+      "source": "// Intentional timeout test.\n// Run only if you want to test Stop/timeout behavior.\nwhile (true) { }",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "c71acf8b-15be-42dd-bd0b-d9e0d90c17ed",
+      "type": "markdown",
+      "source": "# Manual Checklist\n\nAfter opening this notebook:\n\n- [ ] Run individual normal cells.\n- [ ] Run All on safe cells 01\u201326.\n- [ ] Verify cross-cell state in 25\u201326.\n- [ ] Test explicit/trailing-return `main()` separately; do not expect both in one run.\n- [ ] Enter `21` for the input test; expected output is `42`.\n- [ ] Run the compile-error test and verify diagnostics.\n- [ ] Run the runtime-failure test and verify non-zero failure handling.\n- [ ] Run the timeout test last and use Stop if needed.\n\nExpected key outputs:\n- 01: `TEST 01 PASS`\n- 02: `60`\n- 06: `42`\n- 07: `120`\n- 10: `1 2 3 4 5`\n- 15: `42`\n- 19: `42`\n- 20: `81`\n- 22: `42 99`\n- 25B: `123`\n- 26B: `21`\n- 27: `EXPLICIT MAIN`\n- 28: `TRAILING MAIN`\n- 29 with input 21: `42`\n\nNOTE: Cells 30\u201332 are intentionally failing tests and should NOT be counted as engine failures if the UI reports the expected failure mode.",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}

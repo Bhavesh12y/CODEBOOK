@@ -1,0 +1,210 @@
+{
+  "version": 1,
+  "id": "hw",
+  "metadata": {
+    "name": "hw",
+    "description": "",
+    "createdAt": "2026-08-21T15:42:05.763Z",
+    "updatedAt": "2026-08-24T06:31:53.044009+00:00"
+  },
+  "cells": [
+    {
+      "id": "cell-40f1b3ef-30a1-4e66-b029-03f883071681",
+      "type": "code",
+      "source": "#include <iostream>\n\nint x = 10;",
+      "outputs": [],
+      "executionCount": 9,
+      "status": "success",
+      "executionTime": 0.576
+    },
+    {
+      "id": "cell-20bb35e0-a370-4a65-988a-ec8965044bf4",
+      "type": "code",
+      "source": "#include <iostream>\r\n\r\nint y = 23;",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "success",
+      "executionTime": 0.6154
+    },
+    {
+      "id": "cell-8c1ec326-d982-469b-86df-101870e478ee",
+      "type": "code",
+      "source": "std::cout << y;",
+      "outputs": [
+        {
+          "type": "error",
+          "text": "Compilation Error\n\ncppnb_cell_cell_8c1ec326_d982_469b_86df_101870e478ee.cpp: In function 'int main()':\nCell 3, line 1, column 26: error: 'y' was not declared in this scope\n",
+          "diagnostics": [
+            {
+              "cellId": "cell-8c1ec326-d982-469b-86df-101870e478ee",
+              "line": 1,
+              "column": 26,
+              "severity": "error",
+              "message": "'y' was not declared in this scope",
+              "raw": "cppnb_cell_cell_8c1ec326_d982_469b_86df_101870e478ee.cpp:1:26: error: 'y' was not declared in this scope"
+            }
+          ]
+        }
+      ],
+      "executionCount": null,
+      "status": "error",
+      "executionTime": 0.3014
+    },
+    {
+      "id": "cell-6997775f-b3f2-4cfd-a7c6-f42f44ed1d80",
+      "type": "code",
+      "source": "int square(int x) {\r\n    return x * x;\r\n}",
+      "outputs": [],
+      "executionCount": 3,
+      "status": "success",
+      "executionTime": 0.6963
+    },
+    {
+      "id": "cell-bb33d623-c539-4db3-a304-2c635ab6529b",
+      "type": "code",
+      "source": "std::cout << square(7) << \"\\n\";",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "49\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 3,
+      "status": "success",
+      "executionTime": 0.5854
+    },
+    {
+      "id": "cell-3367ce53-50f3-4184-95ca-5bc637b6f615",
+      "type": "code",
+      "source": "#include <string>\r\n\r\nclass Person {\r\nprivate:\r\n    std::string name;\r\n\r\npublic:\r\n    Person(const std::string& n) : name(n) {}\r\n\r\n    void sayHello() const {\r\n        std::cout << \"Hello, \" << name << \"\\n\";\r\n    }\r\n};",
+      "outputs": [],
+      "executionCount": 2,
+      "status": "success",
+      "executionTime": 0.5775
+    },
+    {
+      "id": "cell-11a47c10-1769-495e-ad22-fa29bc83d0ac",
+      "type": "code",
+      "source": "Person p(\"CppBook\");\r\np.sayHello();",
+      "outputs": [
+        {
+          "type": "stdout",
+          "text": "Hello, CppBook\n",
+          "diagnostics": []
+        }
+      ],
+      "executionCount": 2,
+      "status": "success",
+      "executionTime": 0.5983
+    },
+    {
+      "id": "cell-dcd6a222-dd6a-4d8c-a1dc-062ddc306b5d",
+      "type": "code",
+      "source": "class Student : public Person {\r\nprivate:\r\n    int age;\r\n\r\npublic:\r\n    Student(const std::string& n, int a)\r\n        : Person(n), age(a) {}\r\n\r\n    void showAge() const {\r\n        std::cout << \"Age: \" << age << \"\\n\";\r\n    }\r\n};",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-46ea5598-7515-4c40-99e9-3c98b97ba599",
+      "type": "code",
+      "source": "Student s(\"Rahul\", 21);\r\n\r\ns.sayHello();\r\ns.showAge();",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-50b7f296-6e39-4152-97f6-0d7dd539a732",
+      "type": "code",
+      "source": "#include <vector>\r\n#include <algorithm>\r\n\r\nstd::vector<int> nums = {5, 1, 8, 2, 9};\r\n\r\nstd::sort(nums.begin(), nums.end());\r\n\r\nfor (int n : nums)\r\n    std::cout << n << \" \";\r\n\r\nstd::cout << \"\\n\";",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-3b3cee92-73ca-48a4-919a-a347c0820012",
+      "type": "code",
+      "source": "auto multiply = [](int a, int b) {\r\n    return a * b;\r\n};\r\n\r\nstd::cout << multiply(6, 7) << \"\\n\";",
+      "outputs": [],
+      "executionCount": 2,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-044c91d5-1add-4f7e-8471-0cdcb923e1c3",
+      "type": "code",
+      "source": "struct Rectangle {\r\n    int width;\r\n    int height;\r\n\r\n    int area() const {\r\n        return width * height;\r\n    }\r\n};\r\n\r\nRectangle r{10, 5};\r\n\r\nstd::cout << r.area() << \"\\n\";",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-cdc1abc9-fe75-4b68-9252-c25282c46c05",
+      "type": "code",
+      "source": "namespace Math {\r\n    int add(int a, int b) {\r\n        return a + b;\r\n    }\r\n}\r\n\r\nstd::cout << Math::add(10, 20) << \"\\n\";",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-0772eec1-e160-4fbb-98aa-c75260bd6fd4",
+      "type": "code",
+      "source": "#include <iostream>\r\n\r\nint main() {\r\n    std::cout << \"USER MAIN WORKS\\n\";\r\n    return 0;\r\n}",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-b81e8eb3-33b5-4243-bed5-ccdc10e18b1d",
+      "type": "code",
+      "source": "#include <iostream>\r\n\r\nint main(int argc, char** argv) {\r\n    std::cout << \"argc = \" << argc << \"\\n\";\r\n    return 0;\r\n}",
+      "outputs": [],
+      "executionCount": 1,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-e110ae35-e5d8-468b-99fd-4c4a39814a5f",
+      "type": "code",
+      "source": "#include <iostream>\r\n\r\nint age;\r\n\r\nstd::cout << \"Enter age: \";\r\nstd::cin >> age;\r\n\r\nstd::cout << \"You entered: \" << age << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-25d6984e-0d47-4cf7-b2ca-de4abcbe0687",
+      "type": "code",
+      "source": "#include <iostream>\r\n\r\nint* ptr = nullptr;\r\n\r\nstd::cout << *ptr << std::endl;",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-6dca3400-5522-4182-832d-7fcee7d0ac06",
+      "type": "code",
+      "source": "#include <iostream>\r\n\r\nint age;\r\n\r\nstd::cout << \"Enter age: \";\r\nstd::cin >> age;\r\n\r\nstd::cout << \"You entered: \" << age << \"\\n\";",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    },
+    {
+      "id": "cell-eccbb1ed-0875-47e6-947f-1f44c9c84c65",
+      "type": "code",
+      "source": "",
+      "outputs": [],
+      "executionCount": null,
+      "status": "idle",
+      "executionTime": null
+    }
+  ]
+}
