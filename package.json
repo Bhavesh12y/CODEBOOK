@@ -15,8 +15,12 @@
     "desktop:dist:win": "npm run build && npm run desktop:backend && electron-builder --win",
     "desktop:dist:linux": "npm run build && npm run desktop:backend && electron-builder --linux",
     "desktop:dist:mac": "npm run build && npm run desktop:backend && electron-builder --mac",
-    "compiler:check": "powershell -ExecutionPolicy Bypass -File tools\\check-compiler.ps1",
-    "compiler:check:unix": "bash tools/check-compiler.sh",
+    "toolchain:check": "powershell -ExecutionPolicy Bypass -File tools\\check-toolchain.ps1",
+    "toolchain:install": "powershell -ExecutionPolicy Bypass -File tools\\check-toolchain.ps1 -Install",
+    "toolchain:check:unix": "bash tools/check-toolchain.sh",
+    "toolchain:install:unix": "bash tools/check-toolchain.sh --install",
+    "compiler:check": "powershell -ExecutionPolicy Bypass -File tools\\check-toolchain.ps1",
+    "compiler:check:unix": "bash tools/check-toolchain.sh",
     "build": "vite build --config frontend/vite.config.ts",
     "preview": "vite preview --config frontend/vite.config.ts --host 127.0.0.1",
     "backend:test": "python backend/run_tests.py",
@@ -103,6 +107,7 @@
         "from": "tools",
         "to": "tools",
         "filter": [
+          "check-toolchain.*",
           "check-compiler.*"
         ]
       }

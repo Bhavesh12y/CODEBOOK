@@ -652,6 +652,28 @@ export function useNotebookController() {
     const notebook = stateRef.current.notebook;
     dispatch({ type: 'SET_RUNNING', cellId: 'all', runAllActive: true });
     dispatch({ type: 'SET_STATUS_TEXT', text: 'Running all cells' });
+
+    // Render all markdown cells
+    for (const cell of notebook.cells) {
+      if (cell.type === 'markdown') {
+        dispatch({
+          type: 'SET_CELL_OUTPUT',
+          cellId: cell.id,
+          outputs: [{ type: 'markdown', text: cell.source }],
+          result: {
+            status: 'success',
+            stdout: '',
+            stderr: '',
+            exitCode: 0,
+            executionTime: 0.001,
+            diagnostics: [],
+            variables: stateRef.current.variables,
+            message: null,
+          },
+        });
+      }
+    }
+
     try {
       const response = await api.executeAll(notebook, stateRef.current.continueOnError, stdinOverride ?? stateRef.current.stdin);
       for (const item of response.results) {

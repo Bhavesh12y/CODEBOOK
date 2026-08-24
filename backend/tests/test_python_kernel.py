@@ -93,6 +93,7 @@ def test_execute_all(kernel):
         notebookId="nb2",
         language="python",
         cells=[
+            ExecutionCell(id="c0", type="markdown", source="# Title\nSome markdown text"),
             ExecutionCell(id="c1", type="code", source="a = 10"),
             ExecutionCell(id="c2", type="code", source="b = 20"),
             ExecutionCell(id="c3", type="code", source="print(a + b)")

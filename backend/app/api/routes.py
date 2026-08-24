@@ -277,9 +277,15 @@ async def execute_interactive(websocket: WebSocket) -> None:
                 script_lines.append(f"# ===== Target Interactive Cell {request.cellId} =====")
                 script_lines.append(target_code)
 
-                source_path = temp_dir / "main.py"
-                source_path.write_text("\n".join(script_lines), encoding="utf-8")
-                py_bin = (toolchain.path if (toolchain and toolchain.available and toolchain.path and "WindowsApps" not in toolchain.path) else None) or sys.executable
+                py_bin = (toolchain.path if (toolchain and toolchain.available and toolchain.path and "WindowsApps" not in toolchain.path) else None)
+                if not py_bin:
+                    for cmd in ["python3", "python", "py"]:
+                        p = shutil.which(cmd)
+                        if p and "WindowsApps" not in p and (not getattr(sys, "frozen", False) or Path(p).resolve() != Path(sys.executable).resolve()):
+                            py_bin = p
+                            break
+                if not py_bin:
+                    py_bin = sys.executable if not getattr(sys, "frozen", False) else "python"
                 spawn_args = [py_bin, "-u", str(source_path)]
 
             else:

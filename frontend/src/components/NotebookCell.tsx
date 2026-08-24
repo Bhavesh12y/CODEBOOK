@@ -120,9 +120,14 @@ export function NotebookCell(props: NotebookCellProps) {
       {/* Seamless header */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-transparent px-4 pt-3 pb-1.5">
         <div className="flex items-center gap-3 text-xs text-[var(--text-secondary)]">
-          <span className="inline-flex h-5 min-w-[22px] items-center justify-center rounded bg-white/[0.05] px-1.5 font-mono text-[11px] text-[var(--text-primary)]">
-            {props.cell.executionCount ? props.cell.executionCount : props.index + 1}
+          <span className="inline-flex h-5 min-w-[22px] items-center justify-center rounded bg-white/[0.05] px-1.5 font-mono text-[11px] text-[var(--text-primary)] font-semibold">
+            {props.index + 1}
           </span>
+          {props.cell.type === 'code' && props.cell.executionCount ? (
+            <span className="font-mono text-[10px] text-[var(--text-secondary)] opacity-70">
+              [{props.cell.executionCount}]
+            </span>
+          ) : null}
           <span className="font-semibold uppercase text-[10px] tracking-wider text-[var(--text-secondary)]">
             {props.cell.type === 'code' ? 'Code Cell' : 'Markdown'}
           </span>

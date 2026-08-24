@@ -85,12 +85,14 @@ class ToolchainDetector:
         candidates: list[str] = []
         if self.settings.python_path:
             candidates.append(self.settings.python_path)
-        if sys.executable:
+        if sys.executable and not getattr(sys, "frozen", False):
             candidates.append(sys.executable)
         candidates.extend(["python3", "python", "py"])
         for candidate in candidates:
             path = shutil.which(candidate) if not any(sep in candidate for sep in ["/", "\\"]) else candidate
             if not path or "WindowsApps" in path:
+                continue
+            if getattr(sys, "frozen", False) and Path(path).resolve() == Path(sys.executable).resolve():
                 continue
             try:
                 result = subprocess.run([path, "--version"], text=True, capture_output=True, timeout=4, check=False)
@@ -132,3 +134,7 @@ class ToolchainDetector:
                 error=None if result.returncode == 0 else result.stderr.strip(),
             )
         return ToolchainInfo(language=language, available=False, error=fallback_error)
+
+
+ToolchainService = ToolchainDetector
+
